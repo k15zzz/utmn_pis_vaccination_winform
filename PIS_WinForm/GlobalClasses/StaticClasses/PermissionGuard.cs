@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PIS_WinForm.GlobalClasses.StaticClasses
+namespace PIS_WinForm
 {
     public static class PermissionGuard
     {
