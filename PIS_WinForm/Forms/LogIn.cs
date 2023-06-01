@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PIS_WinForm.GlobalClasses.StaticClasses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,7 +34,7 @@ namespace PIS_WinForm
                 return;
             }
 
-            PermissionManager.ValidateUser(login, password);
+            PermissionGuard.ValidateUser(login, password);
         }
 
         public void ResetError()
