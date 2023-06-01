@@ -14,7 +14,7 @@ namespace PIS_WinForm
             new Dictionary<string, Dictionary<int, Dictionary<string, string>>>()
             {
 
-#region doljnosti
+#region role
                 {
                     "doljnosti", // table
                     new Dictionary<int, Dictionary<string,string>>()
@@ -47,9 +47,7 @@ namespace PIS_WinForm
                             {
                                 { "login",      "boss" }, // {colum, value} 
                                 { "password",   "p4ssw0rd" },
-                                { "role",   "p4ssw0rd" },
-                                { "doljnost",   "p4ssw0rd" },
-                                { "groupe" , "1"}
+                                { "role",   "6" },
                             }
                         }
                     }
