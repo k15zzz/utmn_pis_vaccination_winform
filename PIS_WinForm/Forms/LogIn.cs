@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PIS_WinForm
+namespace PIS_WinForm.Forms
 {
-    public partial class LookAtList : Form
+    public partial class LogIn : Form
     {
-        public LookAtList()
+        public LogIn()
         {
             InitializeComponent();
-        }
-
-        private void LookAtList_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

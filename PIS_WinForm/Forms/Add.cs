@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PIS_WinForm
+namespace PIS_WinForm.Forms
 {
-    public partial class mainForm : Form
+    public partial class Add : Form
     {
-        public mainForm()
+        public Add()
         {
             InitializeComponent();
-        }
-
-        private void OnButtonClick_LookAllAnimals(object sender, EventArgs e)
-        {
-
         }
     }
 }
