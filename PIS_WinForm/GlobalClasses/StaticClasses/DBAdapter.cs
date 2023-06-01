@@ -16,7 +16,7 @@ namespace PIS_WinForm
 
 #region role
                 {
-                    "doljnosti", // table
+                    "role", // table
                     new Dictionary<int, Dictionary<string,string>>()
                     {
                         {1, new Dictionary<string, string>(){{ "name", "Куратор ВетСлужбы"}}},
