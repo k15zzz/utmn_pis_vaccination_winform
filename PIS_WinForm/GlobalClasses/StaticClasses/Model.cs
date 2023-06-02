@@ -1,4 +1,5 @@
-﻿namespace Model
+
+﻿using System;
 {
     public static class Animal
     {
@@ -13,6 +14,7 @@
 
     public static class Organizations
     {
+
         public static void LookAll(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
 
         public static void Add(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
@@ -23,5 +25,6 @@
         public static void LookAll(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
 
         public static void Add(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
+
     }
 }
