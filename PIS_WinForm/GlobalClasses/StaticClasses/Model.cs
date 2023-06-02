@@ -1,8 +1,22 @@
-﻿namespace Model
+﻿using PIS_WinForm;
+
+namespace Model
 {
     public static class Animal
     {
-        public static void LookAll(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
+        public static Dictionary<int, Dictionary<string, string>> LookAll(Dictionary<string, string> filter, Dictionary<string, string> sort)
+        {
+            try
+            {
+                PermissionGuard.CanLookAll("Animals");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return DBAdapter.LookAll("Animals", filter);
+        }
 
 
         public static void Add(Card.Animal animal)

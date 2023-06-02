@@ -36,12 +36,11 @@ namespace PIS_WinForm
                     }
                 },
 #endregion
-#region user
                 {
                     "user", // table
                     new Dictionary<int, Dictionary<string,string>>()
                     {
-                        { 
+                        {
                             1, // id 
                             new Dictionary<string, string>()  // atributes
                             {
@@ -50,10 +49,19 @@ namespace PIS_WinForm
                                 { "role",       "6" },
                                 { "town",       "2" },
                             }
-                        }
+                        },
+                        {
+                            2, // id 
+                            new Dictionary<string, string>()  // atributes
+                            {
+                                { "login",      "master" }, // {colum, value} 
+                                { "password",   "master" },
+                                { "role",       "6" },
+                                { "town",       "" },
+                            }
+                        },
                     }
                 },
-#endregion
 #region animals
                 {
                     "Animals", // table
@@ -233,6 +241,25 @@ namespace PIS_WinForm
 
         static public Dictionary<int, Dictionary<string, string>> GetAll(string table) => _db[table];
 
+        static public Dictionary<int, Dictionary<string, string>> LookAll(string table, Dictionary<string, string> filter)
+        {
+            var returnableList = new Dictionary<int, Dictionary<string, string>>();
+
+            foreach (var str in _db[table])
+                foreach (var filterStr in filter)
+                    returnableList.Add(
+                        str.Key,
+                        (Dictionary<string, string>)str.Value
+                            .Select(atrs => atrs)
+                            .Where(atrs => atrs.Key == filterStr.Key && atrs.Value == atrs.Value));
+
+            return returnableList;
+            //foreach (var filterValue in filter)
+            //    returnableList = ((Dictionary<int, Dictionary<string, string>>)_db["Animals"].Select(str => str.Value)
+            //        .Where(atr => atr.ContainsKey(filterValue.Key) && atr.ContainsValue(filterValue.Value)));
+            //return returnableList;
+            
+        }
         static public Dictionary<string, string> SearchUser(string login, string password) 
         {
             var users = _db["user"];
