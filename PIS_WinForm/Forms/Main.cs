@@ -16,5 +16,24 @@ namespace PIS_WinForm.Forms
         {
             InitializeComponent();
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnButtonClick_LookAllAnimals(object sender, EventArgs e)
+        {
+            try
+            {
+                PermissionGuard.CanLookAll("Animals");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("you cant look at yhis list", ex.Message, MessageBoxButtons.OK);
+            }
+            
+
+        }
     }
 }
