@@ -28,33 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LookAllMnimals = new Button();
             SuspendLayout();
-            // 
-            // LookAllMnimals
-            // 
-            LookAllMnimals.Enabled = false;
-            LookAllMnimals.Location = new Point(12, 12);
-            LookAllMnimals.Name = "LookAllMnimals";
-            LookAllMnimals.Size = new Size(189, 23);
-            LookAllMnimals.TabIndex = 0;
-            LookAllMnimals.Text = "Посмотреть реестр Животных";
-            LookAllMnimals.UseVisualStyleBackColor = true;
-            LookAllMnimals.Click += OnButtonClick_LookAllAnimals;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(LookAllMnimals);
             Name = "Main";
             Text = "Main";
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button LookAllMnimals;
     }
 }

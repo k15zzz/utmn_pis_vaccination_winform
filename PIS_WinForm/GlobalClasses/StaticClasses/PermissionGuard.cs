@@ -16,136 +16,177 @@ namespace PIS_WinForm
             new Dictionary<string, Dictionary<string, string>>()
         {
                 { 
-                    "Куратор ВетСлужбы", 
+                    "1", 
                     new Dictionary<string, string>() 
                     {
                         { "Животных",       "Просмотр" },
                         { "Организаций",    "Просмотр" },
-                        { "МунКонтрактов",  "Просмотр" }
+                        { "МунКонтрактов",  "Просмотр" },
+                        { "Статистика",     "0" },
+                        { "statusTown",     "0"}
                     } 
                 },
                 {
-                    "Куратор по отлову",
+                    "2",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Просмотр" },
                         { "Организаций",    "Просмотр" },
-                        { "МунКонтрактов",  "Просмотр" }
+                        { "МунКонтрактов",  "Просмотр" },
+                        { "Статистика",     "0" },
+                        { "statusTown",     "0"}
                     }
                 },
                 {
-                    "Куратор приюта",
+                    "3",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Просмотр" },
                         { "Организаций",    "Просмотр" },
-                        { "МунКонтрактов",  "Просмотр" }
+                        { "МунКонтрактов",  "Просмотр" },
+                        { "Статистика",     "0" },
+                        { "statusTown",     "0"}
                     }
                 },
                 {
-                    "Оператор ВетСлужбы",
+                    "4",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Просмотр" },
                         { "Организаций",    "Введение" },
-                        { "МунКонтрактов",  "Просмотр" }
+                        { "МунКонтрактов",  "Просмотр" },
+                        { "Статистика",     "0" },
+                        { "statusTown",     "0"}
                     }
                 },
                 {
-                    "Оператор по Отлову",
+                    "5",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Просмотр" },
                         { "Организаций",    "Нет доступа" },
-                        { "МунКонтрактов",  "Нет доступа" }
+                        { "МунКонтрактов",  "Нет доступа" },
+                        { "Статистика",     "0" },
+                        { "statusTown",     "0"}
                     }
                 },
                 {
-                    "Подписант ВетСлужбы",
+                    "6",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Просмотр" },
                         { "Организаций",    "Просмотр" },
-                        { "МунКонтрактов",  "Просмотр" }
+                        { "МунКонтрактов",  "Просмотр" },
+                        { "Статистика",     "0" },
+                        { "statusTown",     "0"}
                     }
                 },
                 {
-                    "Подписант по отлову",
+                    "7",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Просмотр" },
                         { "Организаций",    "Просмотр" },
-                        { "МунКонтрактов",  "Просмотр" }
+                        { "МунКонтрактов",  "Просмотр" },
+                        { "Статистика",     "0" },
+                        { "statusTown",     "0"}
                     }
                 },
                 {
-                    "Подписант приюта",
+                    "8",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Просмотр" },
                         { "Организаций",    "Просмотр" },
-                        { "МунКонтрактов",  "Просмотр" }
+                        { "МунКонтрактов",  "Просмотр" },
+                        { "Статистика",     "0" },
+                        { "statusTown",     "0"}
                     }
                 },
                 {
-                    "Куратор ОМСУ",
+                    "9",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Просмотр" },
                         { "Организаций",    "Просмотр" },
-                        { "МунКонтрактов",  "Просмотр" }
+                        { "МунКонтрактов",  "Просмотр" },
+                        { "Статистика",     "1" },
+                        { "statusTown",     "1"}
                     }
                 },
                 {
-                    "Оператор ОМСУ",
+                    "10",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Просмотр" },
                         { "Организаций",    "Введение" },
-                        { "МунКонтрактов",  "Введение" }
+                        { "МунКонтрактов",  "Введение" },
+                        { "Статистика",     "1"},
+                        { "statusTown",     "1"}
                     }
                 },
                 {
-                    "Подписант ОМСУ",
+                    "11",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Просмотр" },
                         { "Организаций",    "Просмотр" },
-                        { "МунКонтрактов",  "Просмотр" }
+                        { "МунКонтрактов",  "Просмотр" },
+                        { "Статистика",     "1" },
+                        { "statusTown",     "1"}
                     }
                 },
                 {
-                    "Оператор приюта",
+                    "12",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Введение" },
                         { "Организаций",    "Нет доступа" },
-                        { "МунКонтрактов",  "Нет доступа" }
+                        { "МунКонтрактов",  "Нет доступа" },
+                        { "Статистика",     "0" },
+                        { "statusTown",     "0"}
                     }
                 },
                 {
-                    "filter",
+                    "13",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Введение" },
                         { "Организаций",    "Нет доступа" },
-                        { "МунКонтрактов",  "Нет доступа" }
+                        { "МунКонтрактов",  "Нет доступа" },
+                        { "Статистика",     "0" },
+                        { "statusTown",     "0"}
                     }
                 },
                 {
-                    "Ветврач приюта",
+                    "14",
                     new Dictionary<string, string>()
                     {
                         { "Животных",       "Введение" },
                         { "Организаций",    "Нет доступа" },
-                        { "МунКонтрактов",  "Нет доступа" }
+                        { "МунКонтрактов",  "Нет доступа" },
+                        { "Статистика",     "0" },
+                        { "statusTown",     "0"}
                     }
                 }
         };
 
-        public static void SetGroup(string group) => _group = group;
+        public static void ValidateUser(string login, string password) 
+        { 
+            try
+            {
+                var infoUser = DBAdapter.SearchUser(login, password);
 
-        public static void SetTown(string town) => _town = town;
+                _group = infoUser["role"];
+                _town = GetPermission("statusTown") == "1" ? infoUser["town"] : null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        } 
+
+        public static string GetTown() => _town;
 
         public static bool CanLookAll(string nameReestr) => GetPermissionVisable(nameReestr);
 
@@ -155,9 +196,7 @@ namespace PIS_WinForm
 
         public static bool CanDelete(string nameReestr) => GetPermissionAction(nameReestr);
 
-        public static string GetTown() => _town;
-
-        public static void ValidateUser(string login, string password) => DBAdapter.SearchUser(login, password);
+        public static bool CanStatistic() => GetPermission("Статистика") == "1";
 
         private static bool GetPermissionAction(string nameReestr) => GetPermission(nameReestr) == "Введение";
 

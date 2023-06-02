@@ -16,22 +16,5 @@ namespace PIS_WinForm.Forms
         {
             InitializeComponent();
         }
-
-        private void OnButtonClick_LookAllAnimals(object sender, EventArgs e)
-        {
-            try
-            {
-                PermissionGuard.CanAdd("Animals");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("You can`t view this list!", ex.Message, MessageBoxButtons.OK);
-            }
-
-            Dictionary<string, string> filter = new Dictionary<string, string>()
-            {
-                { }
-            }
-        }
     }
 }
