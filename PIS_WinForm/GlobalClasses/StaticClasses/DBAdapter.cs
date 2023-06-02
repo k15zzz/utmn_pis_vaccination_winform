@@ -47,7 +47,8 @@ namespace PIS_WinForm
                             {
                                 { "login",      "boss" }, // {colum, value} 
                                 { "password",   "p4ssw0rd" },
-                                { "role",   "6" },
+                                { "role",       "6" },
+                                { "town",       "2" },
                             }
                         }
                     }
@@ -230,19 +231,25 @@ namespace PIS_WinForm
 #endregion
             };
 
-        //var item = db["table"][1]["atribute"]; // 1 - это id записи
+        static public Dictionary<int, Dictionary<string, string>> GetAll(string table) => _db[table];
 
-        static public void SearchUser(string login, string password) 
+        static public Dictionary<string, string> SearchUser(string login, string password) 
         {
             var users = _db["user"];
 
             foreach (var user in users)
             {
-                if (user.Value["login"] == login && user.Value["password"] == login)
+                if (user.Value["login"] == login && user.Value["password"] == password)
                 {
-
+                    return new Dictionary<string, string>() 
+                    { 
+                        { "role",  user.Value["role"]},
+                        { "town",   user.Value["town"]}
+                    };
                 }
             }
+
+            throw new Exception("Пользователь не найден!");
         }
     }
 }

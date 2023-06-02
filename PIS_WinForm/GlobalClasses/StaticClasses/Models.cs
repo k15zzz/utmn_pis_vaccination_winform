@@ -1,4 +1,6 @@
-﻿namespace Model
+﻿using System;
+
+namespace Model
 {
     public static class Animal
     {
@@ -15,6 +17,13 @@
     }
 
     public static class Contracts
+    {
+        public static void LookAll(string[,] filter, string[,] sort) => throw new NotImplementedException();
+
+        public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
+    }
+
+    public static class Town
     {
         public static void LookAll(string[,] filter, string[,] sort) => throw new NotImplementedException();
 

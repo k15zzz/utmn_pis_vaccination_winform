@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Controller;
 
 namespace PIS_WinForm.Forms
 {
@@ -15,6 +16,22 @@ namespace PIS_WinForm.Forms
         public Main()
         {
             InitializeComponent();
+            SetTown(Town.LookAll());
+        }
+
+        private void calculateStatisticButton_Click(object sender, EventArgs e)
+        {
+            if (!PermissionGuard.CanStatistic())
+            {
+                MessageBox.Show("Ошибка доступа", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
+
+        private void SetTown(Dictionary<int, Dictionary<string, string>> tows)
+        {
+            foreach (var item in tows)
+                townsCheckedListBox.Items.Add(item.Value["name"]);
         }
 
         private void OnButtonClick_LookAllAnimals(object sender, EventArgs e)
@@ -28,10 +45,10 @@ namespace PIS_WinForm.Forms
                 MessageBox.Show("You can`t view this list!", ex.Message, MessageBoxButtons.OK);
             }
 
-            Dictionary<string, string> filter = new Dictionary<string, string>()
-            {
-                { }
-            }
+            //Dictionary<string, string> filter = new Dictionary<string, string>()
+            //{
+            //    { }
+            //}
         }
     }
 }
