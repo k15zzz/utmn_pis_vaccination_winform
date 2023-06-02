@@ -11,6 +11,19 @@ namespace Controller
 
         public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
 
+        public static void Delete(int id)
+        {
+            var dict = DBAdapter.GetAll("Animals" );
+            if (dict.ContainsKey(id))
+            {
+                dict.Remove(id);
+            }
+            else
+            {
+                MessageBox.Show("Такого животного не существует в реестре");
+            }
+        }
+
         private static bool ChechOnEmptyFields() => throw new NotImplementedException();
     }
 
@@ -22,6 +35,19 @@ namespace Controller
 
         public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
 
+        public static void Delete(int id)
+        {
+            var dict = DBAdapter.GetAll("Contracts");
+            if (dict.ContainsKey(id))
+            {
+                dict.Remove(id);
+            }
+            else
+            {
+                MessageBox.Show("Такого контракта не существует в реестре");
+            }
+        }
+
         private static bool ChechOnEmptyFields() => throw new NotImplementedException();
     }
 
@@ -32,6 +58,19 @@ namespace Controller
         public static void Edit(string[,] filter, string[,] sort) => throw new NotImplementedException();
 
         public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
+
+        public static void Delete(int id)
+        {
+            var dict = DBAdapter.GetAll("Organizations");
+            if (dict.ContainsKey(id))
+            {
+                dict.Remove(id);
+            }
+            else
+            {
+                MessageBox.Show("Такой организации не существует в реестре");
+            }
+        }
 
         private static bool ChechOnEmptyFields() => throw new NotImplementedException();
     }
