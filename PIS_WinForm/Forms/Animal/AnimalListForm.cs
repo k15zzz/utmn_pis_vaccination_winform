@@ -12,8 +12,10 @@ namespace PIS_WinForm.Forms
 {
     public partial class AnimalListForm : Form
     {
-        public AnimalListForm()
+        public AnimalListForm(Dictionary<int, Dictionary<string, string>> cards)
         {
+            dataGridView1.Rows.Add(cards);
+
             InitializeComponent();
         }
 
@@ -36,15 +38,19 @@ namespace PIS_WinForm.Forms
             // (точно?). Далее добавляем в контроллер. там проверка как в начале. Тогда контроллер отдает
             // в модельку, она проверяет пустые пля. кидаем алерт если незаполненны, иначе добавляем в
             // (?)модель. И потом в бд
-            
+
             if (adding)
             {
                 AddAnimalForm addF = new AddAnimalForm();
                 addF.ShowDialog();
             }
 
-            
 
+
+        }
+
+        private void button_View_Click(object sender, EventArgs e)
+        {
         }
     }
 }

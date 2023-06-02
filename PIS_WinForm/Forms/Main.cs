@@ -32,8 +32,22 @@ namespace PIS_WinForm.Forms
             {
                 MessageBox.Show("you cant look at yhis list", ex.Message, MessageBoxButtons.OK);
             }
-            
 
+            var filter = new Dictionary<string, string>()
+            {
+                {"town_id", PermissionGuard.GetTown() }
+            };
+
+            var sort = new Dictionary<string, string>();
+
+            try
+            {
+                Controller.Animal.LookAll(filter, sort);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("you cant look at yhis list", ex.Message, MessageBoxButtons.OK);
+            }            
         }
     }
 }

@@ -1,14 +1,28 @@
-﻿using System;
-using PIS_WinForm;
+﻿using PIS_WinForm.Forms;
 
 
 namespace Controller
 {
     public static class Animal
     {
-        public static void LookAll(string[,] filter, string[,] sort) => throw new NotImplementedException();
+        public static void LookAll(Dictionary<string, string> filter, Dictionary<string, string> sort)
+        {
+            Dictionary<int, Dictionary<string, string>> cards;
+            try
+            {
+                cards = Model.Animal.LookAll(filter, sort);
+            }
+            
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-        public static void Edit(string[,] filter, string[,] sort) => throw new NotImplementedException();
+            AnimalListForm _form = new AnimalListForm(cards);
+            _form.ShowDialog();
+        }
+
+        public static void Edit(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
 
         public static void Add(string[,] filter, string[,] sort) => Model.Animal.Add(animal);
 
@@ -31,11 +45,11 @@ namespace Controller
 
     public static class Contract
     {
-        public static void LookAll(string[,] filter, string[,] sort) => throw new NotImplementedException();
+        public static void LookAll(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
 
-        public static void Edit(string[,] filter, string[,] sort) => throw new NotImplementedException();
+        public static void Edit(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
 
-        public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
+        public static void Add(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
 
         public static void Delete(int id)
         {
@@ -55,11 +69,11 @@ namespace Controller
 
     public static class Organization
     {
-        public static void LookAll(string[,] filter, string[,] sort) => throw new NotImplementedException();
+        public static void LookAll(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
 
-        public static void Edit(string[,] filter, string[,] sort) => throw new NotImplementedException();
+        public static void Edit(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
 
-        public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
+        public static void Add(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
 
 
         public static void Delete(int id)
