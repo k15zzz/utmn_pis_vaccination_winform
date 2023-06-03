@@ -2,7 +2,6 @@
 {
     public class Animal
     {
-
         private string category;
         private string gender;
         private string yearBirth;
