@@ -19,9 +19,9 @@ namespace PIS_WinForm
                     "1", 
                     new Dictionary<string, string>() 
                     {
-                        { "Animals",       "Просмотр" },
-                        { "Organizations",    "Просмотр" },
-                        { "Contracts",  "Просмотр" },
+                        { "Животных",       "Просмотр" },
+                        { "Организаций",    "Просмотр" },
+                        { "МунКонтрактов",  "Просмотр" },
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     } 
@@ -30,9 +30,9 @@ namespace PIS_WinForm
                     "2",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Просмотр" },
-                        { "Organizations",    "Просмотр" },
-                        { "Contracts",  "Просмотр" },
+                        { "Животных",       "Просмотр" },
+                        { "Организаций",    "Просмотр" },
+                        { "МунКонтрактов",  "Просмотр" },
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     }
@@ -41,9 +41,9 @@ namespace PIS_WinForm
                     "3",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Просмотр" },
-                        { "Organizations",    "Просмотр" },
-                        { "Contracts",  "Просмотр" },
+                        { "Животных",       "Просмотр" },
+                        { "Организаций",    "Просмотр" },
+                        { "МунКонтрактов",  "Просмотр" },
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     }
@@ -52,9 +52,9 @@ namespace PIS_WinForm
                     "4",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Просмотр" },
-                        { "Organizations",    "Введение" },
-                        { "Contracts",  "Просмотр" },
+                        { "Животных",       "Просмотр" },
+                        { "Организаций",    "Введение" },
+                        { "МунКонтрактов",  "Просмотр" },
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     }
@@ -63,9 +63,9 @@ namespace PIS_WinForm
                     "5",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Просмотр" },
-                        { "Organizations",    "Нет доступа" },
-                        { "Contracts",  "Нет доступа" },
+                        { "Животных",       "Просмотр" },
+                        { "Организаций",    "Нет доступа" },
+                        { "МунКонтрактов",  "Нет доступа" },
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     }
@@ -74,9 +74,9 @@ namespace PIS_WinForm
                     "6",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Просмотр" },
-                        { "Organizations",    "Просмотр" },
-                        { "Contracts",  "Просмотр" },
+                        { "Животных",       "Просмотр" },
+                        { "Организаций",    "Просмотр" },
+                        { "МунКонтрактов",  "Просмотр" },
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     }
@@ -85,9 +85,9 @@ namespace PIS_WinForm
                     "7",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Просмотр" },
-                        { "Organizations",    "Просмотр" },
-                        { "Contracts",  "Просмотр" },
+                        { "Животных",       "Просмотр" },
+                        { "Организаций",    "Просмотр" },
+                        { "МунКонтрактов",  "Просмотр" },
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     }
@@ -96,9 +96,9 @@ namespace PIS_WinForm
                     "8",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Просмотр" },
-                        { "Organizations",    "Просмотр" },
-                        { "Contracts",  "Просмотр" },
+                        { "Животных",       "Просмотр" },
+                        { "Организаций",    "Просмотр" },
+                        { "МунКонтрактов",  "Просмотр" },
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     }
@@ -107,9 +107,9 @@ namespace PIS_WinForm
                     "9",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Просмотр" },
-                        { "Organizations",    "Просмотр" },
-                        { "Contracts",  "Просмотр" },
+                        { "Животных",       "Просмотр" },
+                        { "Организаций",    "Просмотр" },
+                        { "МунКонтрактов",  "Просмотр" },
                         { "Статистика",     "1" },
                         { "statusTown",     "1"}
                     }
@@ -118,9 +118,9 @@ namespace PIS_WinForm
                     "10",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Просмотр" },
-                        { "Organizations",    "Введение" },
-                        { "Contracts",  "Введение" },
+                        { "Животных",       "Просмотр" },
+                        { "Организаций",    "Введение" },
+                        { "МунКонтрактов",  "Введение" },
                         { "Статистика",     "1"},
                         { "statusTown",     "1"}
                     }
@@ -129,9 +129,9 @@ namespace PIS_WinForm
                     "11",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Просмотр" },
-                        { "Organizations",    "Просмотр" },
-                        { "Contracts",  "Просмотр" },
+                        { "Животных",       "Просмотр" },
+                        { "Организаций",    "Просмотр" },
+                        { "МунКонтрактов",  "Просмотр" },
                         { "Статистика",     "1" },
                         { "statusTown",     "1"}
                     }
@@ -140,9 +140,9 @@ namespace PIS_WinForm
                     "12",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Введение" },
-                        { "Organizations",    "Нет доступа" },
-                        { "Contracts",  "Нет доступа" },
+                        { "Животных",       "Введение" },
+                        { "Организаций",    "Нет доступа" },
+                        { "МунКонтрактов",  "Нет доступа" },
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     }
@@ -151,9 +151,9 @@ namespace PIS_WinForm
                     "13",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Введение" },
-                        { "Organizations",    "Нет доступа" },
-                        { "Contracts",  "Нет доступа" },
+                        { "Животных",       "Введение" },
+                        { "Организаций",    "Нет доступа" },
+                        { "МунКонтрактов",  "Нет доступа" },
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     }
@@ -162,9 +162,9 @@ namespace PIS_WinForm
                     "14",
                     new Dictionary<string, string>()
                     {
-                        { "Animals",       "Введение" },
-                        { "Organizations",    "Нет доступа" },
-                        { "Contracts",  "Нет доступа" },
+                        { "Животных",       "Введение" },
+                        { "Организаций",    "Нет доступа" },
+                        { "МунКонтрактов",  "Нет доступа" },
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     }

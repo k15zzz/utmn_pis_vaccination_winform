@@ -16,35 +16,5 @@ namespace PIS_WinForm.Forms
         {
             InitializeComponent();
         }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OnButtonClick_LookAllAnimals(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            try
-            {
-                PermissionGuard.CanLookAll("Animals");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
-            }
-            var filter = new Dictionary<string, List<string>>() { { "town_id", new List<string>() { PermissionGuard.GetTown() } } };
-
-            try
-            {
-                Controller.Animal.LookAll(filter);
-            }
-            catch (Exception ex)
-            {
-                
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
-            }
-            this.Visible = true;
-        }
     }
 }

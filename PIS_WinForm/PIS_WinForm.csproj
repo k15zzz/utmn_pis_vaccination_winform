@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="Forms\Animal\AnimalListForm.cs">
+    <Compile Update="Forms\AnimalListForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
