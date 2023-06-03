@@ -8,12 +8,17 @@ namespace Controller
 
         public static void Edit(string[,] filter, string[,] sort) => throw new NotImplementedException();
 
-        public static void Add(Card.Animal animal)
+        public static bool Add(Card.Animal animal)
         {
-            Model.Animal.Add(animal);
+            try
+            {
+                return Model.Animal.Add(animal);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-
-        private static bool ChechOnEmptyFields() => throw new NotImplementedException();
     }
 
     public static class Contract

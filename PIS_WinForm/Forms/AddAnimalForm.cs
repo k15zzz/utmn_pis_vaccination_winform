@@ -33,6 +33,7 @@ namespace PIS_WinForm.Forms
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            bool status = false;
             filter.Add("category", comboBox1.DisplayMember.ToString());
             filter.Add("gender", comboBox2.DisplayMember.ToString());
             filter.Add("yearBirth", numericUpDown1.Value.ToString());
@@ -40,12 +41,19 @@ namespace PIS_WinForm.Forms
             filter.Add("name", textBox5.Text);
             filter.Add("chip", textBox6.Text);
             filter.Add("signs", textBox7.Text);
+            filter.Add("photos", "фото");
             //добавить фото - путь к фотке
 
-            
-
             animal = new Card.Animal(filter);
-            Controller.Animal.Add(animal);
+            try
+            {
+                status = Controller.Animal.Add(animal);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.Message, MessageBoxButtons.OK);
+            }
+            if (status) MessageBox.Show("Card added", "Adding", MessageBoxButtons.OK);
         }
     }
 }

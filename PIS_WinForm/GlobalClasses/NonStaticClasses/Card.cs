@@ -2,22 +2,27 @@
 {
     public class Animal
     {
-        private string category;
-        private string gender;
-        private string yearBirth;
-        private string town;
-        private string name;
-        private string chip;
-        private string signs;
+        //burthYear, town_id,regNum, chipNumber, name, photos, specMarcks
+        internal string category;
+        internal string sex;
+        internal string regNum;
+        internal string burthYear;
+        internal string town_id;
+        internal string name;
+        internal string chipNumber;
+        internal string photos;
+        internal string specMarcks;
         public Animal(Dictionary<string, string> filter)
         {
+            regNum = filter["regNum"];
             category = filter["category"];
-            gender = filter["gender"];
-            yearBirth = filter["yearBirth"];
-            town = filter["town"];
+            sex = filter["gender"];
+            burthYear = filter["yearBirth"];
+            town_id = filter["town"];
             name = filter["name"];
-            chip = filter["chip"];
-            signs = filter["signs"];
+            chipNumber = filter["chip"];
+            specMarcks = filter["signs"];
+            photos = filter["photos"];
         }
     }
 

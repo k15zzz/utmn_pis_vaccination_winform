@@ -66,9 +66,9 @@ namespace PIS_WinForm
                                 { "regNum",      "123-123" }, // {colum, value} 
                                 { "town_id",   "1" },
                                 { "сategory",   "Кошка" },
-                                { "sex",   "сука" },
+                                { "sex",   "жен" },
                                 { "burthYear",      "2005" },
-                                { "e-chipNumber",   "7423423" },
+                                { "chipNumber",   "7423423" },
                                 { "name",   "Варя" },
                                 { "photos",   "на фотках кошка" },
                                 { "specMarcks", "черная, красивая, отсутцвует хвост"}
@@ -81,9 +81,9 @@ namespace PIS_WinForm
                                 { "regNum",      "345-234" }, // {colum, value} 
                                 { "town_id",   "1" },
                                 { "сategory",   "Кошка" },
-                                { "sex",   "муж." },
+                                { "sex",   "муж" },
                                 { "burthYear",      "2004" },
-                                { "e-chipNumber",   "74234423" },
+                                { "chipNumber",   "74234423" },
                                 { "name",   "Падик" },
                                 { "photos",   "на фотках собака" },
                                 { "specMarcks", "серая, красивая, отсутцвует нос"}
@@ -96,9 +96,9 @@ namespace PIS_WinForm
                                 { "regNum",      "123-456" }, // {colum, value} 
                                 { "town_id",   "2" },
                                 { "сategory",   "Собака" },
-                                { "sex",   "муж." },
+                                { "sex",   "муж" },
                                 { "burthYear",      "2000" },
-                                { "e-chipNumber",   "2342387" },
+                                { "chipNumber",   "2342387" },
                                 { "name",   "Аба" },
                                 { "photos",   "на фотках собака, красивая" },
                                 { "specMarcks", "рыжая, красивая, отсутцвует нос и хвост"}
@@ -230,6 +230,34 @@ namespace PIS_WinForm
                 },
 #endregion
             };
+        static public bool AddAnimal(Card.Animal animal)
+        {
+            var animals = _db["Animals"];
+
+            int id = 1;
+            for (int i=1; i<animals.Count+1; i++)
+            {
+                if (animals.ContainsKey(i))
+                {
+                    id += 1;
+                }
+            }
+            Dictionary<string, string> card = new Dictionary<string, string>()
+            {
+                
+                { "regNum",  animal.regNum }, // {colum, value} 
+                { "town_id",   animal.town_id },
+                { "сategory",  animal.category },
+                { "sex",  animal.sex },
+                { "burthYear",   animal.burthYear },
+                { "chipNumber",   animal.chipNumber },
+                { "name", animal.name },
+                { "photos",  animal.photos },
+                { "specMarcks", animal.specMarcks}
+            };
+            _db["Animals"].Add(id, card);
+            return true;
+        }
 
         static public Dictionary<int, Dictionary<string, string>> GetAll(string table) => _db[table];
 
