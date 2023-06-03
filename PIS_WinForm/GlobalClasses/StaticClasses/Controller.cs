@@ -5,12 +5,12 @@ namespace Controller
 {
     public static class Animal
     {
-        public static void LookAll(Dictionary<string, string> filter, Dictionary<string, string> sort)
+        public static void LookAll(Dictionary<string, List<string>> filter)
         {
             Dictionary<int, Dictionary<string, string>> cards;
             try
             {
-                cards = Model.Animal.LookAll(filter, sort);
+                cards = Model.Animal.LookAll(filter);
             }
             
             catch (Exception ex)

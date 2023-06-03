@@ -14,10 +14,23 @@ namespace PIS_WinForm.Forms
     {
         public AnimalListForm(Dictionary<int, Dictionary<string, string>> cards)
         {
-            dataGridView1.Rows.Add(cards);
-
             InitializeComponent();
+
+            for (var i = 1; i <= cards.Count; i++)
+            {
+                dataGridView1.Rows.Add(i, cards[i]["regNum"], cards[i]["town_id"], cards[i]["сategory"], cards[i]["sex"], cards[i]["burthYear"], cards[i]["e-chipNumber"], cards[i]["name"], cards[i]["photos"], cards[i]["specMarcks"]);
+
+                if (!bngngngnToolStripMenuItem.DropDownItems.Contains(new ToolStripMenuItem(cards[i]["town_id"])))
+                    bngngngnToolStripMenuItem.DropDownItems.Add(cards[i]["town_id"]);
+
+                if (!категорияToolStripMenuItem.DropDownItems.ContainsKey(cards[i]["сategory"]))
+                    категорияToolStripMenuItem.DropDownItems.Add(cards[i]["сategory"]);
+
+                if (!полToolStripMenuItem.DropDownItems.ContainsKey(cards[i]["sex"]))
+                    полToolStripMenuItem.DropDownItems.Add(cards[i]["sex"]);
+            }
         }
+
 
         bool adding;
         private void OnButtonClick_AddAnimal(object sender, EventArgs e)
@@ -42,7 +55,9 @@ namespace PIS_WinForm.Forms
             if (adding)
             {
                 AddAnimalForm addF = new AddAnimalForm();
+                this.Hide();
                 addF.ShowDialog();
+                this.Show();
             }
 
 

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,6 +48,7 @@ namespace PIS_WinForm
                                 { "login",      "boss" }, // {colum, value} 
                                 { "password",   "p4ssw0rd" },
                                 { "role",   "6" },
+                                { "organization_id", "1"}
                             }
                         },
                         {
@@ -56,7 +58,17 @@ namespace PIS_WinForm
                                 { "login",      "master" }, // {colum, value} 
                                 { "password",   "master" },
                                 { "role",       "6" },
-                                { "town",       "" },
+                                { "organization_id", "1"}
+                            }
+                        },
+                        {
+                            3, // id 
+                            new Dictionary<string, string>()  // atributes
+                            {
+                                { "login",      "towntest" }, // {colum, value} 
+                                { "password",   "1" },
+                                { "role",       "9" },
+                                { "organization_id", "1"}
                             }
                         },
                     }
@@ -241,24 +253,26 @@ namespace PIS_WinForm
         //var item = db["table"][1]["atribute"]; // 1 - это id записи
 
         static public Dictionary<int, Dictionary<string, string>> GetAll(string table) => _db[table];
-        static public Dictionary<int, Dictionary<string, string>> LookAll(string table, Dictionary<string, string> filter)
+
+        static public Dictionary<int, Dictionary<string, string>> LookAll(
+            string table,
+            Dictionary<string, List<string>> filter,
+            Func<Dictionary<int, Dictionary<string, string>>, Dictionary<string, Dictionary<int, Dictionary<string, string>>>, Dictionary<int, Dictionary<string, string>>> changeIdOnName)
         {
             var returnableList = new Dictionary<int, Dictionary<string, string>>();
+            var fullTable = _db[table];
 
-            foreach (var str in _db[table])
-                foreach (var filterStr in filter)
-                    returnableList.Add(
-                        str.Key,
-                        (Dictionary<string, string>)str.Value
-                            .Select(atrs => atrs)
-                            .Where(atrs => atrs.Key == filterStr.Key && atrs.Value == atrs.Value));
+            if (filter.Count == 0) return changeIdOnName(fullTable, _db);
 
-            return returnableList;
-            //foreach (var filterValue in filter)
-            //    returnableList = ((Dictionary<int, Dictionary<string, string>>)_db["Animals"].Select(str => str.Value)
-            //        .Where(atr => atr.ContainsKey(filterValue.Key) && atr.ContainsValue(filterValue.Value)));
-            //return returnableList;
-            
+            for (var i = 1; i <= fullTable.Count; i++)
+                foreach (var filterPoint in filter)
+                    foreach (var value in filterPoint.Value)
+                        if (fullTable[i][filterPoint.Key] == value)
+                            if (!returnableList.ContainsKey(i))
+                                returnableList.Add(i, fullTable[i]);
+
+
+            return changeIdOnName(returnableList, _db);           
         }
         static public Dictionary<string, string> SearchUser(string login, string password)
         {
@@ -271,7 +285,7 @@ namespace PIS_WinForm
                      return new Dictionary<string, string>() 
                     { 
                         { "role",  user.Value["role"]},
-                        { "town",   user.Value["town"]}
+                        { "town",   _db["Organizations"][int.Parse(user.Value["organization_id"])]["town_id"]}
                     };
                  }
             }

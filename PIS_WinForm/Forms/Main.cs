@@ -24,30 +24,27 @@ namespace PIS_WinForm.Forms
 
         private void OnButtonClick_LookAllAnimals(object sender, EventArgs e)
         {
+            this.Visible = false;
             try
             {
                 PermissionGuard.CanLookAll("Animals");
             }
             catch(Exception ex)
             {
-                MessageBox.Show("you cant look at yhis list", ex.Message, MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
             }
-
-            var filter = new Dictionary<string, string>()
-            {
-                {"town_id", PermissionGuard.GetTown() }
-            };
-
-            var sort = new Dictionary<string, string>();
+            var filter = new Dictionary<string, List<string>>() { { "town_id", new List<string>() { PermissionGuard.GetTown() } } };
 
             try
             {
-                Controller.Animal.LookAll(filter, sort);
+                Controller.Animal.LookAll(filter);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("you cant look at yhis list", ex.Message, MessageBoxButtons.OK);
-            }            
+                
+                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
+            }
+            this.Visible = true;
         }
     }
 }
