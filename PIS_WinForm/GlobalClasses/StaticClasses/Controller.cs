@@ -17,7 +17,7 @@ namespace Controller
             var dict = DBAdapter.GetAll("Animals" );
             if (dict.ContainsKey(id))
             {
-                dict.Remove(id);
+                DBAdapter.Delete("Animals", id);
             }
             else
             {

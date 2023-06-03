@@ -233,6 +233,11 @@ namespace PIS_WinForm
 
         static public Dictionary<int, Dictionary<string, string>> GetAll(string table) => _db[table];
 
+        static public void Delete(string table, int id)
+        {
+            _db[table].Remove(id);
+        }
+
         static public Dictionary<string, string> SearchUser(string login, string password) 
         {
             var users = _db["user"];
