@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
+            id = new DataGridViewTextBoxColumn();
             RegNum = new DataGridViewTextBoxColumn();
             town_id = new DataGridViewTextBoxColumn();
             category = new DataGridViewTextBoxColumn();
@@ -43,7 +44,13 @@
             button_Delete = new Button();
             button_View = new Button();
             button_Menu = new Button();
+            menuStrip1 = new MenuStrip();
+            фильтрToolStripMenuItem = new ToolStripMenuItem();
+            bngngngnToolStripMenuItem = new ToolStripMenuItem();
+            категорияToolStripMenuItem = new ToolStripMenuItem();
+            полToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
@@ -51,8 +58,8 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { RegNum, town_id, category, sex, burthYear, e_chipNumber, name, photos, specMarks });
-            dataGridView1.Location = new Point(10, 9);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id, RegNum, town_id, category, sex, burthYear, e_chipNumber, name, photos, specMarks });
+            dataGridView1.Location = new Point(12, 33);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
@@ -62,6 +69,13 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(463, 320);
             dataGridView1.TabIndex = 0;
+            // 
+            // id
+            // 
+            id.HeaderText = "id";
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Visible = false;
             // 
             // RegNum
             // 
@@ -119,7 +133,7 @@
             // 
             // button_Edit
             // 
-            button_Edit.Location = new Point(479, 81);
+            button_Edit.Location = new Point(479, 105);
             button_Edit.Margin = new Padding(3, 2, 3, 2);
             button_Edit.Name = "button_Edit";
             button_Edit.Size = new Size(202, 32);
@@ -129,7 +143,7 @@
             // 
             // button_Add
             // 
-            button_Add.Location = new Point(479, 45);
+            button_Add.Location = new Point(479, 69);
             button_Add.Margin = new Padding(3, 2, 3, 2);
             button_Add.Name = "button_Add";
             button_Add.Size = new Size(202, 32);
@@ -140,7 +154,7 @@
             // 
             // button_Delete
             // 
-            button_Delete.Location = new Point(479, 117);
+            button_Delete.Location = new Point(479, 141);
             button_Delete.Margin = new Padding(3, 2, 3, 2);
             button_Delete.Name = "button_Delete";
             button_Delete.Size = new Size(202, 32);
@@ -150,7 +164,7 @@
             // 
             // button_View
             // 
-            button_View.Location = new Point(479, 9);
+            button_View.Location = new Point(479, 33);
             button_View.Margin = new Padding(3, 2, 3, 2);
             button_View.Name = "button_View";
             button_View.Size = new Size(202, 32);
@@ -161,7 +175,7 @@
             // 
             // button_Menu
             // 
-            button_Menu.Location = new Point(479, 297);
+            button_Menu.Location = new Point(479, 321);
             button_Menu.Margin = new Padding(3, 2, 3, 2);
             button_Menu.Name = "button_Menu";
             button_Menu.Size = new Size(202, 32);
@@ -169,22 +183,61 @@
             button_Menu.Text = "На главную";
             button_Menu.UseVisualStyleBackColor = true;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { фильтрToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(695, 24);
+            menuStrip1.TabIndex = 6;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // фильтрToolStripMenuItem
+            // 
+            фильтрToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { bngngngnToolStripMenuItem, категорияToolStripMenuItem, полToolStripMenuItem });
+            фильтрToolStripMenuItem.Name = "фильтрToolStripMenuItem";
+            фильтрToolStripMenuItem.Size = new Size(60, 20);
+            фильтрToolStripMenuItem.Text = "фильтр";
+            // 
+            // bngngngnToolStripMenuItem
+            // 
+            bngngngnToolStripMenuItem.Name = "bngngngnToolStripMenuItem";
+            bngngngnToolStripMenuItem.Size = new Size(180, 22);
+            bngngngnToolStripMenuItem.Text = "Город";
+            // 
+            // категорияToolStripMenuItem
+            // 
+            категорияToolStripMenuItem.Name = "категорияToolStripMenuItem";
+            категорияToolStripMenuItem.Size = new Size(180, 22);
+            категорияToolStripMenuItem.Text = "Категория";
+            // 
+            // полToolStripMenuItem
+            // 
+            полToolStripMenuItem.Name = "полToolStripMenuItem";
+            полToolStripMenuItem.Size = new Size(180, 22);
+            полToolStripMenuItem.Text = "Пол";
+            // 
             // AnimalListForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(695, 338);
+            ClientSize = new Size(695, 364);
             Controls.Add(button_Menu);
             Controls.Add(button_View);
             Controls.Add(button_Delete);
             Controls.Add(button_Add);
             Controls.Add(button_Edit);
             Controls.Add(dataGridView1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Margin = new Padding(3, 2, 3, 2);
             Name = "AnimalListForm";
             Text = "AnimalListForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -195,6 +248,7 @@
         private Button button_Delete;
         private Button button_View;
         private Button button_Menu;
+        private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn RegNum;
         private DataGridViewTextBoxColumn town_id;
         private DataGridViewTextBoxColumn category;
@@ -204,5 +258,10 @@
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn photos;
         private DataGridViewTextBoxColumn specMarks;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem фильтрToolStripMenuItem;
+        private ToolStripMenuItem bngngngnToolStripMenuItem;
+        private ToolStripMenuItem категорияToolStripMenuItem;
+        private ToolStripMenuItem полToolStripMenuItem;
     }
 }
