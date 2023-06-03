@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,24 +37,42 @@ namespace PIS_WinForm
                     }
                 },
 #endregion
-#region user
                 {
                     "user", // table
                     new Dictionary<int, Dictionary<string,string>>()
                     {
-                        { 
+                        {
                             1, // id 
                             new Dictionary<string, string>()  // atributes
                             {
                                 { "login",      "boss" }, // {colum, value} 
                                 { "password",   "p4ssw0rd" },
-                                { "role",       "6" },
-                                { "town",       "2" },
+                                { "role",   "6" },
+                                { "organization_id", "1"}
                             }
-                        }
+                        },
+                        {
+                            2, // id 
+                            new Dictionary<string, string>()  // atributes
+                            {
+                                { "login",      "master" }, // {colum, value} 
+                                { "password",   "master" },
+                                { "role",       "6" },
+                                { "organization_id", "1"}
+                            }
+                        },
+                        {
+                            3, // id 
+                            new Dictionary<string, string>()  // atributes
+                            {
+                                { "login",      "towntest" }, // {colum, value} 
+                                { "password",   "1" },
+                                { "role",       "9" },
+                                { "organization_id", "1"}
+                            }
+                        },
                     }
                 },
-#endregion
 #region animals
                 {
                     "Animals", // table
@@ -231,24 +250,45 @@ namespace PIS_WinForm
 #endregion
             };
 
+        //var item = db["table"][1]["atribute"]; // 1 - это id записи
+
         static public Dictionary<int, Dictionary<string, string>> GetAll(string table) => _db[table];
 
-        static public Dictionary<string, string> SearchUser(string login, string password) 
+        static public Dictionary<int, Dictionary<string, string>> LookAll(
+            string table,
+            Dictionary<string, List<string>> filter,
+            Func<Dictionary<int, Dictionary<string, string>>, Dictionary<string, Dictionary<int, Dictionary<string, string>>>, Dictionary<int, Dictionary<string, string>>> changeIdOnName)
+        {
+            var returnableList = new Dictionary<int, Dictionary<string, string>>();
+            var fullTable = _db[table];
+
+            if (filter.Count == 0) return changeIdOnName(fullTable, _db);
+
+            for (var i = 1; i <= fullTable.Count; i++)
+                foreach (var filterPoint in filter)
+                    foreach (var value in filterPoint.Value)
+                        if (fullTable[i][filterPoint.Key] == value)
+                            if (!returnableList.ContainsKey(i))
+                                returnableList.Add(i, fullTable[i]);
+
+
+            return changeIdOnName(returnableList, _db);           
+        }
+        static public Dictionary<string, string> SearchUser(string login, string password)
         {
             var users = _db["user"];
-
+            
             foreach (var user in users)
             {
-                if (user.Value["login"] == login && user.Value["password"] == password)
-                {
-                    return new Dictionary<string, string>() 
+                 if (user.Value["login"] == login && user.Value["password"] == password)
+                 {
+                     return new Dictionary<string, string>() 
                     { 
                         { "role",  user.Value["role"]},
-                        { "town",   user.Value["town"]}
+                        { "town",   _db["Organizations"][int.Parse(user.Value["organization_id"])]["town_id"]}
                     };
-                }
+                 }
             }
-
             throw new Exception("Пользователь не найден!");
         }
     }

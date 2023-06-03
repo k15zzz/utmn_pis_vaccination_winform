@@ -1,4 +1,5 @@
-﻿using PIS_WinForm.GlobalClasses.StaticClasses;
+﻿using PIS_WinForm;
+using PIS_WinForm.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,15 +27,18 @@ namespace PIS_WinForm
             var login = loginTextBox.Text;
             var password = passwordTextBox.Text;
 
-            ResetError();
-
-            if (ValidateLogin(login) | ValidatePassword(password))
-            {
-                errorLabel.Text = this._errorlabel;
-                return;
+            try 
+            { 
+                PermissionGuard.ValidateUser(login, password);
+                Main mainForm = new Main();
+                this.Hide();
+                mainForm.ShowDialog();
+                this.Close();
+            } 
+            catch (Exception ex) 
+            { 
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
             }
-
-            PermissionGuard.ValidateUser(login, password);
         }
 
         public void ResetError()

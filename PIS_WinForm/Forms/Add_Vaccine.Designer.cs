@@ -1,6 +1,6 @@
 ﻿namespace PIS_WinForm.Forms
 {
-    partial class Main
+    partial class Add_Vaccine
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LookAllAnimals = new Button();
+            dateTimePicker1 = new DateTimePicker();
+            label1 = new Label();
             SuspendLayout();
             // 
-            // LookAllAnimals
+            // dateTimePicker1
             // 
-            LookAllAnimals.Location = new Point(12, 12);
-            LookAllAnimals.Name = "LookAllAnimals";
-            LookAllAnimals.Size = new Size(189, 23);
-            LookAllAnimals.TabIndex = 0;
-            LookAllAnimals.Text = "Посмотреть реестр животных";
-            LookAllAnimals.UseVisualStyleBackColor = true;
-            LookAllAnimals.Click += OnButtonClick_LookAllAnimals;
+            dateTimePicker1.Location = new Point(312, 89);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(122, 23);
+            dateTimePicker1.TabIndex = 0;
             // 
-            // Main
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(349, 71);
+            label1.Name = "label1";
+            label1.Size = new Size(32, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Дата";
+            // 
+            // Add_Vaccine
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(LookAllAnimals);
-            Name = "Main";
-            Text = "Main";
-            Load += Main_Load;
+            Controls.Add(label1);
+            Controls.Add(dateTimePicker1);
+            Name = "Add_Vaccine";
+            Text = "Add_Vaccine";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Button LookAllAnimals;
+        private DateTimePicker dateTimePicker1;
+        private Label label1;
     }
 }
