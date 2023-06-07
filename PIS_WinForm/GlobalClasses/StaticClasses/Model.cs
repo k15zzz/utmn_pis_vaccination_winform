@@ -1,5 +1,6 @@
 ﻿using PIS_WinForm;
-
+namespace Model
+{
     public static class Animal
     {
         private static readonly string _tableName = "Animals";
