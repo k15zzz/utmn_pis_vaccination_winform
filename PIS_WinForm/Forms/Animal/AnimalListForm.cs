@@ -70,10 +70,17 @@ namespace PIS_WinForm.Forms
 
         private void Delete(object sender, EventArgs e)
         {
-            DataGridViewRow row = dataGridView1.SelectedRows[0];
-            int id = (int)dataGridView1.SelectedCells[0].Value;
-            Delete_Animal delete = new Delete_Animal(id, row);
-            delete.ShowDialog();
+            if (PermissionGuard.CanDelete("Animal"))
+            {
+                DataGridViewRow row = dataGridView1.SelectedRows[0];
+                int id = (int)dataGridView1.SelectedCells[0].Value;
+                Delete_Animal delete = new Delete_Animal(id, row);
+                delete.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("У вас нет прав на это действие");
+            }
         }
     }
 }

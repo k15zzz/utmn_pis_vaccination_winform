@@ -39,14 +39,21 @@ namespace Model
         
         public static void Delete(int id) 
         {
-            var dict = DBAdapter.GetAll("Animals");
-            if (dict.ContainsKey(id))
+            if (PermissionGuard.CanDelete("Animal"))
             {
-                Controller.Animal.Delete(id);
+                var dict = DBAdapter.GetAll("Animals");
+                if (dict.ContainsKey(id))
+                {
+                    Controller.Animal.Delete(id);
+                }
+                else
+                {
+                    MessageBox.Show("Такого животного не существует в реестре");
+                }
             }
             else
             {
-                MessageBox.Show("Такого животного не существует в реестре");
+                MessageBox.Show("У вас нет прав на это действие");
             }
         }
     }
@@ -59,16 +66,23 @@ namespace Model
         public static void Add(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
         public static void Delete(int id)
         {
-            var dict = DBAdapter.GetAll("Organizations");
-            if (dict.ContainsKey(id))
+            if (PermissionGuard.CanDelete("Organizations"))
             {
-                Controller.Organization.Delete(id);
+                var dict = DBAdapter.GetAll("Organizations");
+                if (dict.ContainsKey(id))
+                {
+                    Controller.Organization.Delete(id);
+                }
+                else
+                {
+                    MessageBox.Show("Такой организации не существует в реестре");
+                }
             }
             else
             {
-                MessageBox.Show("Такой организации не существует в реестре");
+                MessageBox.Show("У вас нет прав на это действие");
             }
-    }
+        }
 }
 
     public static class Contracts
@@ -79,15 +93,23 @@ namespace Model
 
         public static void Delete(int id)
         {
-            var dict = DBAdapter.GetAll("Contracts");
-            if (dict.ContainsKey(id))
+            if (PermissionGuard.CanDelete("Contracts"))
             {
-                Controller.Contract.Delete(id); 
+                var dict = DBAdapter.GetAll("Contracts");
+                if (dict.ContainsKey(id))
+                {
+                    Controller.Contract.Delete(id);
+                }
+                else
+                {
+                    MessageBox.Show("Такого контракта не существует в реестре");
+                }
             }
             else
             {
-                MessageBox.Show("Такого контракта не существует в реестре");
+                MessageBox.Show("У вас нет прав на это действие");
             }
+        }
     }
 
 }
