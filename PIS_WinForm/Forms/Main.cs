@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Controller;
 
 namespace PIS_WinForm.Forms
 {
@@ -16,39 +15,36 @@ namespace PIS_WinForm.Forms
         public Main()
         {
             InitializeComponent();
-            SetTown(Town.LookAll());
         }
 
-        private void calculateStatisticButton_Click(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
-            if (!PermissionGuard.CanStatistic())
-            {
-                MessageBox.Show("Ошибка доступа", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-        }
 
-        private void SetTown(Dictionary<int, Dictionary<string, string>> tows)
-        {
-            foreach (var item in tows)
-                townsCheckedListBox.Items.Add(item.Value["name"]);
         }
 
         private void OnButtonClick_LookAllAnimals(object sender, EventArgs e)
         {
+            this.Visible = false;
             try
             {
-                PermissionGuard.CanAdd("Animals");
+                PermissionGuard.CanLookAll("Animals");
             }
             catch(Exception ex)
             {
-                MessageBox.Show("You can`t view this list!", ex.Message, MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
             }
+            var filter = new Dictionary<string, List<string>>() { { "town_id", new List<string>() { PermissionGuard.GetTown() } } };
 
-            //Dictionary<string, string> filter = new Dictionary<string, string>()
-            //{
-            //    { }
-            //}
+            try
+            {
+                Controller.Animal.LookAll(filter);
+            }
+            catch (Exception ex)
+            {
+                
+                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
+            }
+            this.Visible = true;
         }
     }
 }
