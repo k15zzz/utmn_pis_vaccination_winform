@@ -45,7 +45,7 @@ namespace PIS_WinForm.Forms
             
 
             animal = new Card.Animal(filter);
-            Controller.Animal.Add(animal);
+           // Controller.Animal.Add(animal);
         }
     }
 }

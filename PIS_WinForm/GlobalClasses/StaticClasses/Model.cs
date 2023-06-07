@@ -1,4 +1,5 @@
 ﻿using PIS_WinForm;
+namespace Model
 {
     public static class Animal
     {

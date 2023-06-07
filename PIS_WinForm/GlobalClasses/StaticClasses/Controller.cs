@@ -1,4 +1,5 @@
 ﻿using PIS_WinForm.Forms;
+using PIS_WinForm;
 
 
 namespace Controller
@@ -24,7 +25,7 @@ namespace Controller
 
         public static void Edit(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
 
-        public static void Add(string[,] filter, string[,] sort) => Model.Animal.Add(animal);
+       //public static void Add(string[,] filter, string[,] sort) => Model.Animal.Add(animal);
 
         public static void Delete(int id)
         {
