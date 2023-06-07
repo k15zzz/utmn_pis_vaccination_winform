@@ -10,9 +10,20 @@ namespace Controller
 {
     public static class Animal
     {
+        public static bool Add(Card.Animal animal)
+        {
+            try
+            {
+                return Model.Animal.Add(animal);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static void Edit(string[,] filter, string[,] sort) => throw new NotImplementedException();
         
-        //public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
         public static void LookAll(Dictionary<string, List<string>> filter)
         {
             Dictionary<int, Dictionary<string, string>> cards;
@@ -31,8 +42,6 @@ namespace Controller
         }
 
         public static void Edit(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
-
-       //public static void Add(string[,] filter, string[,] sort) => Model.Animal.Add(animal);
 
         public static void Delete(int id)
         {

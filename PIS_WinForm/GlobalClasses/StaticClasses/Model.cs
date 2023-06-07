@@ -27,9 +27,64 @@ namespace Model
         }
 
 
-        public static void Add(Card.Animal animal)
+        public static bool Add(Card.Animal animal)
         {
-            
+            bool adding;
+            try
+            {
+                adding = PermissionGuard.CanAdd("Animals");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            bool allIsNotEmpty = ChechOnEmptyFields(animal);
+            if (allIsNotEmpty)
+            {
+                return DBAdapter.AddAnimal(animal);
+            }
+            else
+            {
+                throw new Exception("Fill all fields");
+            }
+        }
+        private static List<string> category = new List<string>() { "Кошка", "Собака" };
+        private static List<string> sex = new List<string>() { "муж", "жен" };
+
+        private static bool ChechOnEmptyFields(Card.Animal animal)
+        {
+            bool allNotEmpty = false;
+            foreach (string categ in category)
+            {
+                if (animal.category == categ)
+                {
+                    allNotEmpty = true;
+                    break;
+                }
+            }
+            if (!allNotEmpty) return false;
+            allNotEmpty = false;
+            foreach (string s in sex)
+            {
+                if (animal.sex == s)
+                {
+                    allNotEmpty = true;
+                    break;
+                }
+            }
+            if (!allNotEmpty) return false;
+            if (animal.burthYear.Length == 4) allNotEmpty = true;
+            if (!allNotEmpty) return false;
+            if (animal.town_id.Length > 0) allNotEmpty = true;
+            if (!allNotEmpty) return false;
+            if (animal.name.Length > 0) allNotEmpty = true;
+            if (!allNotEmpty) return false;
+            if (animal.chipNumber.Length > 0) allNotEmpty = true;
+            if (!allNotEmpty) return false;
+            if (animal.specMarcks.Length > 0) allNotEmpty = true;
+            if (!allNotEmpty) return false;
+            //проверка фото?
+            else return true;
         }
 
         private static Dictionary<int, Dictionary<string, string>> ReplaceFields(Dictionary<int, Dictionary<string, string>> filteredtable, Dictionary<string, Dictionary<int, Dictionary<string, string>>> db)
@@ -48,7 +103,7 @@ namespace Model
                 var dict = DBAdapter.GetAll("Animals");
                 if (dict.ContainsKey(id))
                 {
-                    Controller.Animal.Delete(id);
+                  //  Controller.Animal.Delete(id);
                 }
                 else
                 {
@@ -75,7 +130,7 @@ namespace Model
                 var dict = DBAdapter.GetAll("Organizations");
                 if (dict.ContainsKey(id))
                 {
-                    Controller.Organization.Delete(id);
+                //    Controller.Organization.Delete(id);
                 }
                 else
                 {

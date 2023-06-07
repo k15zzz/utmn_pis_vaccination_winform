@@ -59,6 +59,10 @@ namespace PIS_WinForm.Forms
                 addF.ShowDialog();
                 this.Show();
             }
+            else
+            {
+                MessageBox.Show("Недостаточно прав", "Ошибка прав доступа", MessageBoxButtons.OK);
+            }
 
 
 

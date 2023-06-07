@@ -47,7 +47,7 @@ namespace PIS_WinForm.Forms
 
             try
             {
-                
+
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace PIS_WinForm.Forms
             {
                 PermissionGuard.CanLookAll("Animals");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
             }
@@ -100,7 +100,7 @@ namespace PIS_WinForm.Forms
             }
             catch (Exception ex)
             {
-                
+
                 MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
             }
             this.Visible = true;
