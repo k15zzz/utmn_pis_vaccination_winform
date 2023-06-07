@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -9,16 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-
-    <Compile Update="Forms\AnimalListForm.cs">
-
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Forms\Animal\AnimalListForm.cs">
-
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
