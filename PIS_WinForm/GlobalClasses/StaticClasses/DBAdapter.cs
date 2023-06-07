@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PIS_WinForm
 {
-    static class DBAdapter
+    public static class DBAdapter
     {
         private static Dictionary<string, Dictionary<int, Dictionary<string, string>>> _db =
             new Dictionary<string, Dictionary<int, Dictionary<string, string>>>()
@@ -387,6 +387,11 @@ namespace PIS_WinForm
                  }
             }
             throw new Exception("Пользователь не найден!");
+        }
+
+        static public void Delete(int id, string table)
+        {
+            _db[table].Remove(id);
         }
     }
 }
