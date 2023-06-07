@@ -41,7 +41,6 @@ namespace PIS_WinForm.Forms
             }
             catch (Exception ex)
             {
-                
                 MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
             }
             this.Visible = true;

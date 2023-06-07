@@ -14,11 +14,22 @@
                 throw ex;
             }
 
-            if (filter["town_id"][0] == null) filter.Remove("town_id");
+            var cleanedFilters = new Dictionary<string, List<string>>();
+
+            foreach (var fString in filter)
+                if (fString.Value[0] != null) cleanedFilters.Add(fString.Key, fString.Value);
+
 
             return DBAdapter.LookAll(_tableName,
-                filter,
+                cleanedFilters,
                 ReplaceFields);
+        }
+        private static Dictionary<int, Dictionary<string, string>> ReplaceFields(Dictionary<int, Dictionary<string, string>> filteredtable, Dictionary<string, Dictionary<int, Dictionary<string, string>>> db)
+        {
+            foreach(var item in filteredtable)
+                item.Value["town_id"] = db["Tows"][int.Parse(item.Value["town_id"])]["name"];
+
+            return filteredtable;
         }
 
 
@@ -27,14 +38,7 @@
             
         }
 
-        private static Dictionary<int, Dictionary<string, string>> ReplaceFields(Dictionary<int, Dictionary<string, string>> filteredtable, Dictionary<string, Dictionary<int, Dictionary<string, string>>> db)
-        {
-            for (var i = 1; i<= filteredtable.Count; i++)
-            {
-                filteredtable[i]["town_id"] = db["Tows"][int.Parse(filteredtable[i]["town_id"])]["name"];
-            }
-            return filteredtable;
-        }
+        
     }
 
     public static class Organizations
