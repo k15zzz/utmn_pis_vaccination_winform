@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
 using PIS_WinForm;
 using PIS_WinForm.GlobalClasses.NonStaticClasses;
 using PIS_WinForm.GlobalClasses.StaticClasses;
@@ -18,9 +20,10 @@ namespace Model
             {
                 throw ex;
             }
-
-            if (filter["town_id"][0] == null) filter.Remove("town_id");
-
+            foreach (var filt in filter)
+            {
+                if (filt.Value.Count == 0 || filt.Value[0] == null) filter.Remove(filt.Key);
+            }
             return DBAdapter.LookAll(_tableName,
                 filter,
                 ReplaceFields);
@@ -89,11 +92,19 @@ namespace Model
 
         private static Dictionary<int, Dictionary<string, string>> ReplaceFields(Dictionary<int, Dictionary<string, string>> filteredtable, Dictionary<string, Dictionary<int, Dictionary<string, string>>> db)
         {
-            for (var i = 1; i<= filteredtable.Count; i++)
+            var templeDictionry = new Dictionary<int, Dictionary<string, string>>();
+            foreach (var item in filteredtable)
             {
-                filteredtable[i]["town_id"] = db["Tows"][int.Parse(filteredtable[i]["town_id"])]["name"];
+                templeDictionry.Add(item.Key, new Dictionary<string, string>());
+                foreach (var itemValue in item.Value)
+                    templeDictionry[item.Key].Add(itemValue.Key, itemValue.Value);
             }
-            return filteredtable;
+                    
+            foreach (var item in templeDictionry)
+            {
+                templeDictionry[item.Key].Add("townName", db["Tows"][int.Parse(item.Value["town_id"])]["name"]);
+            }
+            return templeDictionry;
         }
         
         public static void Delete(int id) 

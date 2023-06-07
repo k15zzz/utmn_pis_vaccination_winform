@@ -21,24 +21,17 @@ namespace Controller
                 throw ex;
             }
         }
-
-        public static void Edit(string[,] filter, string[,] sort) => throw new NotImplementedException();
         
-        public static void LookAll(Dictionary<string, List<string>> filter)
+        public static Dictionary<int, Dictionary<string, string>> LookAll(Dictionary<string, List<string>> filter)
         {
-            Dictionary<int, Dictionary<string, string>> cards;
             try
             {
-                cards = Model.Animal.LookAll(filter);
+                return Model.Animal.LookAll(filter);
             }
-            
             catch (Exception ex)
             {
                 throw ex;
             }
-
-            AnimalListForm _form = new AnimalListForm(cards);
-            _form.ShowDialog();
         }
 
         public static void Edit(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
@@ -75,6 +68,7 @@ namespace Controller
         public static void Edit(string[,] filter, string[,] sort) => throw new NotImplementedException();
 
         public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
+
         public static void LookAll(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
 
         public static void Edit(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();

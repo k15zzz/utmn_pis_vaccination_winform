@@ -347,13 +347,11 @@ namespace PIS_WinForm
 
             if (filter.Count == 0) return changeIdOnName(fullTable, _db);
 
-            for (var i = 1; i <= fullTable.Count; i++)
+            foreach (var item in fullTable)
                 foreach (var filterPoint in filter)
-                foreach (var value in filterPoint.Value)
-                    if (fullTable[i][filterPoint.Key] == value)
-                        if (!returnableList.ContainsKey(i))
-                            returnableList.Add(i, fullTable[i]);
-
+                    foreach (var value in filterPoint.Value)
+                        if (!returnableList.ContainsKey(item.Key) && item.Value[filterPoint.Key] == value)
+                            returnableList.Add(item.Key, new Dictionary<string, string>(fullTable[item.Key]));
 
             return changeIdOnName(returnableList, _db);           
         }
