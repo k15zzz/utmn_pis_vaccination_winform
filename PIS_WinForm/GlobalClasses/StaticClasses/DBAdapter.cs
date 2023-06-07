@@ -37,6 +37,7 @@ namespace PIS_WinForm
                     }
                 },
 #endregion
+#region user
                 {
                     "user", // table
                     new Dictionary<int, Dictionary<string,string>>()
@@ -155,7 +156,7 @@ namespace PIS_WinForm
                                 { "aderss",   "ул. Ппрокопия. д. 1" },
                                 { "type",      "Приют" },
                                 { "UrFace",   "Андрей Юрий Андреич" },
-                                { "town_id",   "1" },
+                                { "town_id",   "2" },
                             }
                         },
                     }
