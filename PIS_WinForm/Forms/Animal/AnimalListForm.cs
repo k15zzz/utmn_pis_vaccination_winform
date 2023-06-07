@@ -67,5 +67,13 @@ namespace PIS_WinForm.Forms
         private void button_View_Click(object sender, EventArgs e)
         {
         }
+
+        private void Delete(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dataGridView1.SelectedRows[0];
+            int id = (int)dataGridView1.SelectedCells[0].Value;
+            Delete_Animal delete = new Delete_Animal(id, row);
+            delete.ShowDialog();
+        }
     }
 }

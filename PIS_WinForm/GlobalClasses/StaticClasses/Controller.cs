@@ -1,4 +1,5 @@
-﻿using PIS_WinForm.Forms;
+﻿using PIS_WinForm;
+using PIS_WinForm.Forms;
 
 
 namespace Controller
@@ -28,16 +29,7 @@ namespace Controller
 
         public static void Delete(int id)
         {
-            var dict = DBAdapter.GetAll("Animals" );
-            if (dict.ContainsKey(id))
-            {
-                dict.Remove(id);
-            }
-            else
-            {
-                MessageBox.Show("Такого животного не существует в реестре");
-            }
-
+            DBAdapter.Delete(id, "Animals");
         }
 
         private static bool ChechOnEmptyFields() => throw new NotImplementedException();
@@ -53,15 +45,7 @@ namespace Controller
 
         public static void Delete(int id)
         {
-            var dict = DBAdapter.GetAll("Contracts");
-            if (dict.ContainsKey(id))
-            {
-                dict.Remove(id);
-            }
-            else
-            {
-                MessageBox.Show("Такого контракта не существует в реестре");
-            }
+            DBAdapter.Delete(id, "Contracts");
         }
 
         private static bool ChechOnEmptyFields() => throw new NotImplementedException();
@@ -78,15 +62,7 @@ namespace Controller
 
         public static void Delete(int id)
         {
-            var dict = DBAdapter.GetAll("Organizations");
-            if (dict.ContainsKey(id))
-            {
-                dict.Remove(id);
-            }
-            else
-            {
-                MessageBox.Show("Такой организации не существует в реестре");
-            }
+            DBAdapter.Delete(id, "Organizations");
         }
 
         private static bool ChechOnEmptyFields() => throw new NotImplementedException();

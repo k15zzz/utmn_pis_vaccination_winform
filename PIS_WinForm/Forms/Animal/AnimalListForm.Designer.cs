@@ -161,6 +161,7 @@
             button_Delete.TabIndex = 3;
             button_Delete.Text = "Удалить";
             button_Delete.UseVisualStyleBackColor = true;
+            button_Delete.Click += Delete;
             // 
             // button_View
             // 
@@ -202,19 +203,19 @@
             // bngngngnToolStripMenuItem
             // 
             bngngngnToolStripMenuItem.Name = "bngngngnToolStripMenuItem";
-            bngngngnToolStripMenuItem.Size = new Size(180, 22);
+            bngngngnToolStripMenuItem.Size = new Size(130, 22);
             bngngngnToolStripMenuItem.Text = "Город";
             // 
             // категорияToolStripMenuItem
             // 
             категорияToolStripMenuItem.Name = "категорияToolStripMenuItem";
-            категорияToolStripMenuItem.Size = new Size(180, 22);
+            категорияToolStripMenuItem.Size = new Size(130, 22);
             категорияToolStripMenuItem.Text = "Категория";
             // 
             // полToolStripMenuItem
             // 
             полToolStripMenuItem.Name = "полToolStripMenuItem";
-            полToolStripMenuItem.Size = new Size(180, 22);
+            полToolStripMenuItem.Size = new Size(130, 22);
             полToolStripMenuItem.Text = "Пол";
             // 
             // AnimalListForm
