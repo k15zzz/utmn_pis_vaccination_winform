@@ -168,6 +168,19 @@ namespace PIS_WinForm
                         { "Статистика",     "0" },
                         { "statusTown",     "0"}
                     }
+                },
+
+
+                {
+                    "99",
+                    new Dictionary<string, string>()
+                    {
+                        { "Animals",       "Введение" },
+                        { "Organizations",    "Введение" },
+                        { "Contracts",  "Введение" },
+                        { "Статистика",     "1" },
+                        { "statusTown",     "0"}
+                    }
                 }
         };
 

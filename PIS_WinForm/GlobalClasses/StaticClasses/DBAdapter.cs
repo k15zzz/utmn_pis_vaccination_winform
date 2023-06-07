@@ -58,7 +58,7 @@ namespace PIS_WinForm
                             {
                                 { "login",      "master" }, // {colum, value} 
                                 { "password",   "master" },
-                                { "role",       "6" },
+                                { "role",       "99" },
                                 { "organization_id", "1"}
                             }
                         },
@@ -305,6 +305,35 @@ namespace PIS_WinForm
             };
 
         //var item = db["table"][1]["atribute"]; // 1 - это id записи
+
+        static public bool AddAnimal(Card.Animal animal)
+        {
+            var animals = _db["Animals"];
+
+            int id = 1;
+            for (int i = 1; i < animals.Count + 1; i++)
+            {
+                if (animals.ContainsKey(i))
+                {
+                    id += 1;
+                }
+            }
+            Dictionary<string, string> card = new Dictionary<string, string>()
+            {
+
+                { "regNum",  animal.regNum }, // {colum, value} 
+                { "town_id",   animal.town_id },
+                { "сategory",  animal.category },
+                { "sex",  animal.sex },
+                { "burthYear",   animal.burthYear },
+                { "chipNumber",   animal.chipNumber },
+                { "name", animal.name },
+                { "photos",  animal.photos },
+                { "specMarcks", animal.specMarcks}
+            };
+            _db["Animals"].Add(id, card);
+            return true;
+        }
 
         static public Dictionary<int, Dictionary<string, string>> GetAll(string table) => _db[table];
         
