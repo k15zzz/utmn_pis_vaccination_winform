@@ -2,7 +2,8 @@
 {
     public class Animal
     {
-
+        // овер дохера полей
+        public Animal() => throw new NotImplementedException();
         private string category;
         private string gender;
         private string yearBirth;

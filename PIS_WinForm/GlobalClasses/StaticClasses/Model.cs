@@ -1,4 +1,8 @@
-﻿using PIS_WinForm;
+using System;
+using PIS_WinForm;
+using PIS_WinForm.GlobalClasses.NonStaticClasses;
+using PIS_WinForm.GlobalClasses.StaticClasses;
+
 namespace Model
 {
     public static class Animal
@@ -87,28 +91,30 @@ namespace Model
 
     public static class Contracts
     {
-        public static void LookAll(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
+        public static void LookAll(string[,] filter, string[,] sort) => throw new NotImplementedException();
 
-        public static void Add(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
+        public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
+    }
 
-        public static void Delete(int id)
+    public static class Town
+    {
+        public static void LookAll(string[,] filter, string[,] sort) => throw new NotImplementedException();
+
+        public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
+    }
+
+    public static class Statistic
+    {
+        public static Report MakeReport(DateTime dateStart, DateTime dateFinish, List<int> town)
         {
-            if (PermissionGuard.CanDelete("Contracts"))
-            {
-                var dict = DBAdapter.GetAll("Contracts");
-                if (dict.ContainsKey(id))
-                {
-                    Controller.Contract.Delete(id);
-                }
-                else
-                {
-                    MessageBox.Show("Такого контракта не существует в реестре");
-                }
-            }
-            else
-            {
-                MessageBox.Show("У вас нет прав на это действие");
-            }
+            //if (PermissionGuard.CanStatistic())
+            //    throw new Exception();
+
+            var data = DBAdapter.GetDateStatistic(dateStart, dateFinish, town);
+
+            var report = ReportMaker.CreateReport(data);
+
+            return report;
         }
     }
 

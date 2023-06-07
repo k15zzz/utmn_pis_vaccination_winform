@@ -37,6 +37,7 @@ namespace PIS_WinForm
                     }
                 },
 #endregion
+#region user
                 {
                     "user", // table
                     new Dictionary<int, Dictionary<string,string>>()
@@ -73,6 +74,7 @@ namespace PIS_WinForm
                         },
                     }
                 },
+#endregion
 #region animals
                 {
                     "Animals", // table
@@ -154,7 +156,7 @@ namespace PIS_WinForm
                                 { "aderss",   "ул. Ппрокопия. д. 1" },
                                 { "type",      "Приют" },
                                 { "UrFace",   "Андрей Юрий Андреич" },
-                                { "town_id",   "1" },
+                                { "town_id",   "2" },
                             }
                         },
                     }
@@ -229,7 +231,7 @@ namespace PIS_WinForm
 #endregion
 #region vactination
                 {
-                    "vactination", // table
+                    "Vactination", // table
                     new Dictionary<int, Dictionary<string,string>>()
                     {
                         {
@@ -237,9 +239,61 @@ namespace PIS_WinForm
                             new Dictionary<string, string>()  // atributes
                             {
                                 { "type",      "бешенство" }, // {colum, value} 
-                                { "date",   "12.02.2002" },
+                                { "date",       "12.02.2002" },
                                 { "numerOfSeries",   "434234234" },
-                                { "dateOfExpire",   "12.03.2002" },
+                                { "dateOfExpire",   "12.03.2015" },
+                                { "doljnostOfDoc",   "Вет-врач-инъекционист" },
+                                { "org_id",   "2" },
+                                { "contract_id",   "1" }
+                            }
+                        },
+                        {
+                            2, // id 
+                            new Dictionary<string, string>()  // atributes
+                            {
+                                { "type",      "бешенство" }, // {colum, value} 
+                                { "date",       "12.02.2023" },
+                                { "numerOfSeries",   "434234234" },
+                                { "dateOfExpire",   "12.03.2000" },
+                                { "doljnostOfDoc",   "Вет-врач-инъекционист" },
+                                { "org_id",   "1" },
+                                { "contract_id",   "1" }
+                            }
+                        },
+                        {
+                            3, // id 
+                            new Dictionary<string, string>()  // atributes
+                            {
+                                { "type",      "бешенство" }, // {colum, value} 
+                                { "date",       "12.02.2002" },
+                                { "numerOfSeries",   "434234234" },
+                                { "dateOfExpire",   "12.03.2022" },
+                                { "doljnostOfDoc",   "Вет-врач-инъекционист" },
+                                { "org_id",   "2" },
+                                { "contract_id",   "1" }
+                            }
+                        },
+                        {
+                            4, // id 
+                            new Dictionary<string, string>()  // atributes
+                            {
+                                { "type",      "бешенство" }, // {colum, value} 
+                                { "date",       "12.02.2010" },
+                                { "numerOfSeries",   "434234234" },
+                                { "dateOfExpire",   "12.03.2012" },
+                                { "doljnostOfDoc",   "Вет-врач-инъекционист" },
+                                { "org_id",   "2" },
+                                { "contract_id",   "1" }
+                            }
+                        },
+                        {
+                            5, // id 
+                            new Dictionary<string, string>()  // atributes
+                            {
+                                { "type",      "бешенство" }, // {colum, value} 
+                                { "date",       "12.02.2002" },
+                                { "numerOfSeries",   "434234234" },
+                                { "dateOfExpire",   "12.03.2014" },
                                 { "doljnostOfDoc",   "Вет-врач-инъекционист" },
                                 { "org_id",   "1" },
                                 { "contract_id",   "1" }
@@ -253,7 +307,7 @@ namespace PIS_WinForm
         //var item = db["table"][1]["atribute"]; // 1 - это id записи
 
         static public Dictionary<int, Dictionary<string, string>> GetAll(string table) => _db[table];
-
+        
         static public Dictionary<int, Dictionary<string, string>> LookAll(
             string table,
             Dictionary<string, List<string>> filter,
@@ -266,15 +320,58 @@ namespace PIS_WinForm
 
             for (var i = 1; i <= fullTable.Count; i++)
                 foreach (var filterPoint in filter)
-                    foreach (var value in filterPoint.Value)
-                        if (fullTable[i][filterPoint.Key] == value)
-                            if (!returnableList.ContainsKey(i))
-                                returnableList.Add(i, fullTable[i]);
+                foreach (var value in filterPoint.Value)
+                    if (fullTable[i][filterPoint.Key] == value)
+                        if (!returnableList.ContainsKey(i))
+                            returnableList.Add(i, fullTable[i]);
 
 
             return changeIdOnName(returnableList, _db);           
         }
-        static public Dictionary<string, string> SearchUser(string login, string password)
+
+        static public Dictionary<int, Dictionary<string, string>> GetDateStatistic(DateTime dateStart, DateTime dateFinish, List<int> town)
+        {
+            var _vactination = GetAll("Vactination");
+            var vactination = new Dictionary<int, Dictionary<string, string>>();
+            var result = new Dictionary<int, Dictionary<string, string>>();
+
+
+            foreach (var item in _vactination)
+            {
+                var date = DateTime.Parse(item.Value["date"]);
+
+                if (dateStart <= date && date <= dateFinish)
+                    vactination.Add(item.Key, item.Value);
+            }
+
+            var organizations = GetAll("Organizations");
+            var touwns = GetAll("Tows");
+            var townService = GetAll("TownsServises");
+
+
+            foreach (var item in vactination)
+            {
+                var idOrg = int.Parse(item.Value["org_id"]);
+
+                var idTown = int.Parse(organizations[idOrg]["town_id"]);
+
+                if (town.Contains(idTown))
+                {
+                    var nameTown = touwns[idTown]["name"];
+                    var priceTown = townService[idTown]["price"];
+
+                    result.Add(item.Key, item.Value);
+
+                    result[item.Key]["town_name"] = nameTown;
+                    result[item.Key]["town_id"] = idTown.ToString();
+                    result[item.Key]["price"] = priceTown;
+                }
+            }
+
+            return result;
+        }
+
+        static public Dictionary<string, string> SearchUser(string login, string password) 
         {
             var users = _db["user"];
             
