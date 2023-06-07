@@ -45,6 +45,7 @@ namespace PIS_WinForm.Forms
             //добавить фото - путь к фотке
 
             animal = new Card.Animal(filter);
+
             try
             {
                 status = Controller.Animal.Add(animal);
@@ -54,6 +55,7 @@ namespace PIS_WinForm.Forms
                 MessageBox.Show(ex.Message, ex.Message, MessageBoxButtons.OK);
             }
             if (status) MessageBox.Show("Card added", "Adding", MessageBoxButtons.OK);
+
         }
     }
 }

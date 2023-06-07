@@ -1,4 +1,8 @@
-﻿using Model;
+
+﻿using PIS_WinForm.Forms;
+using PIS_WinForm;
+
+
 
 namespace Controller
 {
@@ -19,6 +23,28 @@ namespace Controller
                 throw ex;
             }
         }
+
+
+        public static void Edit(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
+
+       //public static void Add(string[,] filter, string[,] sort) => Model.Animal.Add(animal);
+
+        public static void Delete(int id)
+        {
+            var dict = DBAdapter.GetAll("Animals" );
+            if (dict.ContainsKey(id))
+            {
+                dict.Remove(id);
+            }
+            else
+            {
+                MessageBox.Show("Такого животного не существует в реестре");
+            }
+
+        }
+
+        private static bool ChechOnEmptyFields() => throw new NotImplementedException();
+
     }
 
     public static class Contract
