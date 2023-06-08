@@ -92,7 +92,7 @@ namespace PIS_WinForm.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "you cant look at this list", MessageBoxButtons.OK);
             }
             var filter = new Dictionary<string, List<string>>() { { "town_id", new List<string>() { PermissionGuard.GetTown() } } };
 
@@ -109,5 +109,6 @@ namespace PIS_WinForm.Forms
             _form.ShowDialog();
             this.Visible = true;
         }
+
     }
 }
