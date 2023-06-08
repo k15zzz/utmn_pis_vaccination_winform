@@ -174,6 +174,7 @@
             // 
             // button_Add
             // 
+
             this.button_Add.Location = new System.Drawing.Point(890, 147);
             this.button_Add.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button_Add.Name = "button_Add";
@@ -193,6 +194,7 @@
             this.button_Delete.Text = "Удалить";
             this.button_Delete.UseVisualStyleBackColor = true;
             this.button_Delete.Click += new System.EventHandler(this.Delete);
+
             // 
             // button_View
             // 

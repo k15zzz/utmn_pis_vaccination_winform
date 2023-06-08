@@ -119,6 +119,7 @@ namespace PIS_WinForm.Forms
                 MessageBox.Show("У вас нет прав на это действие");
             }
             SerFilter();
+
         }
 
         private void button_Menu_Click(object sender, EventArgs e) => this.Close();

@@ -38,7 +38,6 @@
             this.Name = "ContractCard";
             this.Text = "Карточка контакта";
             this.ResumeLayout(false);
-
         }
 
         #endregion
