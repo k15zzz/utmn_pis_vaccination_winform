@@ -21,6 +21,7 @@ namespace PIS_WinForm.Forms
         {
             InitializeComponent();
             SetListBoxTowns(Town.LookAll());
+            groupBoxStatistick.Visible = PermissionGuard.CanStatistic();
         }
 
         private void calculateStatisticButton_Click(object sender, EventArgs e)
@@ -154,6 +155,33 @@ namespace PIS_WinForm.Forms
                 }
             else
                 throw new Exception("Ошибка прав доступа");
+        }
+
+        private void LookAllOrganization_Click(object sender, EventArgs e)
+        {
+            var filter = new Dictionary<string, List<string>>()
+            {
+                {
+                    "town_id",
+                    new List<string>() { PermissionGuard.GetTown() }
+                }
+            };
+            Dictionary<int, Dictionary<string, string>> cards = new Dictionary<int, Dictionary<string, string>>();
+            try
+            {
+                cards = GetCards("Organizations", filter, Controller.Organization.LookAll);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            //this.Visible = false;
+            //TODO: добавить форму 
+            //ContractListForm _form = new ContractListForm(cards);
+            //_form.ShowDialog();
+
+            //this.Visible = true;
         }
     }
 }

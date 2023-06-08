@@ -28,163 +28,173 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button2 = new Button();
-            button1 = new Button();
-            label10 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            SuspendLayout();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
             // 
             // button2
             // 
-            button2.Location = new Point(264, 268);
-            button2.Name = "button2";
-            button2.Size = new Size(96, 34);
-            button2.TabIndex = 24;
-            button2.Text = "Отмена";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += Cancel;
+            this.button2.Location = new System.Drawing.Point(337, 362);
+            this.button2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(178, 73);
+            this.button2.TabIndex = 24;
+            this.button2.Text = "Отмена";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Cancel);
             // 
             // button1
             // 
-            button1.Location = new Point(128, 268);
-            button1.Name = "button1";
-            button1.Size = new Size(96, 34);
-            button1.TabIndex = 23;
-            button1.Text = "Да";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += Yes;
+            this.button1.Location = new System.Drawing.Point(15, 362);
+            this.button1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 73);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Да";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Yes);
             // 
             // label10
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Arial Narrow", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(42, 222);
-            label10.Name = "label10";
-            label10.Size = new Size(422, 23);
-            label10.TabIndex = 22;
-            label10.Text = "Вы действительно хотите удалить контракт из реестра?";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(146, 298);
+            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(213, 44);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Вы уверены?";
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(111, 175);
-            label5.Name = "label5";
-            label5.Size = new Size(82, 20);
-            label5.TabIndex = 16;
-            label5.Text = "Id_заказчика";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(15, 241);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(163, 35);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Id_заказчика";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(104, 137);
-            label4.Name = "label4";
-            label4.Size = new Size(103, 20);
-            label4.TabIndex = 15;
-            label4.Text = "id_Исполнителя";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(15, 184);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(199, 35);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "id_Исполнителя";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(96, 98);
-            label3.Name = "label3";
-            label3.Size = new Size(111, 20);
-            label3.TabIndex = 21;
-            label3.Text = "Дата выполнения";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(15, 127);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(219, 35);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Дата выполнения";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(100, 59);
-            label2.Name = "label2";
-            label2.Size = new Size(107, 20);
-            label2.TabIndex = 14;
-            label2.Text = "Дата заключения";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(15, 68);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(214, 35);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Дата заключения";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(103, 21);
-            label1.Name = "label1";
-            label1.Size = new Size(105, 20);
-            label1.TabIndex = 13;
-            label1.Text = "Номер контракта";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(15, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(213, 35);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Номер контракта";
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(213, 172);
-            textBox5.Margin = new Padding(3, 4, 3, 4);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(100, 23);
-            textBox5.TabIndex = 7;
+            this.textBox5.Location = new System.Drawing.Point(333, 237);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(182, 39);
+            this.textBox5.TabIndex = 7;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(213, 134);
-            textBox4.Margin = new Padding(3, 4, 3, 4);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 6;
+            this.textBox4.Location = new System.Drawing.Point(333, 180);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(182, 39);
+            this.textBox4.TabIndex = 6;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(213, 95);
-            textBox3.Margin = new Padding(3, 4, 3, 4);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 5;
+            this.textBox3.Location = new System.Drawing.Point(333, 123);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(182, 39);
+            this.textBox3.TabIndex = 5;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(213, 56);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 12;
+            this.textBox2.Location = new System.Drawing.Point(333, 66);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(182, 39);
+            this.textBox2.TabIndex = 12;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(213, 18);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 4;
+            this.textBox1.Location = new System.Drawing.Point(333, 9);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(182, 39);
+            this.textBox1.TabIndex = 4;
             // 
             // Delete_Contract
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(510, 380);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(label10);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Name = "Delete_Contract";
-            Text = "Delete_Contract";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(530, 451);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Name = "Delete_Contract";
+            this.Text = "Удаление контакта";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

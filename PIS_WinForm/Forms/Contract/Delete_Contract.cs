@@ -12,7 +12,8 @@ namespace PIS_WinForm.Forms
 {
     public partial class Delete_Contract : Form
     {
-        int id;
+        private int id;
+
         public Delete_Contract(int id, DataGridViewRow row)
         {
             InitializeComponent();

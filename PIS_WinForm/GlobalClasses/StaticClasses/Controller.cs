@@ -23,7 +23,7 @@ namespace Controller
                 throw ex;
             }
         }
-        
+
         public static Dictionary<int, Dictionary<string, string>> LookAll(Dictionary<string, List<string>> filter)
         {
             try
@@ -40,7 +40,7 @@ namespace Controller
 
         public static void Delete(int id)
         {
-            
+
             if (PermissionGuard.CanDelete("Animals"))
             {
                 var dict = DBAdapter.GetAll("Animals");
@@ -102,10 +102,10 @@ namespace Controller
                 MessageBox.Show("У вас нет прав на это действие");
             }
         }
-        }
-        
-        //private static bool ChechOnEmptyFields() => throw new NotImplementedException();
-    
+    }
+
+    //private static bool ChechOnEmptyFields() => throw new NotImplementedException();
+
 
     public static class Organization
     {
@@ -146,7 +146,7 @@ namespace Controller
             {
                 MessageBox.Show("У вас нет прав на это действие");
             }
-        
+
         }
 
         private static bool ChechOnEmptyFields() => throw new NotImplementedException();
@@ -155,15 +155,15 @@ namespace Controller
     public static class Town
     {
         public static Dictionary<int, Dictionary<string, string>> LookAll() => DBAdapter.GetAll("Tows");
-        
+
         private static bool ChechOnEmptyFields() => throw new NotImplementedException();
     }
 
     public static class Statistic
     {
         public static Dictionary<int, Dictionary<string, string>> LookAll() => DBAdapter.GetAll("Tows");
-        
-        public static PIS_WinForm.GlobalClasses.NonStaticClasses.Report MakeReport(DateTime dateStart, DateTime dateFinish, List<int> town) 
+
+        public static PIS_WinForm.GlobalClasses.NonStaticClasses.Report MakeReport(DateTime dateStart, DateTime dateFinish, List<int> town)
         {
             try
             {
@@ -176,4 +176,5 @@ namespace Controller
             }
         }
     }
+}
 

@@ -28,83 +28,138 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LookAllAnimals = new Button();
-            calculateStatisticButton = new Button();
-            finishDateTimePicker = new DateTimePicker();
-            startDateTimePicker = new DateTimePicker();
-            townsCheckedListBox = new CheckedListBox();
-            this.LookAllContracts = new Button();
-            SuspendLayout();
+            this.LookAllAnimals = new System.Windows.Forms.Button();
+            this.calculateStatisticButton = new System.Windows.Forms.Button();
+            this.finishDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.townsCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.LookAllContracts = new System.Windows.Forms.Button();
+            this.LookAllOrganization = new System.Windows.Forms.Button();
+            this.groupBoxStatistick = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBoxStatistick.SuspendLayout();
+            this.SuspendLayout();
             // 
             // LookAllAnimals
             // 
-            LookAllAnimals.Location = new Point(12, 12);
-            LookAllAnimals.Name = "LookAllAnimals";
-            LookAllAnimals.Size = new Size(228, 42);
-            LookAllAnimals.TabIndex = 0;
-            LookAllAnimals.Text = "Посмотреть реестр животных";
-            LookAllAnimals.UseVisualStyleBackColor = true;
-            LookAllAnimals.Click += OnButtonClick_LookAllAnimals;
+            this.LookAllAnimals.Location = new System.Drawing.Point(15, 15);
+            this.LookAllAnimals.Margin = new System.Windows.Forms.Padding(6);
+            this.LookAllAnimals.Name = "LookAllAnimals";
+            this.LookAllAnimals.Size = new System.Drawing.Size(423, 90);
+            this.LookAllAnimals.TabIndex = 0;
+            this.LookAllAnimals.Text = "Посмотреть реестр животных";
+            this.LookAllAnimals.UseVisualStyleBackColor = true;
+            this.LookAllAnimals.Click += new System.EventHandler(this.OnButtonClick_LookAllAnimals);
             // 
             // calculateStatisticButton
             // 
-            calculateStatisticButton.Location = new Point(713, 103);
-            calculateStatisticButton.Margin = new Padding(2, 1, 2, 1);
-            calculateStatisticButton.Name = "calculateStatisticButton";
-            calculateStatisticButton.Size = new Size(81, 22);
-            calculateStatisticButton.TabIndex = 1;
-            calculateStatisticButton.Text = "Рассчитать";
-            calculateStatisticButton.UseVisualStyleBackColor = true;
+            this.calculateStatisticButton.Location = new System.Drawing.Point(306, 301);
+            this.calculateStatisticButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.calculateStatisticButton.Name = "calculateStatisticButton";
+            this.calculateStatisticButton.Size = new System.Drawing.Size(150, 47);
+            this.calculateStatisticButton.TabIndex = 1;
+            this.calculateStatisticButton.Text = "Рассчитать";
+            this.calculateStatisticButton.UseVisualStyleBackColor = true;
             // 
             // finishDateTimePicker
             // 
-            finishDateTimePicker.Location = new Point(578, 82);
-            finishDateTimePicker.Margin = new Padding(2, 1, 2, 1);
-            finishDateTimePicker.Name = "finishDateTimePicker";
-            finishDateTimePicker.Size = new Size(217, 23);
-            finishDateTimePicker.TabIndex = 2;
+            this.finishDateTimePicker.Location = new System.Drawing.Point(7, 258);
+            this.finishDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.finishDateTimePicker.Name = "finishDateTimePicker";
+            this.finishDateTimePicker.Size = new System.Drawing.Size(449, 39);
+            this.finishDateTimePicker.TabIndex = 2;
             // 
             // startDateTimePicker
             // 
-            startDateTimePicker.Location = new Point(578, 61);
-            startDateTimePicker.Margin = new Padding(2, 1, 2, 1);
-            startDateTimePicker.Name = "startDateTimePicker";
-            startDateTimePicker.Size = new Size(217, 23);
-            startDateTimePicker.TabIndex = 3;
+            this.startDateTimePicker.Location = new System.Drawing.Point(6, 183);
+            this.startDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.startDateTimePicker.Name = "startDateTimePicker";
+            this.startDateTimePicker.Size = new System.Drawing.Size(449, 39);
+            this.startDateTimePicker.TabIndex = 3;
             // 
             // townsCheckedListBox
             // 
-            townsCheckedListBox.FormattingEnabled = true;
-            townsCheckedListBox.Location = new Point(578, 6);
-            townsCheckedListBox.Margin = new Padding(2, 1, 2, 1);
-            townsCheckedListBox.Name = "townsCheckedListBox";
-            townsCheckedListBox.Size = new Size(218, 22);
-            townsCheckedListBox.TabIndex = 4;
+            this.townsCheckedListBox.FormattingEnabled = true;
+            this.townsCheckedListBox.Location = new System.Drawing.Point(7, 37);
+            this.townsCheckedListBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.townsCheckedListBox.Name = "townsCheckedListBox";
+            this.townsCheckedListBox.Size = new System.Drawing.Size(449, 112);
+            this.townsCheckedListBox.TabIndex = 4;
             // 
             // LookAllContracts
             // 
-            this.LookAllContracts.Location = new Point(12, 60);
+            this.LookAllContracts.Location = new System.Drawing.Point(15, 158);
+            this.LookAllContracts.Margin = new System.Windows.Forms.Padding(6);
             this.LookAllContracts.Name = "LookAllContracts";
-            this.LookAllContracts.Size = new Size(228, 42);
+            this.LookAllContracts.Size = new System.Drawing.Size(423, 90);
             this.LookAllContracts.TabIndex = 5;
             this.LookAllContracts.Text = "Посмотреть реестр контрактов";
             this.LookAllContracts.UseVisualStyleBackColor = true;
-            this.LookAllContracts.Click += this.OnButtonClick_LookAllContracts;
+            this.LookAllContracts.Click += new System.EventHandler(this.OnButtonClick_LookAllContracts);
+            // 
+            // LookAllOrganization
+            // 
+            this.LookAllOrganization.Location = new System.Drawing.Point(15, 298);
+            this.LookAllOrganization.Margin = new System.Windows.Forms.Padding(6, 6, 6, 10);
+            this.LookAllOrganization.Name = "LookAllOrganization";
+            this.LookAllOrganization.Size = new System.Drawing.Size(423, 90);
+            this.LookAllOrganization.TabIndex = 6;
+            this.LookAllOrganization.Text = "Посмотреть реестр организаций";
+            this.LookAllOrganization.UseVisualStyleBackColor = true;
+            this.LookAllOrganization.Click += new System.EventHandler(this.LookAllOrganization_Click);
+            // 
+            // groupBoxStatistick
+            // 
+            this.groupBoxStatistick.Controls.Add(this.label2);
+            this.groupBoxStatistick.Controls.Add(this.label1);
+            this.groupBoxStatistick.Controls.Add(this.townsCheckedListBox);
+            this.groupBoxStatistick.Controls.Add(this.calculateStatisticButton);
+            this.groupBoxStatistick.Controls.Add(this.startDateTimePicker);
+            this.groupBoxStatistick.Controls.Add(this.finishDateTimePicker);
+            this.groupBoxStatistick.Location = new System.Drawing.Point(466, 26);
+            this.groupBoxStatistick.Name = "groupBoxStatistick";
+            this.groupBoxStatistick.Size = new System.Drawing.Size(475, 365);
+            this.groupBoxStatistick.TabIndex = 7;
+            this.groupBoxStatistick.TabStop = false;
+            this.groupBoxStatistick.Text = "Статистика";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 224);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(145, 32);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Дата  конца";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 149);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(149, 32);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Дата начала";
             // 
             // Main
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(this.LookAllContracts);
-            Controls.Add(townsCheckedListBox);
-            Controls.Add(startDateTimePicker);
-            Controls.Add(finishDateTimePicker);
-            Controls.Add(calculateStatisticButton);
-            Controls.Add(LookAllAnimals);
-            Name = "Main";
-            Text = "Main";
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(953, 403);
+            this.Controls.Add(this.groupBoxStatistick);
+            this.Controls.Add(this.LookAllOrganization);
+            this.Controls.Add(this.LookAllContracts);
+            this.Controls.Add(this.LookAllAnimals);
+            this.Margin = new System.Windows.Forms.Padding(6);
+            this.Name = "Main";
+            this.Text = "Главная форма";
+            this.groupBoxStatistick.ResumeLayout(false);
+            this.groupBoxStatistick.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -116,5 +171,9 @@
         private CheckedListBox townsCheckedListBox;
         private Button LookAllContracts;
         private Button LookAllOrganizations;
+        private Button LookAllOrganization;
+        private GroupBox groupBoxStatistick;
+        private Label label2;
+        private Label label1;
     }
 }
