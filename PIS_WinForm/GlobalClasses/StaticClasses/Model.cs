@@ -131,6 +131,21 @@ namespace Model
 
     public static class Organizations
     {
+        public static Card.Organization LookAtCard(DataGridViewRow data)
+        {
+            var returanbleValues = new Dictionary<string, string>()
+            {
+                { "fullName", data.Cells[1].Value.ToString() },
+                { "INN", data.Cells[2].Value.ToString() },
+                { "KPP", data.Cells[3].Value.ToString() },
+                { "aderss", data.Cells[4].Value.ToString() },
+                { "type", data.Cells[5].Value.ToString() },
+                { "UrFace", data.Cells[6].Value.ToString() },
+                { "town_id", data.Cells[8].Value.ToString() }
+            };
+            return new Card.Organization(returanbleValues);
+        }
+
         private static readonly string _tableName = "Organizations";
 
         public static Dictionary<int, Dictionary<string, string>> LookAll(Dictionary<string, List<string>> filter)

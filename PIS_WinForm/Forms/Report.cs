@@ -18,7 +18,6 @@ namespace PIS_WinForm.Forms
 
             var towns = report.GetTown();
 
-
             dataGridViewReport.Columns.Add("Город", "City");
             dataGridViewReport.Columns.Add("Количество", "Count");
             dataGridViewReport.Columns.Add("Стоимость", "Cost");
@@ -26,5 +25,7 @@ namespace PIS_WinForm.Forms
             foreach (var town in towns)
                 dataGridViewReport.Rows.Add(town.Name, town.Count, town.Cost);
         }
+
+        private void buttonClose_Click(object sender, EventArgs e) => Close();
     }
 }

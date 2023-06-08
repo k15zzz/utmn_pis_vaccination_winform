@@ -101,5 +101,9 @@ namespace PIS_WinForm.Forms
             }
         }
 
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

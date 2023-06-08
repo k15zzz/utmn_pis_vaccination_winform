@@ -1,6 +1,6 @@
-﻿namespace PIS_WinForm.Forms.Animal
+﻿namespace PIS_WinForm.Forms.Organization
 {
-    partial class AnimalCard
+    partial class OrganizationCard
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            SuspendLayout();
             // 
-            // AnimalCard
+            // OrganizationCard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1486, 960);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.Name = "AnimalCard";
-            this.Text = "Каточка животного";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(800, 450);
+            Name = "OrganizationCard";
+            Text = "OrganizationCard";
+            ResumeLayout(false);
         }
 
         #endregion

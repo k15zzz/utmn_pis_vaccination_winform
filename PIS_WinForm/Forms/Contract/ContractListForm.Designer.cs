@@ -70,60 +70,77 @@
             // id
             // 
             id.HeaderText = "id";
+            id.MinimumWidth = 10;
             id.Name = "id";
             id.ReadOnly = true;
             id.Visible = false;
+            id.Width = 200;
             // 
             // number
             // 
             number.HeaderText = "Номер";
+            number.MinimumWidth = 10;
             number.Name = "number";
             number.ReadOnly = true;
+            number.Width = 200;
             // 
             // startDate
             // 
             startDate.HeaderText = "Дата заключения";
+            startDate.MinimumWidth = 10;
             startDate.Name = "startDate";
             startDate.ReadOnly = true;
+            startDate.Width = 200;
             // 
             // endDate
             // 
             endDate.HeaderText = "Дата Действия";
+            endDate.MinimumWidth = 10;
             endDate.Name = "endDate";
             endDate.ReadOnly = true;
+            endDate.Width = 200;
             // 
             // ispolnitel_id
             // 
             ispolnitel_id.HeaderText = "Имсполнилель id";
+            ispolnitel_id.MinimumWidth = 10;
             ispolnitel_id.Name = "ispolnitel_id";
             ispolnitel_id.ReadOnly = true;
             ispolnitel_id.Visible = false;
+            ispolnitel_id.Width = 200;
             // 
             // isponlitelName
             // 
             isponlitelName.HeaderText = "Исполнитель";
+            isponlitelName.MinimumWidth = 10;
             isponlitelName.Name = "isponlitelName";
             isponlitelName.ReadOnly = true;
+            isponlitelName.Width = 200;
             // 
             // zacazchik_id
             // 
             zacazchik_id.HeaderText = "Заказчик id";
+            zacazchik_id.MinimumWidth = 10;
             zacazchik_id.Name = "zacazchik_id";
             zacazchik_id.ReadOnly = true;
             zacazchik_id.Visible = false;
+            zacazchik_id.Width = 200;
             // 
             // zacazchikName
             // 
             zacazchikName.HeaderText = "Заказчик";
+            zacazchikName.MinimumWidth = 10;
             zacazchikName.Name = "zacazchikName";
             zacazchikName.ReadOnly = true;
+            zacazchikName.Width = 200;
             // 
             // menuStrip1
             // 
+            menuStrip1.ImageScalingSize = new Size(32, 32);
             menuStrip1.Items.AddRange(new ToolStripItem[] { filter });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(752, 24);
+            menuStrip1.Size = new Size(691, 24);
             menuStrip1.TabIndex = 7;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -132,18 +149,18 @@
             filter.DropDownItems.AddRange(new ToolStripItem[] { Ispolnitel, Zakazchic });
             filter.Name = "filter";
             filter.Size = new Size(60, 20);
-            filter.Text = "фильтр";
+            filter.Text = "Фильтр";
             // 
             // Ispolnitel
             // 
             Ispolnitel.Name = "Ispolnitel";
-            Ispolnitel.Size = new Size(180, 22);
+            Ispolnitel.Size = new Size(148, 22);
             Ispolnitel.Text = "Исполнитель";
             // 
             // Zakazchic
             // 
             Zakazchic.Name = "Zakazchic";
-            Zakazchic.Size = new Size(180, 22);
+            Zakazchic.Size = new Size(148, 22);
             Zakazchic.Text = "Заказчик";
             // 
             // button_View
@@ -166,6 +183,7 @@
             button_Add.TabIndex = 9;
             button_Add.Text = "Добавить";
             button_Add.UseVisualStyleBackColor = true;
+            button_Add.Click += button_Add_Click;
             // 
             // button_Delete
             // 
@@ -176,6 +194,7 @@
             button_Delete.TabIndex = 10;
             button_Delete.Text = "Удалить";
             button_Delete.UseVisualStyleBackColor = true;
+            button_Delete.Click += button_Delete_Click;
             // 
             // filterbutton
             // 
@@ -197,7 +216,7 @@
             button_Menu.TabIndex = 12;
             button_Menu.Text = "На главную";
             button_Menu.UseVisualStyleBackColor = true;
-            button_Menu.Click += button_Menu_Click;
+            button_Menu.Click += button_Menu_Click_1;
             // 
             // ContractListForm
             // 
@@ -205,7 +224,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(752, 407);
+            ClientSize = new Size(691, 353);
             Controls.Add(button_Menu);
             Controls.Add(filterbutton);
             Controls.Add(button_Delete);
@@ -214,8 +233,7 @@
             Controls.Add(menuStrip1);
             Controls.Add(dataGridView1);
             Name = "ContractListForm";
-            Text = "ContractListForm";
-            Load += ContractListForm_Load;
+            Text = "Реестр контактов";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

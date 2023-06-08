@@ -14,7 +14,9 @@ namespace PIS_WinForm.Forms
 {
     public partial class AnimalListForm : Form
     {
-        bool adding;
+
+        private bool adding;
+
 
         public AnimalListForm(Dictionary<int, Dictionary<string, string>> cards)
         {
@@ -72,7 +74,7 @@ namespace PIS_WinForm.Forms
             }
         }
 
-        
+
         private void OnButtonClick_AddAnimal(object sender, EventArgs e)
         {
             try
@@ -111,65 +113,13 @@ namespace PIS_WinForm.Forms
             {
                 MessageBox.Show("У вас нет прав на это действие");
             }
-            Dictionary<string, List<string>> filter = new Dictionary<string, List<string>>();
-
-            filter.Add("town_id", new List<string>());
-            foreach (ToolStripMenuItem item in Town.DropDownItems)
-                if (item.Checked) filter["town_id"].Add(item.Tag.ToString());
-
-            filter.Add("сategory", new List<string>());
-            foreach (ToolStripMenuItem item in Categorya.DropDownItems)
-                if (item.Checked) filter["сategory"].Add(item.Text);
-
-            filter.Add("sex", new List<string>());
-            foreach (ToolStripMenuItem item in Sexy.DropDownItems)
-                if (item.Checked) filter["sex"].Add(item.Text);
-
-            Dictionary<int, Dictionary<string, string>> cards = new Dictionary<int, Dictionary<string, string>>();
-            try
-            {
-                PermissionGuard.CanLookAll("Animals");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
-            }
-
-            try
-            {
-                cards = Controller.Animal.LookAll(filter);
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
-            }
-
-            dataGridView1.Rows.Clear();
-
-            foreach (var card in cards)
-            {
-                dataGridView1.Rows.Add
-                    (
-                    card.Key,
-                    cards[card.Key]["regNum"],
-                    cards[card.Key]["town_id"],
-                    cards[card.Key]["townName"],
-                    cards[card.Key]["сategory"],
-                    cards[card.Key]["sex"],
-                    cards[card.Key]["burthYear"],
-                    cards[card.Key]["e-chipNumber"],
-                    cards[card.Key]["name"],
-                    cards[card.Key]["photos"],
-                    cards[card.Key]["specMarcks"]
-                    );
-            }
+            SerFilter();
 
         }
 
         private void button_Menu_Click(object sender, EventArgs e) => this.Close();
 
-        private void filterbutton_Click(object sender, EventArgs e)
+        private void SerFilter()
         {
             Dictionary<string, List<string>> filter = new Dictionary<string, List<string>>();
 
@@ -186,24 +136,19 @@ namespace PIS_WinForm.Forms
                 if (item.Checked) filter["sex"].Add(item.Text);
 
             Dictionary<int, Dictionary<string, string>> cards = new Dictionary<int, Dictionary<string, string>>();
-            try
-            {
-                PermissionGuard.CanLookAll("Animals");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
-            }
 
-            try
-            {
-                cards = Controller.Animal.LookAll(filter);
-            }
-            catch (Exception ex)
-            {
+            if (PermissionGuard.CanLookAll("Animals"))
+                try
+                {
+                    cards = Controller.Animal.LookAll(filter);
+                }
+                catch (Exception ex)
+                {
 
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
-            }
+                    MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
+                }
+            else
+                MessageBox.Show("You don`t have right to do that", "you cant look at yhis list", MessageBoxButtons.OK);            
 
             dataGridView1.Rows.Clear();
 
@@ -226,14 +171,36 @@ namespace PIS_WinForm.Forms
             }
         }
 
+
+        private void filterbutton_Click(object sender, EventArgs e) => SerFilter();
+
         private void OnDoubleClick_LookAtAnimals(object sender, EventArgs e)
+
         {
-            var SelectedRow = dataGridView1.SelectedRows[0];
+            DataGridViewRow SelectedRow = new DataGridViewRow();
+            try
+            {
+                SelectedRow = dataGridView1.SelectedRows[0];
+            }
+            catch
+            {
+                MessageBox.Show("Невозмозно посмотреть карточку, так как ни одна не выбрана");
+                return;
+            }
             var animalCard = Controller.Animal.LookAtCard(SelectedRow);
             var animalCardForm = new AnimalCard(animalCard, this);
             this.Hide();
             animalCardForm.ShowDialog();
             this.Show();
+        }
+        private void button_Edit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Menu_Click_1(object sender, EventArgs e)
+        {
+            Close();
         }
 
     }

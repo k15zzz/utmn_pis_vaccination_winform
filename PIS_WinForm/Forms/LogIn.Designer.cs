@@ -40,6 +40,14 @@
             passwordErrorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // passwordErrorLabel
+            // 
+            passwordErrorLabel.AutoSize = true;
+            passwordErrorLabel.Location = new System.Drawing.Point(12, 293);
+            passwordErrorLabel.Name = "passwordErrorLabel";
+            passwordErrorLabel.Size = new System.Drawing.Size(0, 32);
+            passwordErrorLabel.TabIndex = 7;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -92,14 +100,6 @@
             this.authButton.UseVisualStyleBackColor = true;
             this.authButton.Click += new System.EventHandler(this.authButton_Click);
             // 
-            // passwordErrorLabel
-            // 
-            passwordErrorLabel.AutoSize = true;
-            passwordErrorLabel.Location = new System.Drawing.Point(12, 293);
-            passwordErrorLabel.Name = "passwordErrorLabel";
-            passwordErrorLabel.Size = new System.Drawing.Size(0, 32);
-            passwordErrorLabel.TabIndex = 7;
-            // 
             // loginErrorLabel
             // 
             this.loginErrorLabel.AutoSize = true;
@@ -116,7 +116,7 @@
             this.errorLabel.Size = new System.Drawing.Size(0, 32);
             this.errorLabel.TabIndex = 9;
             // 
-            // LoginForm
+            // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -130,8 +130,8 @@
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.loginTextBox);
             this.Controls.Add(this.label1);
-            this.Name = "LoginForm";
-            this.Text = "LoginForm";
+            this.Name = "LogIn";
+            this.Text = "Авторизация";
             this.ResumeLayout(false);
             this.PerformLayout();
 

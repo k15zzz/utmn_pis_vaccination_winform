@@ -28,10 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ContractCard";
+            SuspendLayout();
+            // 
+            // ContractCard
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(431, 211);
+            Margin = new Padding(2, 1, 2, 1);
+            Name = "ContractCard";
+            Text = "Карточка контакта";
+            ResumeLayout(false);
         }
 
         #endregion
