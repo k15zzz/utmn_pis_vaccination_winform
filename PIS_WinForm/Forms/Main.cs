@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Controller;
+using PIS_WinForm.Forms.Contract;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace PIS_WinForm.Forms
@@ -84,31 +85,75 @@ namespace PIS_WinForm.Forms
 
         private void OnButtonClick_LookAllAnimals(object sender, EventArgs e)
         {
+            var filter = new Dictionary<string, List<string>>()
+            {
+                {
+                    "town_id",
+                    new List<string>() { PermissionGuard.GetTown() }
+                }
+            };
+
             Dictionary<int, Dictionary<string, string>> cards = new Dictionary<int, Dictionary<string, string>>();
+            try
+            {
+                cards = GetCards("Animals", filter, Controller.Animal.LookAll);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             this.Visible = false;
-            try
-            {
-                PermissionGuard.CanLookAll("Animals");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "you cant look at this list", MessageBoxButtons.OK);
-            }
-            var filter = new Dictionary<string, List<string>>() { { "town_id", new List<string>() { PermissionGuard.GetTown() } } };
 
-            try
-            {
-                cards = Controller.Animal.LookAll(filter);
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
-            }
             AnimalListForm _form = new AnimalListForm(cards);
             _form.ShowDialog();
+
             this.Visible = true;
         }
 
+        private void OnButtonClick_LookAllContracts(object sender, EventArgs e)
+        {
+            var filter = new Dictionary<string, List<string>>()
+            {
+                {
+                    "town_id",
+                    new List<string>() { PermissionGuard.GetTown() }
+                }
+            };
+            Dictionary<int, Dictionary<string, string>> cards = new Dictionary<int, Dictionary<string, string>>();
+            try
+            {
+                cards = GetCards("Contracts", filter, Controller.Contract.LookAll);
+            }
+             catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            this.Visible = false;
+
+            ContractListForm _form = new ContractListForm(cards);
+            _form.ShowDialog();
+
+            this.Visible = true;
+        }
+
+        private Dictionary<int, Dictionary<string, string>> GetCards(
+            string reestrName,
+            Dictionary<string, List<string>> filters,
+            Func<Dictionary<string, List<string>>, Dictionary<int, Dictionary<string, string>>> controller)
+        {
+            if (PermissionGuard.CanLookAll(reestrName))
+                try
+                {
+                    return controller(filters);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            else
+                throw new Exception("Ошибка прав доступа");
+        }
     }
 }

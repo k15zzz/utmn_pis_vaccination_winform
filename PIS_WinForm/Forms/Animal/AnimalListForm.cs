@@ -97,20 +97,13 @@ namespace PIS_WinForm.Forms
                 this.Hide();
                 addF.ShowDialog();
                 //
-                
+
                 this.Show();
             }
             else
             {
                 MessageBox.Show("Недостаточно прав", "Ошибка прав доступа", MessageBoxButtons.OK);
             }
-
-
-
-        }
-
-        private void button_View_Click(object sender, EventArgs e)
-        {
         }
 
         private void Delete(object sender, EventArgs e)
@@ -195,8 +188,6 @@ namespace PIS_WinForm.Forms
             this.Hide();
             animalCardForm.ShowDialog();
             this.Show();
-
-
         }
     }
 }
