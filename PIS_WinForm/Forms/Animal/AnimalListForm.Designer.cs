@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RegNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +85,74 @@
             // 
             // id
             // 
+            id.HeaderText = "id";
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Visible = false;
+            // 
+            // RegNum
+            // 
+            RegNum.HeaderText = "Ристриционный номер";
+            RegNum.Name = "RegNum";
+            RegNum.ReadOnly = true;
+            // 
+            // town_id
+            // 
+            town_id.HeaderText = "Город";
+            town_id.Name = "town_id";
+            town_id.ReadOnly = true;
+            town_id.Visible = false;
+            // 
+            // townName
+            // 
+            townName.HeaderText = "Город";
+            townName.Name = "townName";
+            townName.ReadOnly = true;
+            // 
+            // category
+            // 
+            category.HeaderText = "категору";
+            category.Name = "category";
+            category.ReadOnly = true;
+            // 
+            // sex
+            // 
+            sex.HeaderText = "Пол";
+            sex.Name = "sex";
+            sex.ReadOnly = true;
+            // 
+            // burthYear
+            // 
+            burthYear.HeaderText = "День рождения";
+            burthYear.Name = "burthYear";
+            burthYear.ReadOnly = true;
+            // 
+            // e_chipNumber
+            // 
+            e_chipNumber.HeaderText = "Номер э-чипа";
+            e_chipNumber.Name = "e_chipNumber";
+            e_chipNumber.ReadOnly = true;
+            // 
+            // name
+            // 
+            name.HeaderText = "Кличка";
+            name.Name = "name";
+            name.ReadOnly = true;
+            // 
+            // photos
+            // 
+            photos.HeaderText = "Фото";
+            photos.Name = "photos";
+            photos.ReadOnly = true;
+            // 
+            // specMarks
+            // 
+            specMarks.HeaderText = "Особые приметы";
+            specMarks.Name = "specMarks";
+            specMarks.ReadOnly = true;
+            // 
+            // button_Edit
+            // 
             this.id.HeaderText = "id";
             this.id.MinimumWidth = 6;
             this.id.Name = "id";
@@ -115,6 +184,14 @@
             this.townName.Name = "townName";
             this.townName.ReadOnly = true;
             this.townName.Width = 125;
+            button_View.Location = new Point(479, 33);
+            button_View.Margin = new Padding(3, 2, 3, 2);
+            button_View.Name = "button_View";
+            button_View.Size = new Size(202, 32);
+            button_View.TabIndex = 4;
+            button_View.Text = "Посмотреть";
+            button_View.UseVisualStyleBackColor = true;
+            button_View.Click += OnDoubleClick_LookAtContract;
             // 
             // category
             // 

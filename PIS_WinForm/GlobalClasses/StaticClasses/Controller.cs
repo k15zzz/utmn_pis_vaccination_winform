@@ -4,12 +4,14 @@ using PIS_WinForm;
 using PIS_WinForm.GlobalClasses;
 using PIS_WinForm.GlobalClasses.NonStaticClasses;
 using PIS_WinForm.Forms;
-
+using System.Security.Cryptography.X509Certificates;
 
 namespace Controller
 {
     public static class Animal
     {
+        public static Card.Animal LookAtCard(DataGridViewRow data) => Model.Animal.LookAtCard(data);
+
         public static bool Add(Card.Animal animal)
         {
             try

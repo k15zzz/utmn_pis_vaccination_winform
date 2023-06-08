@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PIS_WinForm.Forms.Animal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,12 +47,12 @@ namespace PIS_WinForm.Forms
                 if (!t[2].Contains(cards[card.Key]["sex"])) t[2].Add(cards[card.Key]["sex"]);
             }
 
-            for (var i = 0; i < t[0].Count-1; i+=2)
+            for (var i = 0; i < t[0].Count - 1; i += 2)
             {
                 var stripItem = new ToolStripMenuItem();
                 stripItem.Text = t[0][i].ToString();
                 stripItem.CheckOnClick = true;
-                stripItem.Tag = t[0][i+1].ToString();
+                stripItem.Tag = t[0][i + 1].ToString();
                 Town.DropDownItems.Add(stripItem);
             }
 
@@ -154,7 +155,7 @@ namespace PIS_WinForm.Forms
             {
                 MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
             }
-            
+
             try
             {
                 cards = Controller.Animal.LookAll(filter);
@@ -184,8 +185,18 @@ namespace PIS_WinForm.Forms
                     cards[card.Key]["specMarcks"]
                     );
             }
+        }
 
-            }
+        private void OnDoubleClick_LookAtContract(object sender, EventArgs e)
+        {
+            var SelectedRow = dataGridView1.SelectedRows[0];
+            var animalCard = Controller.Animal.LookAtCard(SelectedRow);
+            var animalCardForm = new AnimalCard(animalCard);
+            this.Hide();
+            animalCardForm.ShowDialog();
+            this.Show();
 
+
+        }
     }
 }
