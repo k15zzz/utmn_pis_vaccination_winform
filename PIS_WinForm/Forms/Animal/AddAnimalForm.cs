@@ -18,11 +18,14 @@ namespace PIS_WinForm.Forms
         private Dictionary<string, string> filter = new Dictionary<string, string>();
         internal Card.Animal? animal;
         private Dictionary<int, Dictionary<string, string>> towns = DBAdapter.GetAll("Tows");
+        private bool isItAdd;
         AnimalListForm formList;
-        public AddAnimalForm(AnimalListForm formList)
+        public AddAnimalForm(AnimalListForm formList, bool isItAdd, string townFromCard="")
         {
             this.formList = formList;
+            this.isItAdd = isItAdd;
             InitializeComponent();
+            
             string townFilter = PermissionGuard.GetTown();
             if (townFilter!= null)
             {
@@ -33,11 +36,13 @@ namespace PIS_WinForm.Forms
             }
             else
             {
-                
                 foreach (var town in towns)
                 {
                     comboBoxTown.Items.Add(town.Value["name"]);
                 }
+                if (!isItAdd)
+                    comboBoxTown.Text = townFromCard;
+
             }
         }
 
@@ -70,7 +75,13 @@ namespace PIS_WinForm.Forms
             }
             if (added)
             {
-                MessageBox.Show("Карточка успешно добавлена", "Добавление", MessageBoxButtons.OK);
+                if (isItAdd)
+                    MessageBox.Show("Карточка успешно добавлена", "Добавление", MessageBoxButtons.OK);
+                else
+                {
+                    MessageBox.Show("Карточка успешно изменена", "Изменение", MessageBoxButtons.OK);
+                    
+                }
                 var id = DBAdapter.NewIdAnimal();
                 formList.dataGridView1.Rows.Add
                     (
