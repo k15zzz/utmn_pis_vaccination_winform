@@ -93,9 +93,11 @@ namespace PIS_WinForm.Forms
 
             if (adding)
             {
-                AddAnimalForm addF = new AddAnimalForm();
+                AddAnimalForm addF = new AddAnimalForm(this);
                 this.Hide();
                 addF.ShowDialog();
+                //
+                
                 this.Show();
             }
             else
@@ -183,7 +185,6 @@ namespace PIS_WinForm.Forms
                     cards[card.Key]["specMarcks"]
                     );
             }
-
         }
 
         private void OnDoubleClick_LookAtContract(object sender, EventArgs e)
