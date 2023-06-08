@@ -66,6 +66,7 @@ namespace PIS_WinForm.Forms.Animal
             buttonEdit.Location = new Point(x, y);
             buttonEdit.Text = "Изменить";
             buttonEdit.Click += OnButtonClick_EditOrganizations;
+
         }
 
         private void AnimalCard_Load(object sender, EventArgs e)
@@ -78,6 +79,7 @@ namespace PIS_WinForm.Forms.Animal
         
         private void OnButtonClick_EditOrganizations(object sender, EventArgs e)
         {
+
             try
             {
                 editing = PermissionGuard.CanEdit("Animals");
@@ -88,28 +90,26 @@ namespace PIS_WinForm.Forms.Animal
             }
             if (editing)
             {
-                string t = "yt ghjikj";
-                foreach (var town in towns)
-                {
-                    if (card.town_id == town.Key.ToString())
-                        t = town.Value["name"];
-                }
-                AddAnimalForm editF = new AddAnimalForm(formList, false, t);
+                AddAnimalForm editF = new AddAnimalForm(formList, false);
+
+                editF.id = card.id;
                 editF.Text = "Edit";
                 editF.label1.Text = "Редактирование карточки животного:";
+                editF.textBoxRegNum.Text = card.regNum;
                 editF.textBoxRegNum.Text = card.regNum;
                 editF.comboBoxCateg.Text = card.category;
                 editF.comboBoxSex.Text = card.sex;
                 editF.numericUpDownYear.Value = Convert.ToInt32(card.burthYear);
                 editF.textBoxChip.Text = card.chipNumber;
-                //editF.comboBoxTown.Text = t; не работает
+                editF.comboBoxTown.Text = card.town_id;
                 editF.textBoxName.Text = card.name;
                 editF.textBoxPhoto.Text = card.photos;
                 editF.textBoxMarcs.Text = card.specMarcks;
+
                 this.Hide();
                 editF.ShowDialog();
-                formList.Delete(sender, e);
                 this.Close();
+
             }
             else
             {

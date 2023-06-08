@@ -4,6 +4,7 @@ namespace Card
 {
     public class Animal
     {
+        internal int id;
         internal string category;
         internal string sex;
         internal string regNum;
@@ -15,6 +16,7 @@ namespace Card
         internal string specMarcks;
         public Animal(Dictionary<string, string> filter)
         {
+            this.id = int.Parse(filter["id"]);
             regNum = filter["regNum"];
             category = filter["category"];
             sex = filter["sex"];
@@ -29,6 +31,7 @@ namespace Card
 
     public class Contract
     {
+        internal int id;
         internal string number;
         internal string startDate;
         internal string endDate;
@@ -36,6 +39,7 @@ namespace Card
         internal string zacazchik_id;
         public Contract(Dictionary<string, string> filter)
         {
+            this.id = int.Parse(filter["id"]);
             number = filter["number"];
             startDate = filter["startDate"];
             endDate = filter["endDate"];
@@ -46,6 +50,7 @@ namespace Card
 
     public class Organization
     {
+        internal int id;
         internal string fullName;
         internal string INN;
         internal string KPP;
@@ -55,6 +60,7 @@ namespace Card
         internal string town_id;
         public Organization(Dictionary<string, string> filter)
         {
+            this.id = int.Parse(filter["id"]);
             fullName = filter["fullName"];
             INN = filter["INN"];
             KPP = filter["KPP"];

@@ -318,10 +318,30 @@ namespace PIS_WinForm
                 }
             }
             return id;
-        } 
+        }
+
+        static public bool EditAnimal(Card.Animal animal)
+        {
+            var id = animal.id;
+            Dictionary<string, string> card = new Dictionary<string, string>()
+            {
+                { "regNum",  animal.regNum }, // {colum, value} 
+                { "town_id",   animal.town_id },
+                { "сategory",  animal.category },
+                { "sex",  animal.sex },
+                { "burthYear",   animal.burthYear },
+                { "e-chipNumber",   animal.chipNumber },
+                { "name", animal.name },
+                { "photos",  animal.photos },
+                { "specMarcks", animal.specMarcks}
+            };
+            _db["Animals"][id]= card;
+            return true;
+        }
+
         static public bool AddAnimal(Card.Animal animal)
         {
-            var id = NewIdAnimal();
+            var id = animal.id;
             Dictionary<string, string> card = new Dictionary<string, string>()
             {
                 { "regNum",  animal.regNum }, // {colum, value} 

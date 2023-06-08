@@ -17,7 +17,6 @@ namespace PIS_WinForm.Forms
 
         private bool adding;
 
-
         public AnimalListForm(Dictionary<int, Dictionary<string, string>> cards)
         {
             List<string>[] t = new[] { new List<string>(), new List<string>(), new List<string>() };
@@ -86,7 +85,6 @@ namespace PIS_WinForm.Forms
                 MessageBox.Show(ex.Message, ex.Message, MessageBoxButtons.OK);
             }
 
-
             if (adding)
             {
                 AddAnimalForm addF = new AddAnimalForm(this,  true);
@@ -98,6 +96,7 @@ namespace PIS_WinForm.Forms
             {
                 MessageBox.Show("Недостаточно прав", "Ошибка прав доступа", MessageBoxButtons.OK);
             }
+            SerFilter();
         }
 
         internal void Delete(object sender, EventArgs e)
@@ -192,10 +191,7 @@ namespace PIS_WinForm.Forms
             this.Hide();
             animalCardForm.ShowDialog();
             this.Show();
-        }
-        private void button_Edit_Click(object sender, EventArgs e)
-        {
-
+            SerFilter();
         }
 
         private void button_Menu_Click_1(object sender, EventArgs e)

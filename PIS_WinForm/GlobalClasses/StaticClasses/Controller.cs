@@ -36,7 +36,17 @@ namespace Controller
             }
         }
 
-        public static void Edit(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
+        public static bool Edit(Card.Animal animal)
+        {
+            try
+            {
+                return Model.Animal.Edit(animal);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public static void Delete(int id)
         {

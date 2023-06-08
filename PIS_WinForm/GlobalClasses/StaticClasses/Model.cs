@@ -15,6 +15,7 @@ namespace Model
         {
             var returanbleValues = new Dictionary<string, string>()
             {
+                { "id", data.Cells[0].Value.ToString() },
                 { "regNum", data.Cells[1].Value.ToString() },
                 { "category", data.Cells[4].Value.ToString() },
                 { "sex", data.Cells[5].Value.ToString() },
@@ -70,6 +71,29 @@ namespace Model
                 throw new Exception("Fill all fields");
             }
         }
+
+        public static bool Edit(Card.Animal animal)
+        {
+            bool adding;
+            try
+            {
+                adding = PermissionGuard.CanEdit("Animals");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            bool allIsNotEmpty = ChechOnEmptyFields(animal);
+            if (allIsNotEmpty)
+            {
+                return DBAdapter.EditAnimal(animal);
+            }
+            else
+            {
+                throw new Exception("Fill all fields");
+            }
+        }
+
         private static List<string> category = new List<string>();
         private static List<string> sex = new List<string>();
         private static bool ChechOnEmptyFields(Card.Animal animal)
@@ -135,6 +159,7 @@ namespace Model
         {
             var returanbleValues = new Dictionary<string, string>()
             {
+                { "id", data.Cells[0].Value.ToString() },
                 { "fullName", data.Cells[1].Value.ToString() },
                 { "INN", data.Cells[2].Value.ToString() },
                 { "KPP", data.Cells[3].Value.ToString() },
@@ -184,6 +209,7 @@ namespace Model
         {
             var returanbleValues = new Dictionary<string, string>()
             {
+                { "id", data.Cells[0].Value.ToString() },
                 { "number", data.Cells[1].Value.ToString() },
                 { "startDate", data.Cells[2].Value.ToString() },
                 { "endDate", data.Cells[3].Value.ToString() },
