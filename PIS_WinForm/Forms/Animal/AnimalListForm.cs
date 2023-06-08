@@ -14,13 +14,13 @@ namespace PIS_WinForm.Forms
 {
     public partial class AnimalListForm : Form
     {
-
+        bool adding;
 
         public AnimalListForm(Dictionary<int, Dictionary<string, string>> cards)
         {
             List<string>[] t = new[] { new List<string>(), new List<string>(), new List<string>() };
             InitializeComponent();
-
+            
             foreach (var card in cards)
             {
                 dataGridView1.Rows.Add
@@ -72,7 +72,7 @@ namespace PIS_WinForm.Forms
             }
         }
 
-        bool adding;
+        
         private void OnButtonClick_AddAnimal(object sender, EventArgs e)
         {
             try
@@ -84,20 +84,12 @@ namespace PIS_WinForm.Forms
                 MessageBox.Show(ex.Message, ex.Message, MessageBoxButtons.OK);
             }
 
-            //запрашиваем город, вернется  null или город. если город - то кидаем
-            //сообщение мол вам доступен этот город (выбран за вас), его же заполняем
-            // в фильтр . Высвечиваем форму, чел заполняет поля. создаем карточку
-            // (точно?). Далее добавляем в контроллер. там проверка как в начале. Тогда контроллер отдает
-            // в модельку, она проверяет пустые пля. кидаем алерт если незаполненны, иначе добавляем в
-            // (?)модель. И потом в бд
 
             if (adding)
             {
-                AddAnimalForm addF = new AddAnimalForm(this);
+                AddAnimalForm addF = new AddAnimalForm(this,  true);
                 this.Hide();
                 addF.ShowDialog();
-                //
-
                 this.Show();
             }
             else
@@ -106,7 +98,7 @@ namespace PIS_WinForm.Forms
             }
         }
 
-        private void Delete(object sender, EventArgs e)
+        internal void Delete(object sender, EventArgs e)
         {
             if (PermissionGuard.CanDelete("Animals"))
             {
@@ -234,19 +226,15 @@ namespace PIS_WinForm.Forms
             }
         }
 
-        private void OnDoubleClick_LookAtContract(object sender, EventArgs e)
+        private void OnDoubleClick_LookAtAnimals(object sender, EventArgs e)
         {
             var SelectedRow = dataGridView1.SelectedRows[0];
             var animalCard = Controller.Animal.LookAtCard(SelectedRow);
-            var animalCardForm = new AnimalCard(animalCard);
+            var animalCardForm = new AnimalCard(animalCard, this);
             this.Hide();
             animalCardForm.ShowDialog();
             this.Show();
         }
 
-        private void button_Edit_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

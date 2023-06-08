@@ -299,8 +299,6 @@
         }
 
         #endregion
-
-        private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
@@ -308,19 +306,20 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private TextBox textBoxName;
-        private TextBox textBoxChip;
-        private TextBox textBoxMarcs;
         private Button buttonSave;
         private Button buttonCancel;
         private Label label9;
-        private ComboBox comboBoxCateg;
-        private NumericUpDown numericUpDownYear;
-        private ComboBox comboBoxSex;
         private Label label10;
         private Label label11;
-        private TextBox textBoxRegNum;
-        private TextBox textBoxPhoto;
-        private ComboBox comboBoxTown;
+        internal Label label1;
+        internal TextBox textBoxName;
+        internal TextBox textBoxChip;
+        internal TextBox textBoxMarcs;
+        internal ComboBox comboBoxCateg;
+        internal NumericUpDown numericUpDownYear;
+        internal ComboBox comboBoxSex;
+        internal TextBox textBoxRegNum;
+        internal TextBox textBoxPhoto;
+        internal ComboBox comboBoxTown;
     }
 }
