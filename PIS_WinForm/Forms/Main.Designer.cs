@@ -28,33 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LookAllAnimals = new Button();
+            LookAllMnimals = new Button();
+            calculateStatisticButton = new Button();
+            finishDateTimePicker = new DateTimePicker();
+            startDateTimePicker = new DateTimePicker();
+            townsCheckedListBox = new CheckedListBox();
             SuspendLayout();
             // 
-            // LookAllAnimals
+            // LookAllMnimals
             // 
-            LookAllAnimals.Location = new Point(12, 12);
-            LookAllAnimals.Name = "LookAllAnimals";
-            LookAllAnimals.Size = new Size(189, 23);
-            LookAllAnimals.TabIndex = 0;
-            LookAllAnimals.Text = "Посмотреть реестр животных";
-            LookAllAnimals.UseVisualStyleBackColor = true;
-            LookAllAnimals.Click += OnButtonClick_LookAllAnimals;
+            LookAllMnimals.Location = new Point(12, 12);
+            LookAllMnimals.Name = "LookAllMnimals";
+            LookAllMnimals.Size = new Size(189, 23);
+            LookAllMnimals.TabIndex = 0;
+            LookAllMnimals.Text = "Посмотреть реестр Животных";
+            LookAllMnimals.UseVisualStyleBackColor = true;
+            LookAllMnimals.Click += OnButtonClick_LookAllAnimals;
+            // 
+            // calculateStatisticButton
+            // 
+            calculateStatisticButton.Location = new Point(713, 103);
+            calculateStatisticButton.Margin = new Padding(2, 1, 2, 1);
+            calculateStatisticButton.Name = "calculateStatisticButton";
+            calculateStatisticButton.Size = new Size(81, 22);
+            calculateStatisticButton.TabIndex = 1;
+            calculateStatisticButton.Text = "Рассчитать";
+            calculateStatisticButton.UseVisualStyleBackColor = true;
+            calculateStatisticButton.Click += calculateStatisticButton_Click;
+            // 
+            // finishDateTimePicker
+            // 
+            finishDateTimePicker.Location = new Point(578, 82);
+            finishDateTimePicker.Margin = new Padding(2, 1, 2, 1);
+            finishDateTimePicker.Name = "finishDateTimePicker";
+            finishDateTimePicker.Size = new Size(217, 23);
+            finishDateTimePicker.TabIndex = 2;
+            // 
+            // startDateTimePicker
+            // 
+            startDateTimePicker.Location = new Point(578, 61);
+            startDateTimePicker.Margin = new Padding(2, 1, 2, 1);
+            startDateTimePicker.Name = "startDateTimePicker";
+            startDateTimePicker.Size = new Size(217, 23);
+            startDateTimePicker.TabIndex = 3;
+            // 
+            // townsCheckedListBox
+            // 
+            townsCheckedListBox.FormattingEnabled = true;
+            townsCheckedListBox.Location = new Point(578, 6);
+            townsCheckedListBox.Margin = new Padding(2, 1, 2, 1);
+            townsCheckedListBox.Name = "townsCheckedListBox";
+            townsCheckedListBox.Size = new Size(218, 40);
+            townsCheckedListBox.TabIndex = 4;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(LookAllAnimals);
+            Controls.Add(townsCheckedListBox);
+            Controls.Add(startDateTimePicker);
+            Controls.Add(finishDateTimePicker);
+            Controls.Add(calculateStatisticButton);
+            Controls.Add(LookAllMnimals);
             Name = "Main";
             Text = "Main";
-            Load += Main_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button LookAllAnimals;
+        private Button LookAllMnimals;
+        private Button calculateStatisticButton;
+        private DateTimePicker finishDateTimePicker;
+        private DateTimePicker startDateTimePicker;
+        private CheckedListBox townsCheckedListBox;
     }
 }
