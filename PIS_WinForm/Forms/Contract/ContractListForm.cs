@@ -68,7 +68,17 @@ namespace PIS_WinForm.Forms.Contract
 
         private void button_View_Click(object sender, EventArgs e)
         {
-            var SelectedRow = dataGridView1.SelectedRows[0];
+            DataGridViewRow SelectedRow = new DataGridViewRow();
+            try
+            {
+                SelectedRow = dataGridView1.SelectedRows[0];
+            }
+            catch
+            {
+                MessageBox.Show("Невозмозно посмотреть карточку, так как ни одна не выбрана");
+                return;
+            }
+
             var contractlCard = Controller.Contract.LookAtCard(SelectedRow);
             var contractCardForm = new ContractCard(contractlCard);
             this.Hide();
@@ -89,8 +99,7 @@ namespace PIS_WinForm.Forms.Contract
             {
                 MessageBox.Show("У вас нет прав на это действие");
             }
-            //TODO: открыть после реализации функции 
-            //SerFilter();
+            SerFilter();
         }
 
         private void button_Add_Click(object sender, EventArgs e)
@@ -103,42 +112,38 @@ namespace PIS_WinForm.Forms.Contract
             Close();
         }
 
-        /*
+        private void filterbutton_Click(object sender, EventArgs e)
+        {
+            SerFilter();
+        }
+
+        
         private void SerFilter()
         {
             Dictionary<string, List<string>> filter = new Dictionary<string, List<string>>();
 
-            filter.Add("town_id", new List<string>());
-            foreach (ToolStripMenuItem item in Town.DropDownItems)
-                if (item.Checked) filter["town_id"].Add(item.Tag.ToString());
+            filter.Add("ispolnitel_id", new List<string>());
+            foreach (ToolStripMenuItem item in Ispolnitel.DropDownItems)
+                if (item.Checked) filter["ispolnitel_id"].Add(item.Tag.ToString());
 
-            filter.Add("сategory", new List<string>());
-            foreach (ToolStripMenuItem item in Categorya.DropDownItems)
-                if (item.Checked) filter["сategory"].Add(item.Text);
-
-            filter.Add("sex", new List<string>());
-            foreach (ToolStripMenuItem item in Sexy.DropDownItems)
-                if (item.Checked) filter["sex"].Add(item.Text);
+            filter.Add("zacazchik_id", new List<string>());
+            foreach (ToolStripMenuItem item in Zakazchic.DropDownItems)
+                if (item.Checked) filter["zacazchik_id"].Add(item.Tag.ToString());
 
             Dictionary<int, Dictionary<string, string>> cards = new Dictionary<int, Dictionary<string, string>>();
-            try
-            {
-                PermissionGuard.CanLookAll("Animals");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
-            }
 
-            try
-            {
-                cards = Controller.Animal.LookAll(filter);
-            }
-            catch (Exception ex)
-            {
+            if (PermissionGuard.CanLookAll("Contracts"))
+                try
+                {
+                    cards = Controller.Contract.LookAll(filter);
+                }
+                catch (Exception ex)
+                {
 
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
-            }
+                    MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
+                }
+            else
+                MessageBox.Show("У вас нет прав на это", "you cant look at yhis list", MessageBoxButtons.OK);
 
             dataGridView1.Rows.Clear();
 
@@ -147,19 +152,16 @@ namespace PIS_WinForm.Forms.Contract
                 dataGridView1.Rows.Add
                     (
                     card.Key,
-                    cards[card.Key]["regNum"],
-                    cards[card.Key]["town_id"],
-                    cards[card.Key]["townName"],
-                    cards[card.Key]["сategory"],
-                    cards[card.Key]["sex"],
-                    cards[card.Key]["burthYear"],
-                    cards[card.Key]["e-chipNumber"],
-                    cards[card.Key]["name"],
-                    cards[card.Key]["photos"],
-                    cards[card.Key]["specMarcks"]
+                    cards[card.Key]["number"],
+                    cards[card.Key]["startDate"],
+                    cards[card.Key]["endDate"],
+                    cards[card.Key]["ispolnitel_id"],
+                    cards[card.Key]["ispolnitelName"],
+                    cards[card.Key]["zacazchik_id"],
+                    cards[card.Key]["zacazchikName"]
                     );
             }
         }
-        */
+        
     }
 }

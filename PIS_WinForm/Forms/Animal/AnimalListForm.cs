@@ -141,24 +141,19 @@ namespace PIS_WinForm.Forms
                 if (item.Checked) filter["sex"].Add(item.Text);
 
             Dictionary<int, Dictionary<string, string>> cards = new Dictionary<int, Dictionary<string, string>>();
-            try
-            {
-                PermissionGuard.CanLookAll("Animals");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
-            }
 
-            try
-            {
-                cards = Controller.Animal.LookAll(filter);
-            }
-            catch (Exception ex)
-            {
+            if (PermissionGuard.CanLookAll("Animals"))
+                try
+                {
+                    cards = Controller.Animal.LookAll(filter);
+                }
+                catch (Exception ex)
+                {
 
-                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
-            }
+                    MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
+                }
+            else
+                MessageBox.Show("You don`t have right to do that", "you cant look at yhis list", MessageBoxButtons.OK);            
 
             dataGridView1.Rows.Clear();
 
@@ -181,14 +176,20 @@ namespace PIS_WinForm.Forms
             }
         }
 
-        private void filterbutton_Click(object sender, EventArgs e)
-        {
-            SerFilter();
-        }
+        private void filterbutton_Click(object sender, EventArgs e) => SerFilter();
 
         private void OnDoubleClick_LookAtContract(object sender, EventArgs e)
         {
-            var SelectedRow = dataGridView1.SelectedRows[0];
+            DataGridViewRow SelectedRow = new DataGridViewRow();
+            try
+            {
+                SelectedRow = dataGridView1.SelectedRows[0];
+            }
+            catch
+            {
+                MessageBox.Show("Невозмозно посмотреть карточку, так как ни одна не выбрана");
+                return;
+            }
             var animalCard = Controller.Animal.LookAtCard(SelectedRow);
             var animalCardForm = new AnimalCard(animalCard);
             this.Hide();

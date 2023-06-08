@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PIS_WinForm.Forms.Animal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,7 +31,7 @@ namespace PIS_WinForm.Forms.Organization
                     cards[card.Key]["type"],
                     cards[card.Key]["UrFace"],
                     cards[card.Key]["town_id"],
-                    cards[card.Key]["townName"],
+                    cards[card.Key]["townName"]
                     );
 
                 if (!t[0].Contains(cards[card.Key]["townName"]))
@@ -61,7 +62,71 @@ namespace PIS_WinForm.Forms.Organization
 
         private void button_View_Click(object sender, EventArgs e)
         {
-
+            DataGridViewRow SelectedRow = new DataGridViewRow();
+            try
+            {
+                SelectedRow = dataGridView1.SelectedRows[0];
+            }
+            catch
+            {
+                MessageBox.Show("Невозмозно посмотреть карточку, так как ни одна не выбрана");
+                return;
+            }
+            var organizationCard = Controller.Organization.LookAtCard(SelectedRow);
+            var organizationCardForm = new OrganizationCard(organizationCard);
+            this.Hide();
+            organizationCardForm.ShowDialog();
+            this.Show();
         }
+
+        private void button_Menu_Click(object sender, EventArgs e) => this.Close();
+
+        private void SerFilter()
+        {
+            Dictionary<string, List<string>> filter = new Dictionary<string, List<string>>();
+
+            filter.Add("town_id", new List<string>());
+            foreach (ToolStripMenuItem item in Town.DropDownItems)
+                if (item.Checked) filter["town_id"].Add(item.Tag.ToString());
+
+            filter.Add("type", new List<string>());
+            foreach (ToolStripMenuItem item in Categorya.DropDownItems)
+                if (item.Checked) filter["type"].Add(item.Text);
+
+            Dictionary<int, Dictionary<string, string>> cards = new Dictionary<int, Dictionary<string, string>>();
+
+            if (PermissionGuard.CanLookAll("Organizations"))
+                try
+                {
+                    cards = Controller.Organization.LookAll(filter);
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
+                }
+            else
+                MessageBox.Show("У вас нет прав на это", "you cant look at yhis list", MessageBoxButtons.OK);
+
+            dataGridView1.Rows.Clear();
+
+            foreach (var card in cards)
+            {
+                dataGridView1.Rows.Add
+                    (
+                    card.Key,
+                    cards[card.Key]["fullName"],
+                    cards[card.Key]["INN"],
+                    cards[card.Key]["KPP"],
+                    cards[card.Key]["aderss"],
+                    cards[card.Key]["type"],
+                    cards[card.Key]["UrFace"],
+                    cards[card.Key]["town_id"],
+                    cards[card.Key]["townName"]
+                    );
+            }
+        }
+
+        private void filterbutton_Click(object sender, EventArgs e) => SerFilter();
     }
 }

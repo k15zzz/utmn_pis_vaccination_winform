@@ -34,11 +34,6 @@
             button_Delete = new Button();
             button_Add = new Button();
             dataGridView1 = new DataGridView();
-            menuStrip1 = new MenuStrip();
-            filter = new ToolStripMenuItem();
-            Town = new ToolStripMenuItem();
-            Categorya = new ToolStripMenuItem();
-            Sexy = new ToolStripMenuItem();
             id = new DataGridViewTextBoxColumn();
             fullName = new DataGridViewTextBoxColumn();
             INN = new DataGridViewTextBoxColumn();
@@ -48,6 +43,10 @@
             UrFace = new DataGridViewTextBoxColumn();
             town_id = new DataGridViewTextBoxColumn();
             townName = new DataGridViewTextBoxColumn();
+            menuStrip1 = new MenuStrip();
+            filter = new ToolStripMenuItem();
+            Town = new ToolStripMenuItem();
+            Categorya = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -61,6 +60,7 @@
             filterbutton.TabIndex = 14;
             filterbutton.Text = "Отфильтровать";
             filterbutton.UseVisualStyleBackColor = true;
+            filterbutton.Click += filterbutton_Click;
             // 
             // button_Menu
             // 
@@ -71,6 +71,7 @@
             button_Menu.TabIndex = 12;
             button_Menu.Text = "На главную";
             button_Menu.UseVisualStyleBackColor = true;
+            button_Menu.Click += button_Menu_Click;
             // 
             // button_View
             // 
@@ -119,41 +120,6 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(463, 320);
             dataGridView1.TabIndex = 8;
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { filter });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
-            menuStrip1.TabIndex = 13;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // filter
-            // 
-            filter.DropDownItems.AddRange(new ToolStripItem[] { Town, Categorya, Sexy });
-            filter.Name = "filter";
-            filter.Size = new Size(60, 20);
-            filter.Text = "фильтр";
-            // 
-            // Town
-            // 
-            Town.Name = "Town";
-            Town.Size = new Size(130, 22);
-            Town.Text = "Город";
-            // 
-            // Categorya
-            // 
-            Categorya.Name = "Categorya";
-            Categorya.Size = new Size(180, 22);
-            Categorya.Text = "Тип организации";
-            // 
-            // Sexy
-            // 
-            Sexy.Name = "Sexy";
-            Sexy.Size = new Size(130, 22);
-            Sexy.Text = "Пол";
             // 
             // id
             // 
@@ -213,6 +179,35 @@
             townName.Name = "townName";
             townName.ReadOnly = true;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { filter });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.TabIndex = 13;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // filter
+            // 
+            filter.DropDownItems.AddRange(new ToolStripItem[] { Town, Categorya });
+            filter.Name = "filter";
+            filter.Size = new Size(60, 20);
+            filter.Text = "фильтр";
+            // 
+            // Town
+            // 
+            Town.Name = "Town";
+            Town.Size = new Size(180, 22);
+            Town.Text = "Город";
+            // 
+            // Categorya
+            // 
+            Categorya.Name = "Categorya";
+            Categorya.Size = new Size(180, 22);
+            Categorya.Text = "Тип организации";
+            // 
             // OrganizationListForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -228,7 +223,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
             Name = "OrganizationListForm";
-            Text = "OrganizationListForm";
+            Text = "Реестр организаций";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -248,7 +243,6 @@
         private ToolStripMenuItem filter;
         private ToolStripMenuItem Town;
         private ToolStripMenuItem Categorya;
-        private ToolStripMenuItem Sexy;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn fullName;
         private DataGridViewTextBoxColumn INN;
