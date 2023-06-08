@@ -153,6 +153,14 @@
             // 
             // button_Edit
             // 
+            button_Edit.Location = new Point(479, 105);
+            button_Edit.Margin = new Padding(3, 2, 3, 2);
+            button_Edit.Name = "button_Edit";
+            button_Edit.Size = new Size(202, 32);
+            button_Edit.TabIndex = 1;
+            button_Edit.Text = "Редактировать";
+            button_Edit.UseVisualStyleBackColor = true;
+            button_Edit.Click += button_Edit_Click;
             this.id.HeaderText = "id";
             this.id.MinimumWidth = 6;
             this.id.Name = "id";
