@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Controller;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace PIS_WinForm.Forms
 {
@@ -83,6 +84,7 @@ namespace PIS_WinForm.Forms
 
         private void OnButtonClick_LookAllAnimals(object sender, EventArgs e)
         {
+            Dictionary<int, Dictionary<string, string>> cards = new Dictionary<int, Dictionary<string, string>>();
             this.Visible = false;
             try
             {
@@ -96,13 +98,15 @@ namespace PIS_WinForm.Forms
 
             try
             {
-                Controller.Animal.LookAll(filter);
+                cards = Controller.Animal.LookAll(filter);
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
             }
+            AnimalListForm _form = new AnimalListForm(cards);
+            _form.ShowDialog();
             this.Visible = true;
         }
     }

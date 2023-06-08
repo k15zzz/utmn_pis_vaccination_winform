@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Card;
 using Controller;
-//using Model;
 
 
 namespace PIS_WinForm.Forms
@@ -17,7 +16,7 @@ namespace PIS_WinForm.Forms
     public partial class AddAnimalForm : Form
     {
         private Dictionary<string, string> filter = new Dictionary<string, string>();
-        internal Card.Animal animal;
+        internal Card.Animal? animal;
         public AddAnimalForm()
         {
             InitializeComponent();

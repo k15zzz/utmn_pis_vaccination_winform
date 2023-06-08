@@ -7,30 +7,69 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace PIS_WinForm.Forms
 {
     public partial class AnimalListForm : Form
     {
+
+
         public AnimalListForm(Dictionary<int, Dictionary<string, string>> cards)
         {
+            List<string>[] t = new[] { new List<string>(), new List<string>(), new List<string>() };
             InitializeComponent();
 
-            for (var i = 1; i <= cards.Count; i++)
+            foreach (var card in cards)
             {
-                dataGridView1.Rows.Add(i, cards[i]["regNum"], cards[i]["town_id"], cards[i]["сategory"], cards[i]["sex"], cards[i]["burthYear"], cards[i]["e-chipNumber"], cards[i]["name"], cards[i]["photos"], cards[i]["specMarcks"]);
+                dataGridView1.Rows.Add
+                    (
+                    card.Key,
+                    cards[card.Key]["regNum"],
+                    cards[card.Key]["town_id"],
+                    cards[card.Key]["townName"],
+                    cards[card.Key]["сategory"],
+                    cards[card.Key]["sex"],
+                    cards[card.Key]["burthYear"],
+                    cards[card.Key]["e-chipNumber"],
+                    cards[card.Key]["name"],
+                    cards[card.Key]["photos"],
+                    cards[card.Key]["specMarcks"]
+                    );
 
-                if (!bngngngnToolStripMenuItem.DropDownItems.Contains(new ToolStripMenuItem(cards[i]["town_id"])))
-                    bngngngnToolStripMenuItem.DropDownItems.Add(cards[i]["town_id"]);
+                if (!t[0].Contains(cards[card.Key]["townName"]))
+                {
+                    t[0].Add(cards[card.Key]["townName"]);
+                    t[0].Add(cards[card.Key]["town_id"]);
+                };
+                if (!t[1].Contains(cards[card.Key]["сategory"])) t[1].Add(cards[card.Key]["сategory"]);
+                if (!t[2].Contains(cards[card.Key]["sex"])) t[2].Add(cards[card.Key]["sex"]);
+            }
 
-                if (!категорияToolStripMenuItem.DropDownItems.ContainsKey(cards[i]["сategory"]))
-                    категорияToolStripMenuItem.DropDownItems.Add(cards[i]["сategory"]);
+            for (var i = 0; i < t[0].Count-1; i+=2)
+            {
+                var stripItem = new ToolStripMenuItem();
+                stripItem.Text = t[0][i].ToString();
+                stripItem.CheckOnClick = true;
+                stripItem.Tag = t[0][i+1].ToString();
+                Town.DropDownItems.Add(stripItem);
+            }
 
-                if (!полToolStripMenuItem.DropDownItems.ContainsKey(cards[i]["sex"]))
-                    полToolStripMenuItem.DropDownItems.Add(cards[i]["sex"]);
+            foreach (var tone in t[1])
+            {
+                var stripItem = new ToolStripMenuItem();
+                stripItem.Text = tone.ToString();
+                stripItem.CheckOnClick = true;
+                Categorya.DropDownItems.Add(stripItem);
+            }
+            foreach (var tone in t[2])
+            {
+                var stripItem = new ToolStripMenuItem();
+                stripItem.Text = tone.ToString();
+                stripItem.CheckOnClick = true;
+                Sexy.DropDownItems.Add(stripItem);
             }
         }
-
 
         bool adding;
         private void OnButtonClick_AddAnimal(object sender, EventArgs e)
@@ -43,7 +82,6 @@ namespace PIS_WinForm.Forms
             {
                 MessageBox.Show(ex.Message, ex.Message, MessageBoxButtons.OK);
             }
-
 
             //запрашиваем город, вернется  null или город. если город - то кидаем
             //сообщение мол вам доступен этот город (выбран за вас), его же заполняем
@@ -74,7 +112,7 @@ namespace PIS_WinForm.Forms
 
         private void Delete(object sender, EventArgs e)
         {
-            if (PermissionGuard.CanDelete("Animal"))
+            if (PermissionGuard.CanDelete("Animals"))
             {
                 DataGridViewRow row = dataGridView1.SelectedRows[0];
                 int id = (int)dataGridView1.SelectedCells[0].Value;
@@ -86,5 +124,65 @@ namespace PIS_WinForm.Forms
                 MessageBox.Show("У вас нет прав на это действие");
             }
         }
+
+        private void button_Menu_Click(object sender, EventArgs e) => this.Close();
+
+        private void filterbutton_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, List<string>> filter = new Dictionary<string, List<string>>();
+
+            filter.Add("town_id", new List<string>());
+            foreach (ToolStripMenuItem item in Town.DropDownItems)
+                if (item.Checked) filter["town_id"].Add(item.Tag.ToString());
+
+            filter.Add("сategory", new List<string>());
+            foreach (ToolStripMenuItem item in Categorya.DropDownItems)
+                if (item.Checked) filter["сategory"].Add(item.Text);
+
+            filter.Add("sex", new List<string>());
+            foreach (ToolStripMenuItem item in Sexy.DropDownItems)
+                if (item.Checked) filter["sex"].Add(item.Text);
+
+            Dictionary<int, Dictionary<string, string>> cards = new Dictionary<int, Dictionary<string, string>>();
+            try
+            {
+                PermissionGuard.CanLookAll("Animals");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
+            }
+            
+            try
+            {
+                cards = Controller.Animal.LookAll(filter);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
+            }
+
+            dataGridView1.Rows.Clear();
+
+            foreach (var card in cards)
+            {
+                dataGridView1.Rows.Add
+                    (
+                    card.Key,
+                    cards[card.Key]["regNum"],
+                    cards[card.Key]["town_id"],
+                    cards[card.Key]["townName"],
+                    cards[card.Key]["сategory"],
+                    cards[card.Key]["sex"],
+                    cards[card.Key]["burthYear"],
+                    cards[card.Key]["e-chipNumber"],
+                    cards[card.Key]["name"],
+                    cards[card.Key]["photos"],
+                    cards[card.Key]["specMarcks"]
+                    );
+            }
+
+            }
     }
 }
