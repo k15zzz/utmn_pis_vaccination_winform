@@ -28,77 +28,79 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LookAllMnimals = new Button();
-            calculateStatisticButton = new Button();
-            finishDateTimePicker = new DateTimePicker();
-            startDateTimePicker = new DateTimePicker();
-            townsCheckedListBox = new CheckedListBox();
-            SuspendLayout();
+            this.LookAllAnimals = new System.Windows.Forms.Button();
+            this.calculateStatisticButton = new System.Windows.Forms.Button();
+            this.finishDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.townsCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.SuspendLayout();
             // 
-            // LookAllMnimals
+            // LookAllAnimals
             // 
-            LookAllMnimals.Location = new Point(12, 12);
-            LookAllMnimals.Name = "LookAllMnimals";
-            LookAllMnimals.Size = new Size(189, 23);
-            LookAllMnimals.TabIndex = 0;
-            LookAllMnimals.Text = "Посмотреть реестр Животных";
-            LookAllMnimals.UseVisualStyleBackColor = true;
-            LookAllMnimals.Click += OnButtonClick_LookAllAnimals;
+            this.LookAllAnimals.Location = new System.Drawing.Point(14, 16);
+            this.LookAllAnimals.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.LookAllAnimals.Name = "LookAllAnimals";
+            this.LookAllAnimals.Size = new System.Drawing.Size(261, 56);
+            this.LookAllAnimals.TabIndex = 0;
+            this.LookAllAnimals.Text = "Посмотреть реестр животных";
+            this.LookAllAnimals.UseVisualStyleBackColor = true;
+            this.LookAllAnimals.Click += new System.EventHandler(this.OnButtonClick_LookAllAnimals);
             // 
             // calculateStatisticButton
             // 
-            calculateStatisticButton.Location = new Point(713, 103);
-            calculateStatisticButton.Margin = new Padding(2, 1, 2, 1);
-            calculateStatisticButton.Name = "calculateStatisticButton";
-            calculateStatisticButton.Size = new Size(81, 22);
-            calculateStatisticButton.TabIndex = 1;
-            calculateStatisticButton.Text = "Рассчитать";
-            calculateStatisticButton.UseVisualStyleBackColor = true;
-            calculateStatisticButton.Click += calculateStatisticButton_Click;
+            this.calculateStatisticButton.Location = new System.Drawing.Point(815, 137);
+            this.calculateStatisticButton.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.calculateStatisticButton.Name = "calculateStatisticButton";
+            this.calculateStatisticButton.Size = new System.Drawing.Size(93, 29);
+            this.calculateStatisticButton.TabIndex = 1;
+            this.calculateStatisticButton.Text = "Рассчитать";
+            this.calculateStatisticButton.UseVisualStyleBackColor = true;
             // 
             // finishDateTimePicker
             // 
-            finishDateTimePicker.Location = new Point(578, 82);
-            finishDateTimePicker.Margin = new Padding(2, 1, 2, 1);
-            finishDateTimePicker.Name = "finishDateTimePicker";
-            finishDateTimePicker.Size = new Size(217, 23);
-            finishDateTimePicker.TabIndex = 2;
+            this.finishDateTimePicker.Location = new System.Drawing.Point(661, 109);
+            this.finishDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.finishDateTimePicker.Name = "finishDateTimePicker";
+            this.finishDateTimePicker.Size = new System.Drawing.Size(247, 27);
+            this.finishDateTimePicker.TabIndex = 2;
             // 
             // startDateTimePicker
             // 
-            startDateTimePicker.Location = new Point(578, 61);
-            startDateTimePicker.Margin = new Padding(2, 1, 2, 1);
-            startDateTimePicker.Name = "startDateTimePicker";
-            startDateTimePicker.Size = new Size(217, 23);
-            startDateTimePicker.TabIndex = 3;
+            this.startDateTimePicker.Location = new System.Drawing.Point(661, 81);
+            this.startDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.startDateTimePicker.Name = "startDateTimePicker";
+            this.startDateTimePicker.Size = new System.Drawing.Size(247, 27);
+            this.startDateTimePicker.TabIndex = 3;
             // 
             // townsCheckedListBox
             // 
-            townsCheckedListBox.FormattingEnabled = true;
-            townsCheckedListBox.Location = new Point(578, 6);
-            townsCheckedListBox.Margin = new Padding(2, 1, 2, 1);
-            townsCheckedListBox.Name = "townsCheckedListBox";
-            townsCheckedListBox.Size = new Size(218, 40);
-            townsCheckedListBox.TabIndex = 4;
+            this.townsCheckedListBox.FormattingEnabled = true;
+            this.townsCheckedListBox.Location = new System.Drawing.Point(661, 8);
+            this.townsCheckedListBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.townsCheckedListBox.Name = "townsCheckedListBox";
+            this.townsCheckedListBox.Size = new System.Drawing.Size(249, 48);
+            this.townsCheckedListBox.TabIndex = 4;
             // 
             // Main
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(townsCheckedListBox);
-            Controls.Add(startDateTimePicker);
-            Controls.Add(finishDateTimePicker);
-            Controls.Add(calculateStatisticButton);
-            Controls.Add(LookAllMnimals);
-            Name = "Main";
-            Text = "Main";
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.townsCheckedListBox);
+            this.Controls.Add(this.startDateTimePicker);
+            this.Controls.Add(this.finishDateTimePicker);
+            this.Controls.Add(this.calculateStatisticButton);
+            this.Controls.Add(this.LookAllAnimals);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "Main";
+            this.Text = "Main";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
 
-        private Button LookAllMnimals;
+        private Button LookAllAnimals;
         private Button calculateStatisticButton;
         private DateTimePicker finishDateTimePicker;
         private DateTimePicker startDateTimePicker;

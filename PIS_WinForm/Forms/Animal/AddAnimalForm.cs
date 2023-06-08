@@ -17,34 +17,78 @@ namespace PIS_WinForm.Forms
     {
         private Dictionary<string, string> filter = new Dictionary<string, string>();
         internal Card.Animal? animal;
-        public AddAnimalForm()
+        private Dictionary<int, Dictionary<string, string>> towns = DBAdapter.GetAll("Tows");
+        AnimalListForm formList;
+        public AddAnimalForm(AnimalListForm formList)
         {
+            this.formList = formList;
             InitializeComponent();
             string townFilter = PermissionGuard.GetTown();
             if (townFilter!= null)
             {
                 MessageBox.Show("Для вас выбран город");
                 filter.Add("town", townFilter);
-                textBoxTown.Text = townFilter;
-                textBoxTown.Enabled = false; // запрещаем что-либо вводить
+                comboBoxTown.Text = townFilter;
+                comboBoxTown.Enabled = false; // запрещаем что-либо вводить
+            }
+            else
+            {
+                
+                foreach (var town in towns)
+                {
+                    comboBoxTown.Items.Add(town.Value["name"]);
+                }
             }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            filter.Add("category", comboBox1.DisplayMember.ToString());
-            filter.Add("gender", comboBox2.DisplayMember.ToString());
-            filter.Add("yearBirth", numericUpDown1.Value.ToString());
-            filter.Add("town", textBoxTown.Text);
-            filter.Add("name", textBox5.Text);
-            filter.Add("chip", textBox6.Text);
-            filter.Add("signs", textBox7.Text);
-            //добавить фото - путь к фотке
+            filter.Add("regNum", textBoxRegNum.Text);
+            foreach(var town in towns)
+            {
+                if (comboBoxTown.Text==town.Value["name"])
+                    filter.Add("town_id", town.Key.ToString());
+            }
+            filter.Add("category", comboBoxCateg.Text);
+            filter.Add("sex", comboBoxSex.Text);
+            filter.Add("burthYear", numericUpDownYear.Value.ToString()); 
+            filter.Add("e-chipNumber", textBoxChip.Text);
+            filter.Add("name", textBoxName.Text);
+            filter.Add("photos", textBoxPhoto.Text);
+            filter.Add("specMarcks", textBoxMarcs.Text);
 
-            
-
+            bool added=false;
             animal = new Card.Animal(filter);
-           // Controller.Animal.Add(animal);
+            try 
+            {
+                added = Controller.Animal.Add(animal);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.Message, MessageBoxButtons.OK);
+                filter = new Dictionary<string, string>();
+            }
+            if (added)
+            {
+                MessageBox.Show("Карточка успешно добавлена", "Добавление", MessageBoxButtons.OK);
+                var id = DBAdapter.NewIdAnimal();
+                formList.dataGridView1.Rows.Add
+                    (
+                    id-1,
+                    animal.regNum,
+                    animal.town_id,
+                    comboBoxTown.Text,
+                    animal.category,
+                    animal.sex,
+                    animal.burthYear,
+                    animal.chipNumber,
+                    animal.name,
+                    animal.photos,
+                    animal.specMarcks
+                    );
+                this.Close();
+            }
         }
+
     }
 }

@@ -36,17 +36,21 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBoxTown = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxChip = new System.Windows.Forms.TextBox();
+            this.textBoxMarcs = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.comboBoxCateg = new System.Windows.Forms.ComboBox();
+            this.numericUpDownYear = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxSex = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxRegNum = new System.Windows.Forms.TextBox();
+            this.textBoxPhoto = new System.Windows.Forms.TextBox();
+            this.comboBoxTown = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -62,7 +66,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 121);
+            this.label2.Location = new System.Drawing.Point(36, 152);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(164, 20);
             this.label2.TabIndex = 1;
@@ -71,7 +75,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 180);
+            this.label3.Location = new System.Drawing.Point(80, 198);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 20);
             this.label3.TabIndex = 2;
@@ -80,7 +84,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(65, 246);
+            this.label4.Location = new System.Drawing.Point(89, 241);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(111, 20);
             this.label4.TabIndex = 3;
@@ -89,7 +93,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(34, 322);
+            this.label5.Location = new System.Drawing.Point(58, 382);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(142, 20);
             this.label5.TabIndex = 4;
@@ -98,7 +102,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(397, 121);
+            this.label6.Location = new System.Drawing.Point(395, 106);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(141, 20);
             this.label6.TabIndex = 5;
@@ -107,7 +111,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(340, 180);
+            this.label7.Location = new System.Drawing.Point(2, 287);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(198, 20);
             this.label7.TabIndex = 6;
@@ -116,39 +120,32 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(404, 246);
+            this.label8.Location = new System.Drawing.Point(402, 198);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(134, 20);
             this.label8.TabIndex = 7;
             this.label8.Text = "Особые приметы:";
             // 
-            // textBoxTown
+            // textBoxName
             // 
-            this.textBoxTown.Location = new System.Drawing.Point(182, 322);
-            this.textBoxTown.Name = "textBoxTown";
-            this.textBoxTown.Size = new System.Drawing.Size(125, 27);
-            this.textBoxTown.TabIndex = 11;
+            this.textBoxName.Location = new System.Drawing.Point(542, 103);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(223, 27);
+            this.textBoxName.TabIndex = 12;
             // 
-            // textBox5
+            // textBoxChip
             // 
-            this.textBox5.Location = new System.Drawing.Point(544, 118);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(125, 27);
-            this.textBox5.TabIndex = 12;
+            this.textBoxChip.Location = new System.Drawing.Point(204, 284);
+            this.textBoxChip.Name = "textBoxChip";
+            this.textBoxChip.Size = new System.Drawing.Size(151, 27);
+            this.textBoxChip.TabIndex = 13;
             // 
-            // textBox6
+            // textBoxMarcs
             // 
-            this.textBox6.Location = new System.Drawing.Point(544, 177);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(125, 27);
-            this.textBox6.TabIndex = 13;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(544, 239);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(125, 27);
-            this.textBox7.TabIndex = 14;
+            this.textBoxMarcs.Location = new System.Drawing.Point(542, 195);
+            this.textBoxMarcs.Name = "textBoxMarcs";
+            this.textBoxMarcs.Size = new System.Drawing.Size(223, 27);
+            this.textBoxMarcs.TabIndex = 14;
             // 
             // buttonSave
             // 
@@ -179,64 +176,112 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "Заполните, пожалуйста, все поля";
             // 
-            // comboBox1
+            // comboBoxCateg
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Собаки"});
-            this.comboBox1.Location = new System.Drawing.Point(182, 118);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 28);
-            this.comboBox1.TabIndex = 18;
+            this.comboBoxCateg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCateg.FormattingEnabled = true;
+            this.comboBoxCateg.Items.AddRange(new object[] {
+            "Собака",
+            "Кошка"});
+            this.comboBoxCateg.Location = new System.Drawing.Point(204, 149);
+            this.comboBoxCateg.Name = "comboBoxCateg";
+            this.comboBoxCateg.Size = new System.Drawing.Size(151, 28);
+            this.comboBoxCateg.TabIndex = 18;
             // 
-            // numericUpDown1
+            // numericUpDownYear
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(183, 244);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numericUpDownYear.Location = new System.Drawing.Point(204, 239);
+            this.numericUpDownYear.Maximum = new decimal(new int[] {
             2023,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.numericUpDownYear.Minimum = new decimal(new int[] {
             1990,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(150, 27);
-            this.numericUpDown1.TabIndex = 19;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numericUpDownYear.Name = "numericUpDownYear";
+            this.numericUpDownYear.Size = new System.Drawing.Size(150, 27);
+            this.numericUpDownYear.TabIndex = 19;
+            this.numericUpDownYear.Value = new decimal(new int[] {
             2010,
             0,
             0,
             0});
             // 
-            // comboBox2
+            // comboBoxSex
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Ж",
-            "М"});
-            this.comboBox2.Location = new System.Drawing.Point(183, 176);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(151, 28);
-            this.comboBox2.TabIndex = 20;
+            this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSex.FormattingEnabled = true;
+            this.comboBoxSex.Items.AddRange(new object[] {
+            "жен.",
+            "муж."});
+            this.comboBoxSex.Location = new System.Drawing.Point(204, 195);
+            this.comboBoxSex.Name = "comboBoxSex";
+            this.comboBoxSex.Size = new System.Drawing.Size(151, 28);
+            this.comboBoxSex.TabIndex = 20;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 106);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(188, 20);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Регистрационный номер:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(489, 152);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(47, 20);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Фото:";
+            // 
+            // textBoxRegNum
+            // 
+            this.textBoxRegNum.Location = new System.Drawing.Point(204, 103);
+            this.textBoxRegNum.Name = "textBoxRegNum";
+            this.textBoxRegNum.Size = new System.Drawing.Size(151, 27);
+            this.textBoxRegNum.TabIndex = 23;
+            // 
+            // textBoxPhoto
+            // 
+            this.textBoxPhoto.Location = new System.Drawing.Point(542, 149);
+            this.textBoxPhoto.Name = "textBoxPhoto";
+            this.textBoxPhoto.Size = new System.Drawing.Size(223, 27);
+            this.textBoxPhoto.TabIndex = 24;
+            // 
+            // comboBoxTown
+            // 
+            this.comboBoxTown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTown.FormattingEnabled = true;
+            this.comboBoxTown.Location = new System.Drawing.Point(203, 379);
+            this.comboBoxTown.Name = "comboBoxTown";
+            this.comboBoxTown.Size = new System.Drawing.Size(151, 28);
+            this.comboBoxTown.TabIndex = 25;
             // 
             // AddAnimalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxTown);
+            this.Controls.Add(this.textBoxPhoto);
+            this.Controls.Add(this.textBoxRegNum);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.comboBoxSex);
+            this.Controls.Add(this.numericUpDownYear);
+            this.Controls.Add(this.comboBoxCateg);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBoxTown);
+            this.Controls.Add(this.textBoxMarcs);
+            this.Controls.Add(this.textBoxChip);
+            this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -247,7 +292,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddAnimalForm";
             this.Text = "Add";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYear)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,15 +308,19 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private TextBox textBoxTown;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
+        private TextBox textBoxName;
+        private TextBox textBoxChip;
+        private TextBox textBoxMarcs;
         private Button buttonSave;
         private Button buttonCancel;
         private Label label9;
-        private ComboBox comboBox1;
-        private NumericUpDown numericUpDown1;
-        private ComboBox comboBox2;
+        private ComboBox comboBoxCateg;
+        private NumericUpDown numericUpDownYear;
+        private ComboBox comboBoxSex;
+        private Label label10;
+        private Label label11;
+        private TextBox textBoxRegNum;
+        private TextBox textBoxPhoto;
+        private ComboBox comboBoxTown;
     }
 }

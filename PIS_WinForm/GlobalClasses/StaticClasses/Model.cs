@@ -51,11 +51,25 @@ namespace Model
                 throw new Exception("Fill all fields");
             }
         }
-        private static List<string> category = new List<string>() { "Кошка", "Собака" };
-        private static List<string> sex = new List<string>() { "муж", "жен" };
-
+        private static List<string> category = new List<string>();
+        private static List<string> sex = new List<string>();
         private static bool ChechOnEmptyFields(Card.Animal animal)
         {
+            var animals = DBAdapter.GetAll("Animals");
+            foreach (var item in animals)
+            {
+                if(!category.Contains(item.Value["сategory"]))
+                {
+                    category.Add(item.Value["сategory"]);
+                }
+            }
+            foreach (var item in animals)
+            {
+                if (!sex.Contains(item.Value["sex"]))
+                {
+                    sex.Add(item.Value["sex"]);
+                }
+            }
             bool allNotEmpty = false;
             foreach (string categ in category)
             {
