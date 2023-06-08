@@ -40,7 +40,23 @@ namespace Controller
 
         public static void Delete(int id)
         {
-            DBAdapter.Delete(id, "Animals");
+            
+            if (PermissionGuard.CanDelete("Animals"))
+            {
+                var dict = DBAdapter.GetAll("Animals");
+                if (dict.ContainsKey(id))
+                {
+                    Model.Animal.Delete(id);
+                }
+                else
+                {
+                    MessageBox.Show("Такого животного не существует в реестре");
+                }
+            }
+            else
+            {
+                MessageBox.Show("У вас нет прав на это действие");
+            }
         }
 
         private static bool ChechOnEmptyFields() => throw new NotImplementedException();
@@ -56,7 +72,23 @@ namespace Controller
 
         public static void Delete(int id)
         {
-            DBAdapter.Delete(id, "Contracts");
+
+            if (PermissionGuard.CanDelete("Contracts"))
+            {
+                var dict = DBAdapter.GetAll("Contracts");
+                if (dict.ContainsKey(id))
+                {
+                    Model.Contracts.Delete(id);
+                }
+                else
+                {
+                    MessageBox.Show("Такого контракта не существует в реестре");
+                }
+            }
+            else
+            {
+                MessageBox.Show("У вас нет прав на это действие");
+            }
         }
         }
         
@@ -80,7 +112,23 @@ namespace Controller
 
         public static void Delete(int id)
         {
-            DBAdapter.Delete(id, "Organizations");
+            if (PermissionGuard.CanDelete("Organizations"))
+            {
+                var dict = DBAdapter.GetAll("Organizations");
+                if (dict.ContainsKey(id))
+                {
+                    Model.Organizations.Delete(id);
+                }
+                else
+                {
+                    MessageBox.Show("Такой организации не существует в реестре");
+                }
+            }
+            else
+            {
+                MessageBox.Show("У вас нет прав на это действие");
+            }
+        
         }
 
         private static bool ChechOnEmptyFields() => throw new NotImplementedException();
