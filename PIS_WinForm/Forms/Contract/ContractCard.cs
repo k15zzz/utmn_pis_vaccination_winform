@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PIS_WinForm.Forms.Animal
+namespace PIS_WinForm.Forms.Contract
 {
-    public partial class AnimalCard : Form
+    public partial class ContractCard : Form
     {
-        public AnimalCard(Card.Animal card)
+        public ContractCard(Card.Contract card)
         {
             InitializeComponent();
 
@@ -21,15 +21,11 @@ namespace PIS_WinForm.Forms.Animal
 
             var atributs = new Dictionary<string, string>()
             {
-                { "Категория", card.category },
-                { "Пол", card.sex },
-                { "Регистационнвый номер", card.regNum },
-                { "Год рождения", card.burthYear },
-                { "Город", card.town_id },
-                { "Имя", card.name },
-                { "Номер чипа", card.chipNumber },
-                { "Фото", card.photos },
-                { "Специальные приметы", card.specMarcks }
+                { "Номер", card.number },
+                { "Дата заключения", card.startDate },
+                { "Дата действия", card.endDate },
+                { "Исполнитель", card.ispolnitel_id },
+                { "Заказчик", card.zacazchik_id },
             };
 
             foreach (var atribut in atributs)

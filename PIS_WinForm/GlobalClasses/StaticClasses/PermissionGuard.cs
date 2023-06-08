@@ -213,7 +213,7 @@ namespace PIS_WinForm
 
         private static bool GetPermissionAction(string nameReestr) => GetPermission(nameReestr) == "Введение";
 
-        private static bool GetPermissionVisable(string nameReestr) => GetPermission(nameReestr) == "Просмотр";
+        private static bool GetPermissionVisable(string nameReestr) => GetPermission(nameReestr) == "Просмотр" || GetPermission(nameReestr) == "Введение";
 
         private static string GetPermission(string nameReestr) => _permissions[_group][nameReestr];
     }

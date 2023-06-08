@@ -35,7 +35,7 @@ namespace PIS_WinForm.Forms
 
         private void Yes(object sender, EventArgs e)
         {
-            Model.Organizations.Delete(id);
+            Controller.Organization.Delete(id);
             MessageBox.Show("Организация успешно удалена");
             this.Close();
         }

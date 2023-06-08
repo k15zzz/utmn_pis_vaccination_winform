@@ -44,7 +44,7 @@ namespace PIS_WinForm.Forms
 
         private void Ok(object sender, EventArgs e)
         {
-           // Animal.Delete(id);
+            Controller.Animal.Delete(id);
             MessageBox.Show("Животное успешно удалено");
             this.Close();
         }
