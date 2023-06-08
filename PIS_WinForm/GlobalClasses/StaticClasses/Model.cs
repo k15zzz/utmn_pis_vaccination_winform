@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http.Headers;
 using PIS_WinForm;
 using PIS_WinForm.GlobalClasses.NonStaticClasses;
@@ -9,6 +10,23 @@ namespace Model
 {
     public static class Animal
     {
+        public static Card.Animal LookAtCard(DataGridViewRow data)
+        {
+            var returanbleValues = new Dictionary<string, string>()
+            {
+                { "regNum", data.Cells[1].Value.ToString() },
+                { "category", data.Cells[4].Value.ToString() },
+                { "gender", data.Cells[5].Value.ToString() },
+                { "yearBirth", data.Cells[6].Value.ToString() },
+                { "town", data.Cells[3].Value.ToString() },
+                { "name", data.Cells[8].Value.ToString() },
+                { "chip", data.Cells[7].Value.ToString() },
+                { "signs", data.Cells[10].Value.ToString() },
+                { "photos", data.Cells[9].Value.ToString() }
+            };
+            return new Card.Animal(returanbleValues);
+        }
+
         private static readonly string _tableName = "Animals";
         public static Dictionary<int, Dictionary<string, string>> LookAll(Dictionary<string, List<string>> filter)
         {
