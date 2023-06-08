@@ -71,15 +71,19 @@
             this.name,
             this.photos,
             this.specMarks});
+
             this.dataGridView1.Location = new System.Drawing.Point(22, 70);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+
             this.dataGridView1.Size = new System.Drawing.Size(860, 683);
+
             this.dataGridView1.TabIndex = 0;
             // 
             // id
@@ -175,10 +179,12 @@
             // button_Add
             // 
 
+
             this.button_Add.Location = new System.Drawing.Point(890, 147);
             this.button_Add.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button_Add.Name = "button_Add";
             this.button_Add.Size = new System.Drawing.Size(375, 68);
+
             this.button_Add.TabIndex = 2;
             this.button_Add.Text = "Добавить";
             this.button_Add.UseVisualStyleBackColor = true;
@@ -186,14 +192,17 @@
             // 
             // button_Delete
             // 
+
             this.button_Delete.Location = new System.Drawing.Point(890, 224);
             this.button_Delete.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(375, 68);
+
             this.button_Delete.TabIndex = 3;
             this.button_Delete.Text = "Удалить";
             this.button_Delete.UseVisualStyleBackColor = true;
             this.button_Delete.Click += new System.EventHandler(this.Delete);
+
 
             // 
             // button_View
@@ -205,7 +214,7 @@
             this.button_View.TabIndex = 4;
             this.button_View.Text = "Посмотреть";
             this.button_View.UseVisualStyleBackColor = true;
-            this.button_View.Click += new System.EventHandler(this.OnDoubleClick_LookAtContract);
+            this.button_View.Click += new System.EventHandler(this.OnDoubleClick_LookAtAnimals);
             // 
             // button_Menu
             // 
@@ -217,6 +226,7 @@
             this.button_Menu.Text = "На главную";
             this.button_Menu.UseVisualStyleBackColor = true;
             this.button_Menu.Click += new System.EventHandler(this.button_Menu_Click_1);
+
             // 
             // menuStrip1
             // 
@@ -225,8 +235,10 @@
             this.filter});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(11, 4, 0, 4);
             this.menuStrip1.Size = new System.Drawing.Size(1291, 44);
+
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -237,29 +249,38 @@
             this.Categorya,
             this.Sexy});
             this.filter.Name = "filter";
+
             this.filter.Size = new System.Drawing.Size(114, 36);
             this.filter.Text = "Фильтр";
+
             // 
             // Town
             // 
             this.Town.Name = "Town";
+
             this.Town.Size = new System.Drawing.Size(359, 44);
+
             this.Town.Text = "Город";
             // 
             // Categorya
             // 
             this.Categorya.Name = "Categorya";
+
             this.Categorya.Size = new System.Drawing.Size(359, 44);
+
             this.Categorya.Text = "Категория";
             // 
             // Sexy
             // 
             this.Sexy.Name = "Sexy";
+
             this.Sexy.Size = new System.Drawing.Size(359, 44);
+
             this.Sexy.Text = "Пол";
             // 
             // filterbutton
             // 
+
             this.filterbutton.Location = new System.Drawing.Point(890, 301);
             this.filterbutton.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.filterbutton.Name = "filterbutton";
@@ -274,6 +295,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1291, 777);
+
             this.Controls.Add(this.filterbutton);
             this.Controls.Add(this.button_Menu);
             this.Controls.Add(this.button_View);
@@ -282,9 +304,11 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.Name = "AnimalListForm";
             this.Text = "Реестр животных";
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

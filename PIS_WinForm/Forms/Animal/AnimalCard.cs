@@ -12,10 +12,15 @@ namespace PIS_WinForm.Forms.Animal
 {
     public partial class AnimalCard : Form
     {
-        public AnimalCard(Card.Animal card)
+        AnimalListForm formList;
+        Card.Animal card;
+        private Dictionary<int, Dictionary<string, string>> towns = DBAdapter.GetAll("Tows");
+        private bool editing;
+        public AnimalCard(Card.Animal card, AnimalListForm formList)
         {
             InitializeComponent();
-
+            this.formList = formList;
+            this.card = card;
             var x = 12;
             var y = 12;
 
@@ -70,7 +75,46 @@ namespace PIS_WinForm.Forms.Animal
 
         private void Close(object sender, EventArgs e) => this.Close();
 
+        
         private void OnButtonClick_EditOrganizations(object sender, EventArgs e)
-            => throw new NotImplementedException();
+        {
+            try
+            {
+                editing = PermissionGuard.CanEdit("Animals");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.Message, MessageBoxButtons.OK);
+            }
+            if (editing)
+            {
+                string t = "yt ghjikj";
+                foreach (var town in towns)
+                {
+                    if (card.town_id == town.Key.ToString())
+                        t = town.Value["name"];
+                }
+                AddAnimalForm editF = new AddAnimalForm(formList, false, t);
+                editF.Text = "Edit";
+                editF.label1.Text = "Редактирование карточки животного:";
+                editF.textBoxRegNum.Text = card.regNum;
+                editF.comboBoxCateg.Text = card.category;
+                editF.comboBoxSex.Text = card.sex;
+                editF.numericUpDownYear.Value = Convert.ToInt32(card.burthYear);
+                editF.textBoxChip.Text = card.chipNumber;
+                //editF.comboBoxTown.Text = t; не работает
+                editF.textBoxName.Text = card.name;
+                editF.textBoxPhoto.Text = card.photos;
+                editF.textBoxMarcs.Text = card.specMarcks;
+                this.Hide();
+                editF.ShowDialog();
+                formList.Delete(sender, e);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Недостаточно прав", "Ошибка прав доступа", MessageBoxButtons.OK);
+            }
+        }
     }
 }
