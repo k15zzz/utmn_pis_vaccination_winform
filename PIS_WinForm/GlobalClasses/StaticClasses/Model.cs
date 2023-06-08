@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Eventing.Reader;
 using System.Net.Http.Headers;
 using PIS_WinForm;
 using PIS_WinForm.GlobalClasses.NonStaticClasses;
@@ -9,26 +11,43 @@ namespace Model
 {
     public static class Animal
     {
-        private static readonly string _tableName = "Animals";
-        public static Dictionary<int, Dictionary<string, string>> LookAll(Dictionary<string, List<string>> filter)
+        public static Card.Animal LookAtCard(DataGridViewRow data)
         {
-            try
+            var returanbleValues = new Dictionary<string, string>()
             {
-                PermissionGuard.CanLookAll(_tableName);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            foreach (var filt in filter)
-            {
-                if (filt.Value.Count == 0 || filt.Value[0] == null) filter.Remove(filt.Key);
-            }
-            return DBAdapter.LookAll(_tableName,
-                filter,
-                ReplaceFields);
+                { "regNum", data.Cells[1].Value.ToString() },
+                { "category", data.Cells[4].Value.ToString() },
+                { "sex", data.Cells[5].Value.ToString() },
+                { "burthYear", data.Cells[6].Value.ToString() },
+                { "town_id", data.Cells[3].Value.ToString() },
+                { "name", data.Cells[8].Value.ToString() },
+                { "e-chipNumber", data.Cells[7].Value.ToString() },
+                { "specMarcks", data.Cells[10].Value.ToString() },
+                { "photos", data.Cells[9].Value.ToString() }
+            };
+            return new Card.Animal(returanbleValues);
         }
 
+        private static readonly string _tableName = "Animals";
+        public static Dictionary<int, Dictionary<string, string>> LookAll(Dictionary<string, List<string>> filter)
+            => GenericMethods.LookAll(_tableName, filter, ReplaceFields);
+
+        private static Dictionary<int, Dictionary<string, string>> ReplaceFields(Dictionary<int, Dictionary<string, string>> filteredtable, Dictionary<string, Dictionary<int, Dictionary<string, string>>> db)
+        {
+            var templeDictionry = new Dictionary<int, Dictionary<string, string>>();
+            foreach (var item in filteredtable)
+            {
+                templeDictionry.Add(item.Key, new Dictionary<string, string>());
+                foreach (var itemValue in item.Value)
+                    templeDictionry[item.Key].Add(itemValue.Key, itemValue.Value);
+            }
+
+            foreach (var item in templeDictionry)
+            {
+                templeDictionry[item.Key].Add("townName", db["Tows"][int.Parse(item.Value["town_id"])]["name"]);
+            }
+            return templeDictionry;
+        }
 
         public static bool Add(Card.Animal animal)
         {
@@ -51,11 +70,25 @@ namespace Model
                 throw new Exception("Fill all fields");
             }
         }
-        private static List<string> category = new List<string>() { "Кошка", "Собака" };
-        private static List<string> sex = new List<string>() { "муж", "жен" };
-
+        private static List<string> category = new List<string>();
+        private static List<string> sex = new List<string>();
         private static bool ChechOnEmptyFields(Card.Animal animal)
         {
+            var animals = DBAdapter.GetAll("Animals");
+            foreach (var item in animals)
+            {
+                if(!category.Contains(item.Value["сategory"]))
+                {
+                    category.Add(item.Value["сategory"]);
+                }
+            }
+            foreach (var item in animals)
+            {
+                if (!sex.Contains(item.Value["sex"]))
+                {
+                    sex.Add(item.Value["sex"]);
+                }
+            }
             bool allNotEmpty = false;
             foreach (string categ in category)
             {
@@ -90,6 +123,19 @@ namespace Model
             else return true;
         }
 
+        public static void Delete(int id)
+        {
+            DBAdapter.Delete(id, "Animals");
+        }
+    }
+
+    public static class Organizations
+    {
+        private static readonly string _tableName = "Organizations";
+
+        public static Dictionary<int, Dictionary<string, string>> LookAll(Dictionary<string, List<string>> filter)
+            => GenericMethods.LookAll(_tableName, filter, ReplaceFields);
+
         private static Dictionary<int, Dictionary<string, string>> ReplaceFields(Dictionary<int, Dictionary<string, string>> filteredtable, Dictionary<string, Dictionary<int, Dictionary<string, string>>> db)
         {
             var templeDictionry = new Dictionary<int, Dictionary<string, string>>();
@@ -99,67 +145,67 @@ namespace Model
                 foreach (var itemValue in item.Value)
                     templeDictionry[item.Key].Add(itemValue.Key, itemValue.Value);
             }
-                    
+
             foreach (var item in templeDictionry)
             {
                 templeDictionry[item.Key].Add("townName", db["Tows"][int.Parse(item.Value["town_id"])]["name"]);
             }
             return templeDictionry;
         }
+
+        public static void Add(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
         
-        public static void Delete(int id) 
+        public static void Delete(int id)
         {
-            if (PermissionGuard.CanDelete("Animal"))
-            {
-                var dict = DBAdapter.GetAll("Animals");
-                if (dict.ContainsKey(id))
-                {
-                  //  Controller.Animal.Delete(id);
-                }
-                else
-                {
-                    MessageBox.Show("Такого животного не существует в реестре");
-                }
-            }
-            else
-            {
-                MessageBox.Show("У вас нет прав на это действие");
-            }
+            DBAdapter.Delete(id, "Organizations");
         }
     }
 
-    public static class Organizations
-    {
-
-        public static void LookAll(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
-
-        public static void Add(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
-        public static void Delete(int id)
-        {
-            if (PermissionGuard.CanDelete("Organizations"))
-            {
-                var dict = DBAdapter.GetAll("Organizations");
-                if (dict.ContainsKey(id))
-                {
-                //    Controller.Organization.Delete(id);
-                }
-                else
-                {
-                    MessageBox.Show("Такой организации не существует в реестре");
-                }
-            }
-            else
-            {
-                MessageBox.Show("У вас нет прав на это действие");
-            }
-        }
-}
-
     public static class Contracts
     {
-        public static void LookAll(string[,] filter, string[,] sort) => throw new NotImplementedException();
+        private static readonly string _tableName = "Contracts";
+
+        public static Card.Contract LookAtCard(DataGridViewRow data)
+        {
+            var returanbleValues = new Dictionary<string, string>()
+            {
+                { "number", data.Cells[1].Value.ToString() },
+                { "startDate", data.Cells[2].Value.ToString() },
+                { "endDate", data.Cells[3].Value.ToString() },
+                { "ispolnitel_id", data.Cells[5].Value.ToString() },
+                { "zacazchik_id", data.Cells[7].Value.ToString() }
+            };
+            return new Card.Contract(returanbleValues);
+        }
+
+        public static Dictionary<int, Dictionary<string, string>> LookAll(Dictionary<string, List<string>> filter)
+            => GenericMethods.LookAll(_tableName, filter, ReplaceFields);
+
+        private static Dictionary<int, Dictionary<string, string>> ReplaceFields(Dictionary<int, Dictionary<string, string>> filteredtable, Dictionary<string, Dictionary<int, Dictionary<string, string>>> db)
+        {
+            var templeDictionry = new Dictionary<int, Dictionary<string, string>>();
+            foreach (var item in filteredtable)
+            {
+                templeDictionry.Add(item.Key, new Dictionary<string, string>());
+                foreach (var itemValue in item.Value)
+                    templeDictionry[item.Key].Add(itemValue.Key, itemValue.Value);
+            }
+
+            foreach (var item in templeDictionry)
+            {
+                templeDictionry[item.Key].Add("ispolnitelName", db["Organizations"][int.Parse(item.Value["ispolnitel_id"])]["fullName"]);
+                templeDictionry[item.Key].Add("zacazchikName", db["Organizations"][int.Parse(item.Value["zacazchik_id"])]["fullName"]);
+            }
+            return templeDictionry;
+        }
 
         public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
+
+        public static void Delete(int id)
+        {
+            DBAdapter.Delete(id, "Contracts");
+
+        }
     }
 
     public static class Town
@@ -184,5 +230,25 @@ namespace Model
         }
     }
 
+    public static class GenericMethods
+    {
+        public static Dictionary<int, Dictionary<string, string>> LookAll(
+            string tableName,
+            Dictionary<string,List<string>> filter,
+            Func<Dictionary<int, Dictionary<string, string>>, Dictionary<string, Dictionary<int, Dictionary<string, string>>>, Dictionary<int, Dictionary<string, string>>> ReplaceFields)
+        {
+
+            if (PermissionGuard.CanLookAll(tableName))
+            {
+                foreach (var filt in filter)
+                    if (filt.Value.Count == 0 || filt.Value[0] == null) filter.Remove(filt.Key);
+                return DBAdapter.LookAll(tableName, filter, ReplaceFields);
+            }
+            else
+            {
+                throw new Exception("У вас не достаточно прав");
+            }
+        }
+    }
 }
 

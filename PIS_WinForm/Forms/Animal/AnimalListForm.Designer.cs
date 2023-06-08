@@ -29,17 +29,6 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            button_Edit = new Button();
-            button_Add = new Button();
-            button_Delete = new Button();
-            button_View = new Button();
-            button_Menu = new Button();
-            menuStrip1 = new MenuStrip();
-            filter = new ToolStripMenuItem();
-            Town = new ToolStripMenuItem();
-            Categorya = new ToolStripMenuItem();
-            Sexy = new ToolStripMenuItem();
-            filterbutton = new Button();
             id = new DataGridViewTextBoxColumn();
             RegNum = new DataGridViewTextBoxColumn();
             town_id = new DataGridViewTextBoxColumn();
@@ -51,6 +40,16 @@
             name = new DataGridViewTextBoxColumn();
             photos = new DataGridViewTextBoxColumn();
             specMarks = new DataGridViewTextBoxColumn();
+            button_Add = new Button();
+            button_Delete = new Button();
+            button_View = new Button();
+            button_Menu = new Button();
+            menuStrip1 = new MenuStrip();
+            filter = new ToolStripMenuItem();
+            Town = new ToolStripMenuItem();
+            Categorya = new ToolStripMenuItem();
+            Sexy = new ToolStripMenuItem();
+            filterbutton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -72,15 +71,95 @@
             dataGridView1.Size = new Size(463, 320);
             dataGridView1.TabIndex = 0;
             // 
-            // button_Edit
+            // id
             // 
-            button_Edit.Location = new Point(479, 105);
-            button_Edit.Margin = new Padding(3, 2, 3, 2);
-            button_Edit.Name = "button_Edit";
-            button_Edit.Size = new Size(202, 32);
-            button_Edit.TabIndex = 1;
-            button_Edit.Text = "Редактировать";
-            button_Edit.UseVisualStyleBackColor = true;
+            id.HeaderText = "id";
+            id.MinimumWidth = 6;
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Visible = false;
+            id.Width = 125;
+            // 
+            // RegNum
+            // 
+            RegNum.HeaderText = "Ристриционный номер";
+            RegNum.MinimumWidth = 6;
+            RegNum.Name = "RegNum";
+            RegNum.ReadOnly = true;
+            RegNum.Width = 125;
+            // 
+            // town_id
+            // 
+            town_id.HeaderText = "Город";
+            town_id.MinimumWidth = 6;
+            town_id.Name = "town_id";
+            town_id.ReadOnly = true;
+            town_id.Visible = false;
+            town_id.Width = 125;
+            // 
+            // townName
+            // 
+            townName.HeaderText = "Город";
+            townName.MinimumWidth = 6;
+            townName.Name = "townName";
+            townName.ReadOnly = true;
+            townName.Width = 125;
+            // 
+            // category
+            // 
+            category.HeaderText = "категория";
+            category.MinimumWidth = 6;
+            category.Name = "category";
+            category.ReadOnly = true;
+            category.Width = 125;
+            // 
+            // sex
+            // 
+            sex.HeaderText = "Пол";
+            sex.MinimumWidth = 6;
+            sex.Name = "sex";
+            sex.ReadOnly = true;
+            sex.Width = 125;
+            // 
+            // burthYear
+            // 
+            burthYear.HeaderText = "Дата рождения";
+            burthYear.MinimumWidth = 6;
+            burthYear.Name = "burthYear";
+            burthYear.ReadOnly = true;
+            burthYear.Width = 125;
+            // 
+            // e_chipNumber
+            // 
+            e_chipNumber.HeaderText = "Номер э-чипа";
+            e_chipNumber.MinimumWidth = 6;
+            e_chipNumber.Name = "e_chipNumber";
+            e_chipNumber.ReadOnly = true;
+            e_chipNumber.Width = 125;
+            // 
+            // name
+            // 
+            name.HeaderText = "Кличка";
+            name.MinimumWidth = 6;
+            name.Name = "name";
+            name.ReadOnly = true;
+            name.Width = 125;
+            // 
+            // photos
+            // 
+            photos.HeaderText = "Фото";
+            photos.MinimumWidth = 6;
+            photos.Name = "photos";
+            photos.ReadOnly = true;
+            photos.Width = 125;
+            // 
+            // specMarks
+            // 
+            specMarks.HeaderText = "Особые приметы";
+            specMarks.MinimumWidth = 6;
+            specMarks.Name = "specMarks";
+            specMarks.ReadOnly = true;
+            specMarks.Width = 125;
             // 
             // button_Add
             // 
@@ -92,17 +171,17 @@
             button_Add.Text = "Добавить";
             button_Add.UseVisualStyleBackColor = true;
             button_Add.Click += OnButtonClick_AddAnimal;
+
             // 
             // button_Delete
             // 
-            button_Delete.Location = new Point(479, 141);
+            button_Delete.Location = new Point(479, 105);
             button_Delete.Margin = new Padding(3, 2, 3, 2);
             button_Delete.Name = "button_Delete";
             button_Delete.Size = new Size(202, 32);
             button_Delete.TabIndex = 3;
             button_Delete.Text = "Удалить";
             button_Delete.UseVisualStyleBackColor = true;
-            button_Delete.Click += Delete;
             // 
             // button_View
             // 
@@ -113,7 +192,7 @@
             button_View.TabIndex = 4;
             button_View.Text = "Посмотреть";
             button_View.UseVisualStyleBackColor = true;
-            button_View.Click += button_View_Click;
+            button_View.Click += OnDoubleClick_LookAtContract;
             // 
             // button_Menu
             // 
@@ -124,10 +203,10 @@
             button_Menu.TabIndex = 5;
             button_Menu.Text = "На главную";
             button_Menu.UseVisualStyleBackColor = true;
-            button_Menu.Click += button_Menu_Click;
             // 
             // menuStrip1
             // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { filter });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
@@ -162,82 +241,13 @@
             // 
             // filterbutton
             // 
-            filterbutton.Location = new Point(479, 177);
+            filterbutton.Location = new Point(479, 141);
             filterbutton.Margin = new Padding(3, 2, 3, 2);
             filterbutton.Name = "filterbutton";
             filterbutton.Size = new Size(202, 32);
             filterbutton.TabIndex = 7;
             filterbutton.Text = "Отфильтровать";
             filterbutton.UseVisualStyleBackColor = true;
-            filterbutton.Click += filterbutton_Click;
-            // 
-            // id
-            // 
-            id.HeaderText = "id";
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Visible = false;
-            // 
-            // RegNum
-            // 
-            RegNum.HeaderText = "Ристриционный номер";
-            RegNum.Name = "RegNum";
-            RegNum.ReadOnly = true;
-            // 
-            // town_id
-            // 
-            town_id.HeaderText = "Город";
-            town_id.Name = "town_id";
-            town_id.ReadOnly = true;
-            town_id.Visible = false;
-            // 
-            // townName
-            // 
-            townName.HeaderText = "Город";
-            townName.Name = "townName";
-            townName.ReadOnly = true;
-            // 
-            // category
-            // 
-            category.HeaderText = "категору";
-            category.Name = "category";
-            category.ReadOnly = true;
-            // 
-            // sex
-            // 
-            sex.HeaderText = "Пол";
-            sex.Name = "sex";
-            sex.ReadOnly = true;
-            // 
-            // burthYear
-            // 
-            burthYear.HeaderText = "День рождения";
-            burthYear.Name = "burthYear";
-            burthYear.ReadOnly = true;
-            // 
-            // e_chipNumber
-            // 
-            e_chipNumber.HeaderText = "Номер э-чипа";
-            e_chipNumber.Name = "e_chipNumber";
-            e_chipNumber.ReadOnly = true;
-            // 
-            // name
-            // 
-            name.HeaderText = "Кличка";
-            name.Name = "name";
-            name.ReadOnly = true;
-            // 
-            // photos
-            // 
-            photos.HeaderText = "Фото";
-            photos.Name = "photos";
-            photos.ReadOnly = true;
-            // 
-            // specMarks
-            // 
-            specMarks.HeaderText = "Особые приметы";
-            specMarks.Name = "specMarks";
-            specMarks.ReadOnly = true;
             // 
             // AnimalListForm
             // 
@@ -249,7 +259,6 @@
             Controls.Add(button_View);
             Controls.Add(button_Delete);
             Controls.Add(button_Add);
-            Controls.Add(button_Edit);
             Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -264,9 +273,6 @@
         }
 
         #endregion
-
-        private DataGridView dataGridView1;
-        private Button button_Edit;
         private Button button_Add;
         private Button button_Delete;
         private Button button_View;
@@ -291,5 +297,6 @@
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn photos;
         private DataGridViewTextBoxColumn specMarks;
+        internal DataGridView dataGridView1;
     }
 }

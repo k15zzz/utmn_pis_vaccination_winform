@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PIS_WinForm.Forms.Animal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,12 +47,12 @@ namespace PIS_WinForm.Forms
                 if (!t[2].Contains(cards[card.Key]["sex"])) t[2].Add(cards[card.Key]["sex"]);
             }
 
-            for (var i = 0; i < t[0].Count-1; i+=2)
+            for (var i = 0; i < t[0].Count - 1; i += 2)
             {
                 var stripItem = new ToolStripMenuItem();
                 stripItem.Text = t[0][i].ToString();
                 stripItem.CheckOnClick = true;
-                stripItem.Tag = t[0][i+1].ToString();
+                stripItem.Tag = t[0][i + 1].ToString();
                 Town.DropDownItems.Add(stripItem);
             }
 
@@ -92,22 +93,17 @@ namespace PIS_WinForm.Forms
 
             if (adding)
             {
-                AddAnimalForm addF = new AddAnimalForm();
+                AddAnimalForm addF = new AddAnimalForm(this);
                 this.Hide();
                 addF.ShowDialog();
+                //
+
                 this.Show();
             }
             else
             {
                 MessageBox.Show("Недостаточно прав", "Ошибка прав доступа", MessageBoxButtons.OK);
             }
-
-
-
-        }
-
-        private void button_View_Click(object sender, EventArgs e)
-        {
         }
 
         private void Delete(object sender, EventArgs e)
@@ -123,12 +119,6 @@ namespace PIS_WinForm.Forms
             {
                 MessageBox.Show("У вас нет прав на это действие");
             }
-        }
-
-        private void button_Menu_Click(object sender, EventArgs e) => this.Close();
-
-        private void filterbutton_Click(object sender, EventArgs e)
-        {
             Dictionary<string, List<string>> filter = new Dictionary<string, List<string>>();
 
             filter.Add("town_id", new List<string>());
@@ -152,7 +142,7 @@ namespace PIS_WinForm.Forms
             {
                 MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
             }
-            
+
             try
             {
                 cards = Controller.Animal.LookAll(filter);
@@ -183,6 +173,80 @@ namespace PIS_WinForm.Forms
                     );
             }
 
+        }
+
+        private void button_Menu_Click(object sender, EventArgs e) => this.Close();
+
+        private void filterbutton_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, List<string>> filter = new Dictionary<string, List<string>>();
+
+            filter.Add("town_id", new List<string>());
+            foreach (ToolStripMenuItem item in Town.DropDownItems)
+                if (item.Checked) filter["town_id"].Add(item.Tag.ToString());
+
+            filter.Add("сategory", new List<string>());
+            foreach (ToolStripMenuItem item in Categorya.DropDownItems)
+                if (item.Checked) filter["сategory"].Add(item.Text);
+
+            filter.Add("sex", new List<string>());
+            foreach (ToolStripMenuItem item in Sexy.DropDownItems)
+                if (item.Checked) filter["sex"].Add(item.Text);
+
+            Dictionary<int, Dictionary<string, string>> cards = new Dictionary<int, Dictionary<string, string>>();
+            try
+            {
+                PermissionGuard.CanLookAll("Animals");
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
+            }
+
+            try
+            {
+                cards = Controller.Animal.LookAll(filter);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "you cant look at yhis list", MessageBoxButtons.OK);
+            }
+
+            dataGridView1.Rows.Clear();
+
+            foreach (var card in cards)
+            {
+                dataGridView1.Rows.Add
+                    (
+                    card.Key,
+                    cards[card.Key]["regNum"],
+                    cards[card.Key]["town_id"],
+                    cards[card.Key]["townName"],
+                    cards[card.Key]["сategory"],
+                    cards[card.Key]["sex"],
+                    cards[card.Key]["burthYear"],
+                    cards[card.Key]["e-chipNumber"],
+                    cards[card.Key]["name"],
+                    cards[card.Key]["photos"],
+                    cards[card.Key]["specMarcks"]
+                    );
+            }
+        }
+
+        private void OnDoubleClick_LookAtContract(object sender, EventArgs e)
+        {
+            var SelectedRow = dataGridView1.SelectedRows[0];
+            var animalCard = Controller.Animal.LookAtCard(SelectedRow);
+            var animalCardForm = new AnimalCard(animalCard);
+            this.Hide();
+            animalCardForm.ShowDialog();
+            this.Show();
+        }
+
+        private void button_Edit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -87,12 +87,12 @@ namespace PIS_WinForm
                                 { "regNum",      "123-123" }, // {colum, value} 
                                 { "town_id",   "1" },
                                 { "сategory",   "Кошка" },
-                                { "sex",   "сука" },
+                                { "sex",   "жен." },
                                 { "burthYear",      "2005" },
                                 { "e-chipNumber",   "7423423" },
                                 { "name",   "Варя" },
                                 { "photos",   "на фотках кошка" },
-                                { "specMarcks", "черная, красивая, отсутцвует хвост"}
+                                { "specMarcks", "черная, красивая, отсутствует хвост"}
                             }
                         },
                         {
@@ -106,7 +106,7 @@ namespace PIS_WinForm
                                 { "burthYear",      "2004" },
                                 { "e-chipNumber",   "74234423" },
                                 { "name",   "Падик" },
-                                { "photos",   "на фотках собака" },
+                                { "photos",   "на фотках кошка" },
                                 { "specMarcks", "серая, красивая, отсутцвует нос"}
                             }
                         },
@@ -122,7 +122,7 @@ namespace PIS_WinForm
                                 { "e-chipNumber",   "2342387" },
                                 { "name",   "Аба" },
                                 { "photos",   "на фотках собака, красивая" },
-                                { "specMarcks", "рыжая, красивая, отсутцвует нос и хвост"}
+                                { "specMarcks", "рыжая, красивая, отсутствует нос и хвост"}
                             }
                         }
                     }
@@ -140,7 +140,7 @@ namespace PIS_WinForm
                                 { "fullName",      "ООО Аргон и сварка" }, // {colum, value} 
                                 { "INN",   "2353645786" },
                                 { "KPP",   "45676543" },
-                                { "aderss",   "ул. Ппрокопия. д. 2" },
+                                { "aderss",   "ул. Прокопия. д. 2" },
                                 { "type",      "Приют" },
                                 { "UrFace",   "Андрей Юрий Андреич" },
                                 { "town_id",   "1" },
@@ -153,7 +153,7 @@ namespace PIS_WinForm
                                 { "fullName",      "ООО Клеточный кот" }, // {colum, value} 
                                 { "INN",   "45342342" },
                                 { "KPP",   "423609813" },
-                                { "aderss",   "ул. Ппрокопия. д. 1" },
+                                { "aderss",   "ул. Прокопия. д. 1" },
                                 { "type",      "Приют" },
                                 { "UrFace",   "Андрей Юрий Андреич" },
                                 { "town_id",   "2" },
@@ -190,7 +190,7 @@ namespace PIS_WinForm
                             1, // id 
                             new Dictionary<string, string>()  // atributes
                             {
-                                { "name",      "Залупенск" }, // {colum, value} 
+                                { "name",      "Тюмень" }, // {colum, value} 
                             }
                         },
                         {
@@ -305,8 +305,7 @@ namespace PIS_WinForm
             };
 
         //var item = db["table"][1]["atribute"]; // 1 - это id записи
-
-        static public bool AddAnimal(Card.Animal animal)
+        static public int NewIdAnimal()
         {
             var animals = _db["Animals"];
 
@@ -318,15 +317,19 @@ namespace PIS_WinForm
                     id += 1;
                 }
             }
+            return id;
+        } 
+        static public bool AddAnimal(Card.Animal animal)
+        {
+            var id = NewIdAnimal();
             Dictionary<string, string> card = new Dictionary<string, string>()
             {
-
                 { "regNum",  animal.regNum }, // {colum, value} 
                 { "town_id",   animal.town_id },
                 { "сategory",  animal.category },
                 { "sex",  animal.sex },
                 { "burthYear",   animal.burthYear },
-                { "chipNumber",   animal.chipNumber },
+                { "e-chipNumber",   animal.chipNumber },
                 { "name", animal.name },
                 { "photos",  animal.photos },
                 { "specMarcks", animal.specMarcks}
@@ -419,6 +422,22 @@ namespace PIS_WinForm
         static public void Delete(int id, string table)
         {
             _db[table].Remove(id);
+            if (table == "Contracts")
+            {
+               foreach(var row in _db["Vactination"])
+                {
+                    if (_db["Vactination"][row.Key]["contract_id"] == id.ToString())
+                        _db["Vactination"].Remove(row.Key);
+                }
+            }
+            else if (table == "Organizations")
+            {
+                foreach (var row in _db["Vactination"])
+                {
+                    if (_db["Vactination"][row.Key]["org_id"] == id.ToString())
+                        _db["Vactination"].Remove(row.Key);
+                }
+            }
         }
     }
 }

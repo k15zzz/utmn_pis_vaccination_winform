@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LookAllMnimals = new Button();
+            LookAllAnimals = new Button();
             calculateStatisticButton = new Button();
             finishDateTimePicker = new DateTimePicker();
             startDateTimePicker = new DateTimePicker();
             townsCheckedListBox = new CheckedListBox();
+            this.LookAllContracts = new Button();
             SuspendLayout();
             // 
-            // LookAllMnimals
+            // LookAllAnimals
             // 
-            LookAllMnimals.Location = new Point(12, 12);
-            LookAllMnimals.Name = "LookAllMnimals";
-            LookAllMnimals.Size = new Size(189, 23);
-            LookAllMnimals.TabIndex = 0;
-            LookAllMnimals.Text = "Посмотреть реестр Животных";
-            LookAllMnimals.UseVisualStyleBackColor = true;
-            LookAllMnimals.Click += OnButtonClick_LookAllAnimals;
+            LookAllAnimals.Location = new Point(12, 12);
+            LookAllAnimals.Name = "LookAllAnimals";
+            LookAllAnimals.Size = new Size(228, 42);
+            LookAllAnimals.TabIndex = 0;
+            LookAllAnimals.Text = "Посмотреть реестр животных";
+            LookAllAnimals.UseVisualStyleBackColor = true;
+            LookAllAnimals.Click += OnButtonClick_LookAllAnimals;
             // 
             // calculateStatisticButton
             // 
@@ -54,7 +55,6 @@
             calculateStatisticButton.TabIndex = 1;
             calculateStatisticButton.Text = "Рассчитать";
             calculateStatisticButton.UseVisualStyleBackColor = true;
-            calculateStatisticButton.Click += calculateStatisticButton_Click;
             // 
             // finishDateTimePicker
             // 
@@ -78,19 +78,30 @@
             townsCheckedListBox.Location = new Point(578, 6);
             townsCheckedListBox.Margin = new Padding(2, 1, 2, 1);
             townsCheckedListBox.Name = "townsCheckedListBox";
-            townsCheckedListBox.Size = new Size(218, 40);
+            townsCheckedListBox.Size = new Size(218, 22);
             townsCheckedListBox.TabIndex = 4;
+            // 
+            // LookAllContracts
+            // 
+            this.LookAllContracts.Location = new Point(12, 60);
+            this.LookAllContracts.Name = "LookAllContracts";
+            this.LookAllContracts.Size = new Size(228, 42);
+            this.LookAllContracts.TabIndex = 5;
+            this.LookAllContracts.Text = "Посмотреть реестр контрактов";
+            this.LookAllContracts.UseVisualStyleBackColor = true;
+            this.LookAllContracts.Click += this.OnButtonClick_LookAllContracts;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(this.LookAllContracts);
             Controls.Add(townsCheckedListBox);
             Controls.Add(startDateTimePicker);
             Controls.Add(finishDateTimePicker);
             Controls.Add(calculateStatisticButton);
-            Controls.Add(LookAllMnimals);
+            Controls.Add(LookAllAnimals);
             Name = "Main";
             Text = "Main";
             ResumeLayout(false);
@@ -98,10 +109,12 @@
 
         #endregion
 
-        private Button LookAllMnimals;
+        private Button LookAllAnimals;
         private Button calculateStatisticButton;
         private DateTimePicker finishDateTimePicker;
         private DateTimePicker startDateTimePicker;
         private CheckedListBox townsCheckedListBox;
+        private Button LookAllContracts;
+        private Button LookAllOrganizations;
     }
 }

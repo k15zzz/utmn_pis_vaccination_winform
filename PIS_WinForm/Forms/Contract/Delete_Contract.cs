@@ -31,7 +31,7 @@ namespace PIS_WinForm.Forms
 
         private void Yes(object sender, EventArgs e)
         {
-       //     Model.Contracts.Delete(id);
+            Controller.Contract.Delete(id);
             MessageBox.Show("Контракт успешно удален");
             this.Close();
         }

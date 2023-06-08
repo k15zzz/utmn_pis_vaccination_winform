@@ -2,7 +2,6 @@
 {
     public class Animal
     {
-        //burthYear, town_id,regNum, chipNumber, name, photos, specMarcks
         internal string category;
         internal string sex;
         internal string regNum;
@@ -14,23 +13,33 @@
         internal string specMarcks;
         public Animal(Dictionary<string, string> filter)
         {
-            // нет пункта на форме
-            //regNum = filter["regNum"];
+            regNum = filter["regNum"];
             category = filter["category"];
-            sex = filter["gender"];
-            burthYear = filter["yearBirth"];
-            town_id = filter["town"];
+            sex = filter["sex"];
+            burthYear = filter["burthYear"];
+            town_id = filter["town_id"];
             name = filter["name"];
-            chipNumber = filter["chip"];
-            specMarcks = filter["signs"];
-            //photos = filter["photos"];
+            chipNumber = filter["e-chipNumber"];
+            specMarcks = filter["specMarcks"];
+            photos = filter["photos"];
         }
     }
 
     public class Contract
     {
-        // овер дохера полей
-        public Contract() => throw new NotImplementedException();
+        internal string number;
+        internal string startDate;
+        internal string endDate;
+        internal string ispolnitel_id;
+        internal string zacazchik_id;
+        public Contract(Dictionary<string, string> filter)
+        {
+            number = filter["number"];
+            startDate = filter["startDate"];
+            endDate = filter["endDate"];
+            ispolnitel_id = filter["ispolnitel_id"];
+            zacazchik_id = filter["zacazchik_id"];
+        }
     }
 
     public class Organization
