@@ -125,22 +125,7 @@ namespace Model
 
         public static void Delete(int id)
         {
-            if (PermissionGuard.CanDelete("Animal"))
-            {
-                var dict = DBAdapter.GetAll("Animals");
-                if (dict.ContainsKey(id))
-                {
-                    //  Controller.Animal.Delete(id);
-                }
-                else
-                {
-                    MessageBox.Show("Такого животного не существует в реестре");
-                }
-            }
-            else
-            {
-                MessageBox.Show("У вас нет прав на это действие");
-            }
+            DBAdapter.Delete(id, "Animals");
         }
     }
 
@@ -169,24 +154,10 @@ namespace Model
         }
 
         public static void Add(Dictionary<string, string> filter, Dictionary<string, string> sort) => throw new NotImplementedException();
+        
         public static void Delete(int id)
         {
-            if (PermissionGuard.CanDelete("Organizations"))
-            {
-                var dict = DBAdapter.GetAll("Organizations");
-                if (dict.ContainsKey(id))
-                {
-                    //    Controller.Organization.Delete(id);
-                }
-                else
-                {
-                    MessageBox.Show("Такой организации не существует в реестре");
-                }
-            }
-            else
-            {
-                MessageBox.Show("У вас нет прав на это действие");
-            }
+            DBAdapter.Delete(id, "Organizations");
         }
     }
 
@@ -229,6 +200,12 @@ namespace Model
         }
 
         public static void Add(string[,] filter, string[,] sort) => throw new NotImplementedException();
+
+        public static void Delete(int id)
+        {
+            DBAdapter.Delete(id, "Contracts");
+
+        }
     }
 
     public static class Town

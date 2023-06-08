@@ -422,6 +422,22 @@ namespace PIS_WinForm
         static public void Delete(int id, string table)
         {
             _db[table].Remove(id);
+            if (table == "Contracts")
+            {
+               foreach(var row in _db["Vactination"])
+                {
+                    if (_db["Vactination"][row.Key]["contract_id"] == id.ToString())
+                        _db["Vactination"].Remove(row.Key);
+                }
+            }
+            else if (table == "Organizations")
+            {
+                foreach (var row in _db["Vactination"])
+                {
+                    if (_db["Vactination"][row.Key]["org_id"] == id.ToString())
+                        _db["Vactination"].Remove(row.Key);
+                }
+            }
         }
     }
 }

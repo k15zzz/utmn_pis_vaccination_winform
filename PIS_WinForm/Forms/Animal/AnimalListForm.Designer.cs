@@ -171,6 +171,7 @@
             button_Add.Text = "Добавить";
             button_Add.UseVisualStyleBackColor = true;
             button_Add.Click += OnButtonClick_AddAnimal;
+
             // 
             // button_Delete
             // 
