@@ -93,7 +93,7 @@ namespace Controller
         }
         
         //private static bool ChechOnEmptyFields() => throw new NotImplementedException();
-    }
+    
 
     public static class Organization
     {
