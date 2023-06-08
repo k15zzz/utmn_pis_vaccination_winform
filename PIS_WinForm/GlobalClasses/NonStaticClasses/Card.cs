@@ -1,4 +1,6 @@
-﻿namespace Card
+﻿using System.Diagnostics;
+
+namespace Card
 {
     public class Animal
     {
@@ -44,8 +46,23 @@
 
     public class Organization
     {
-        // овер дохера полей
-        public Organization() => throw new NotImplementedException();
+        internal string fullName;
+        internal string INN;
+        internal string KPP;
+        internal string aderss;
+        internal string type;
+        internal string UrFace;
+        internal string town_id;
+        public Organization(Dictionary<string, string> filter)
+        {
+            fullName = filter["fullName"];
+            INN = filter["INN"];
+            KPP = filter["KPP"];
+            aderss = filter["aderss"];
+            type = filter["type"];
+            UrFace = filter["UrFace"];
+            town_id = filter["town_id"];
+        }
     }
 
     public class User

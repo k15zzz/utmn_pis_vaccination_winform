@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Controller;
 using PIS_WinForm.Forms.Contract;
+using PIS_WinForm.Forms.Organization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace PIS_WinForm.Forms
@@ -176,12 +177,11 @@ namespace PIS_WinForm.Forms
                 MessageBox.Show(ex.Message);
             }
 
-            //this.Visible = false;
-            //TODO: добавить форму 
-            //ContractListForm _form = new ContractListForm(cards);
-            //_form.ShowDialog();
+            this.Visible = false;
+            OrganizationListForm _form = new OrganizationListForm(cards);
+            _form.ShowDialog();
 
-            //this.Visible = true;
+            this.Visible = true;
         }
     }
 }

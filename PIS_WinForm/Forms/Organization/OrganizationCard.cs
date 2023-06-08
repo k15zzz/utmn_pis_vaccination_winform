@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PIS_WinForm.Forms.Contract
+namespace PIS_WinForm.Forms.Organization
 {
-    public partial class ContractCard : Form
+    public partial class OrganizationCard : Form
     {
-        public ContractCard(Card.Contract card)
+        public OrganizationCard(Card.Organization card)
         {
             InitializeComponent();
 
@@ -21,11 +21,13 @@ namespace PIS_WinForm.Forms.Contract
 
             var atributs = new Dictionary<string, string>()
             {
-                { "Номер", card.number },
-                { "Дата заключения", card.startDate },
-                { "Дата действия", card.endDate },
-                { "Исполнитель", card.ispolnitel_id },
-                { "Заказчик", card.zacazchik_id },
+                { "Полное наименование организации", card.fullName },
+                { "ИНН", card.INN },
+                { "КПП", card.KPP },
+                { "Адрес регистрации", card.aderss },
+                { "Тип организации", card.type },
+                { "ИП/Юридическое лицо", card.UrFace },
+                { "Населённый пункт", card.town_id },
             };
 
             foreach (var atribut in atributs)
@@ -56,12 +58,12 @@ namespace PIS_WinForm.Forms.Contract
             buttonEdit.Parent = this;
             buttonEdit.Location = new Point(x, y);
             buttonEdit.Text = "Изменить";
-            buttonEdit.Click += OnButtonClick_EditContracts;
+            buttonEdit.Click += OnButtonClick_EditOrganizations;
         }
 
         private void Close(object sender, EventArgs e) => this.Close();
 
-        private void OnButtonClick_EditContracts(object sender, EventArgs e)
+        private void OnButtonClick_EditOrganizations(object sender, EventArgs e)
             => throw new NotImplementedException();
     }
 }

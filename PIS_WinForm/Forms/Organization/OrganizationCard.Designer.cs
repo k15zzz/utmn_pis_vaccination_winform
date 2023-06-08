@@ -1,6 +1,6 @@
-﻿namespace PIS_WinForm.Forms.Contract
+﻿namespace PIS_WinForm.Forms.Organization
 {
-    partial class ContractCard
+    partial class OrganizationCard
     {
         /// <summary>
         /// Required designer variable.
@@ -30,16 +30,15 @@
         {
             SuspendLayout();
             // 
-            // ContractCard
+            // OrganizationCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(431, 211);
-            Margin = new Padding(2, 1, 2, 1);
-            Name = "ContractCard";
-            Text = "Карточка контакта";
+            ClientSize = new Size(800, 450);
+            Name = "OrganizationCard";
+            Text = "OrganizationCard";
             ResumeLayout(false);
         }
 

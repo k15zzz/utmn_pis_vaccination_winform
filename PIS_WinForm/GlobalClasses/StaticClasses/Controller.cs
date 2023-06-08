@@ -109,7 +109,7 @@ namespace Controller
 
     public static class Organization
     {
-
+        public static Card.Organization LookAtCard(DataGridViewRow data) => Model.Organizations.LookAtCard(data);
 
         public static Dictionary<int, Dictionary<string, string>> LookAll(Dictionary<string, List<string>> filter)
         {
